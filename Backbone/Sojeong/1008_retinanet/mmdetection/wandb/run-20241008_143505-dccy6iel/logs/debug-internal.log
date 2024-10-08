@@ -1,0 +1,18 @@
+{"time":"2024-10-08T14:35:05.139617176+09:00","level":"INFO","msg":"using version","core version":"0.18.3"}
+{"time":"2024-10-08T14:35:05.139633823+09:00","level":"INFO","msg":"created symlink","path":"/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/1008_retinanet/mmdetection/wandb/run-20241008_143505-dccy6iel/logs/debug-core.log"}
+{"time":"2024-10-08T14:35:05.141195206+09:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2024-10-08T14:35:05.143687025+09:00","level":"INFO","msg":"created new stream","id":"dccy6iel"}
+{"time":"2024-10-08T14:35:05.143730242+09:00","level":"INFO","msg":"stream: started","id":"dccy6iel"}
+{"time":"2024-10-08T14:35:05.143800105+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"dccy6iel"}}
+{"time":"2024-10-08T14:35:05.143926637+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"dccy6iel"}}
+{"time":"2024-10-08T14:35:05.143987939+09:00","level":"INFO","msg":"sender: started","stream_id":{"value":"dccy6iel"}}
+{"time":"2024-10-08T14:35:05.499676647+09:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2024-10-08T14:35:05.500650355+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-10-08T14:40:09.460641622+09:00","level":"INFO","msg":"stream: closing","id":"dccy6iel"}
+{"time":"2024-10-08T14:40:09.460702562+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-10-08T14:40:09.463396214+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-10-08T14:40:11.903174312+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-10-08T14:40:12.19496599+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"dccy6iel"}}
+{"time":"2024-10-08T14:40:12.195037204+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"dccy6iel"}}
+{"time":"2024-10-08T14:40:12.195050147+09:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"dccy6iel"}}
+{"time":"2024-10-08T14:40:12.195110209+09:00","level":"INFO","msg":"stream: closed","id":"dccy6iel"}
