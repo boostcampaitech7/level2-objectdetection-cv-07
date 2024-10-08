@@ -5,3 +5,5 @@ code/
 **/work_dirs/
 *.pth
 *.csv
+work_dirs 
+**/wandb/
