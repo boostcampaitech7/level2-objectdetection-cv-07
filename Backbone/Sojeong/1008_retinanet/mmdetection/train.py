@@ -14,7 +14,8 @@ from dotenv import load_dotenv  # dotenv로 환경 변수 로드
 AVAILABLE_MODELS = {
     'faster_rcnn': './configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py',
     'mask_rcnn': './configs/mask_rcnn/mask_rcnn_r50_fpn_1x_coco.py',
-    'retinanet': './configs/retinanet/retinanet_r50_fpn_1x_coco.py'
+    'retinanet_r50_fpn_1x_coco': './configs/retinanet/retinanet_r50_fpn_1x_coco.py',
+    'retinanet': './configs/retinanet/retinanet_r50_caffe_fpn_mstrain_1x_coco.py',
 }
 
 def parse_args():

@@ -92,7 +92,7 @@ def generate_submission(output, cfg, args, class_num=10):
     submission['PredictionString'] = prediction_strings
     submission['image_id'] = file_names
     work_dir = f'./work_dirs/{args.model}'
-    submission_path = os.path.join(work_dir, f'submission_{args.model}.csv')
+    submission_path = os.path.join(work_dir, f'submission_{args.model}_caffe.csv')
     submission.to_csv(submission_path, index=None)
 
     print(f"Submission saved at {submission_path}")
@@ -103,7 +103,8 @@ def main():
     args = parse_args()
 
     # 모델에 맞는 config 경로 설정
-    config_path = f"./configs/{args.model}/{args.model}_r50_fpn_1x_coco.py"  
+    #config_path = f"./configs/{args.model}/{args.model}_r50_fpn_1x_coco.py"  
+    config_path = "./configs/retinanet/retinanet_r50_caffe_fpn_mstrain_1x_coco.py"
     cfg = load_config(config_path, args.root, args.num_classes)
 
     # 모델을 빌드하고 체크포인트 불러오기
