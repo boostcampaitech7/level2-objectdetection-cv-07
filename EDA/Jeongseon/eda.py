@@ -41,31 +41,33 @@ def generate_colors(n):
     return list(map(lambda x: colorsys.hsv_to_rgb(*x), hsv_tuples))
 
 # 바운딩 박스와 클래스 레이블 그리기 함수
-def draw_bounding_boxes(image, annotations, image_id, categories, category_colors):
+def draw_bounding_boxes(image, annotations, image_id, categories, category_colors, selected_category='All'):
     draw = ImageDraw.Draw(image)
     font_path = fm.findfont(fm.FontProperties(family='DejaVu Sans'))
     font = ImageFont.truetype(font_path, 25)
 
     for ann in annotations:
         if ann['image_id'] == image_id:
-            bbox = ann['bbox']
             category = next(cat for cat in categories if cat['id'] == ann['category_id'])
-            label = category['name']
-            color = tuple(int(x * 255) for x in category_colors[category['id']])
-            
-            # 바운딩 박스 그리기
-            draw.rectangle([bbox[0], bbox[1], bbox[0]+bbox[2], bbox[1]+bbox[3]], outline=color, width=2)
-            
-            # 레이블 배경 그리기
-            text_bbox = font.getbbox(label)
-            text_width = text_bbox[2] - text_bbox[0]
-            text_height = text_bbox[3] - text_bbox[1]
-            draw.rectangle([bbox[0], bbox[1], bbox[0] + text_width, bbox[1] + text_height], fill=color)
-            
-            # 레이블 텍스트 그리기
-            draw.text((bbox[0], bbox[1]), label, fill="white", font=font)
+            if selected_category == 'All' or category['name'] == selected_category:
+                bbox = ann['bbox']
+                label = category['name']
+                color = tuple(int(x * 255) for x in category_colors[category['id']])
+                
+                # 바운딩 박스 그리기
+                draw.rectangle([bbox[0], bbox[1], bbox[0]+bbox[2], bbox[1]+bbox[3]], outline=color, width=2)
+                
+                # 레이블 배경 그리기
+                text_bbox = font.getbbox(label)
+                text_width = text_bbox[2] - text_bbox[0]
+                text_height = text_bbox[3] - text_bbox[1]
+                draw.rectangle([bbox[0], bbox[1], bbox[0] + text_width, bbox[1] + text_height], fill=color)
+                
+                # 레이블 텍스트 그리기
+                draw.text((bbox[0], bbox[1]), label, fill="white", font=font)
 
     return image
+
 
 # 어노테이션 개수 그래프 생성 함수
 def create_annotation_count_graph(annotations, categories, category_colors):
@@ -97,9 +99,10 @@ def create_annotation_count_graph(annotations, categories, category_colors):
     # 막대 위에 수치 표시
     for bar in bars:
         height = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width()/2., height,
-                f'{height}',
-                ha='center', va='bottom')
+        if height > 0 :
+            ax.text(bar.get_x() + bar.get_width()/2., height,
+                    f'{height}',
+                    ha='center', va='bottom')
 
     # x축 라벨 위치 조정
     ax.tick_params(axis='x', which='major', pad=5)
@@ -173,9 +176,20 @@ if analysis_mode == "개별 이미지 분석":
             
             # 이미지 ID 찾기
             image_id = next(img['id'] for img in annotations['images'] if os.path.basename(img['file_name']) == current_image)
+
+            # 현재 이미지의 어노테이션 가져오기
+            current_image_annotations = [ann for ann in annotations['annotations'] if ann['image_id'] == image_id]
+            
+            # 현재 이미지에 존재하는 클래스 찾기
+            category_names = {cat['id']: cat['name'] for cat in annotations['categories']}
+            existing_categories = set(category_names[ann['category_id']] for ann in current_image_annotations) #현재 이미지에 존재하는 클래스만
+            
+            # 클래스 필터링을 위한 selectbox 추가
+            category_options = ['All'] + list(existing_categories)
+            selected_category = st.selectbox('클래스 선택', category_options)
             
             if show_bbox:
-                image_with_bbox = draw_bounding_boxes(image.copy(), annotations['annotations'], image_id, annotations['categories'], category_colors)
+                image_with_bbox = draw_bounding_boxes(image.copy(), current_image_annotations, image_id, annotations['categories'], category_colors, selected_category)
                 st.image(image_with_bbox, caption=current_image, use_column_width=True)
             else:
                 st.image(image, caption=current_image, use_column_width=True)
@@ -190,8 +204,10 @@ if analysis_mode == "개별 이미지 분석":
             if show_bbox:
                 st.subheader("카테고리별 어노테이션 개수")
 
-                # 현재 이미지의 어노테이션 개수 그래프 표시
+                # 현재 이미지의 어노테이션 개수 그래프 표시 (필터링 적용)
                 current_image_annotations = [ann for ann in annotations['annotations'] if ann['image_id'] == image_id]
+                if selected_category != 'All':
+                    current_image_annotations = [ann for ann in current_image_annotations if category_names[ann['category_id']] == selected_category]
                 fig = create_annotation_count_graph(current_image_annotations, annotations['categories'], category_colors)
                 st.pyplot(fig)
 
