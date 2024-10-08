@@ -2,3 +2,6 @@
 data/
 code/
 .env
+**/work_dirs/
+*.pth
+*.csv
