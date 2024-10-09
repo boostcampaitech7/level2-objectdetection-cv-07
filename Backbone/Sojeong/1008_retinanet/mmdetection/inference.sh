@@ -1,4 +1,4 @@
-MODEL="retinanet"
+MODEL="yolox_s_8x8_300e_coco"
 
 python inference.py \
     --model $MODEL \

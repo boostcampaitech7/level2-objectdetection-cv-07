@@ -30,7 +30,7 @@ def load_config(config_path, root, num_classes):
                              "Plastic", "Styrofoam", "Plastic bag", "Battery", "Clothing")
     cfg.data.test.img_prefix = root
     cfg.data.test.ann_file = os.path.join(root, 'test.json')
-    cfg.data.test.pipeline[1]['img_scale'] = (512, 512)  # 이미지 크기 조정
+    #cfg.data.test.pipeline[1]['img_scale'] = (512, 512)  # 이미지 크기 조정
     cfg.data.test.test_mode = True
     cfg.data.samples_per_gpu = 4
     cfg.gpu_ids = [1]
@@ -103,8 +103,8 @@ def main():
     args = parse_args()
 
     # 모델에 맞는 config 경로 설정
-    #config_path = f"./configs/{args.model}/{args.model}_r50_fpn_1x_coco.py"  
-    config_path = "./configs/retinanet/retinanet_r50_caffe_fpn_mstrain_1x_coco.py"
+    config_path = f"./configs/yolox/{args.model}.py"  
+    #config_path = "./configs/retinanet/retinanet_r50_caffe_fpn_mstrain_1x_coco.py"
     cfg = load_config(config_path, args.root, args.num_classes)
 
     # 모델을 빌드하고 체크포인트 불러오기
