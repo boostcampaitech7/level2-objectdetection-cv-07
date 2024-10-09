@@ -92,7 +92,7 @@ def generate_submission(output, cfg, args, class_num=10):
     submission['PredictionString'] = prediction_strings
     submission['image_id'] = file_names
     work_dir = f'./work_dirs/{args.model}'
-    submission_path = os.path.join(work_dir, f'submission_{args.model}_caffe.csv')
+    submission_path = os.path.join(work_dir, f'submission_{args.model}.csv')
     submission.to_csv(submission_path, index=None)
 
     print(f"Submission saved at {submission_path}")

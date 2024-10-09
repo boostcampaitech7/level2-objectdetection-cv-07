@@ -16,6 +16,7 @@ AVAILABLE_MODELS = {
     'mask_rcnn': './configs/mask_rcnn/mask_rcnn_r50_fpn_1x_coco.py',
     'retinanet_r50_fpn_1x_coco': './configs/retinanet/retinanet_r50_fpn_1x_coco.py',
     'retinanet': './configs/retinanet/retinanet_r50_caffe_fpn_mstrain_1x_coco.py',
+    'yolox_s_8x8_300e_coco': './configs/yolox/yolox_s_8x8_300e_coco.py'
 }
 
 def parse_args():
@@ -71,13 +72,18 @@ def load_config(args):
 def update_config(cfg, args):
     # work_dir을 모델 이름에 맞춰 동적으로 설정
     if args.work_dir is None:
-        args.work_dir = f'./work_dirs/{args.model}'
-    
-    # Update dataset configs
-    cfg.data.train.classes = args.classes
-    cfg.data.train.img_prefix = args.root
-    cfg.data.train.ann_file = args.root + 'train.json'
-    cfg.data.train.pipeline[2]['img_scale'] = tuple(args.img_scale)
+        args.work_dir = f'./work_dirs/{args.model}'    
+        
+    if args.model == 'yolox_s_8x8_300e_coco':
+        cfg.data.train.dataset.classes = args.classes
+        cfg.data.train.dataset.img_prefix = args.root
+        cfg.data.train.dataset.ann_file = args.root + 'train.json'
+    else:
+        # Update dataset configs
+        cfg.data.train.classes = args.classes
+        cfg.data.train.img_prefix = args.root
+        cfg.data.train.ann_file = args.root + 'train.json'
+        cfg.data.train.pipeline[2]['img_scale'] = tuple(args.img_scale)
 
     cfg.data.test.classes = args.classes
     cfg.data.test.img_prefix = args.root

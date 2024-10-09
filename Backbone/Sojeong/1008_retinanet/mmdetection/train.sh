@@ -5,8 +5,8 @@ source .env
 wandb login $WANDB_API_KEY
 
 # WANDB_RUN_NAME
-MODEL="retinanet"
-RUN_SUFFIX="sj_2"
+MODEL="yolox_s_8x8_300e_coco"
+RUN_SUFFIX="sj_1"
 WANDB_RUN_NAME="mm_${MODEL}_${RUN_SUFFIX}"
 
 python train.py \
