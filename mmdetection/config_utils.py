@@ -1,5 +1,3 @@
-# config_utils.py
-
 from mmcv import Config
 from mmdet.utils import get_device
 
@@ -28,7 +26,7 @@ def update_config(cfg, root, classes):
 
     cfg.seed = 2022
     cfg.gpu_ids = [0]
-    cfg.work_dir = 'Backbone/Jungyeon/mmdetection/work_dirs/yolov3_trash1'
+    cfg.work_dir = 'mmdetection/work_dirs/yolov3_trash'
 
     cfg.model.bbox_head.num_classes = 10
     cfg.runner.max_epochs = 15

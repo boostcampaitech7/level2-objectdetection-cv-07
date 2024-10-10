@@ -1,5 +1,3 @@
-# main.py
-
 from mmcv import Config
 from data_utils import load_annotations, split_data, prepare_datasets
 from config_utils import load_config, update_config
