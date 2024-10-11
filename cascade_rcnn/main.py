@@ -31,11 +31,12 @@ def setup_config(config_path):
     cfg.DATALOADER.NUM_WOREKRS = 2
 
     cfg.SOLVER.IMS_PER_BATCH = 8
+    cfg.SOLVER.LOGGING_PERIOD = 100
     cfg.SOLVER.BASE_LR = 0.001
     cfg.SOLVER.MAX_ITER = 15000
     cfg.SOLVER.STEPS = (8000,12000)
     cfg.SOLVER.GAMMA = 0.005
-    cfg.SOLVER.CHECKPOINT_PERIOD = 3000
+    cfg.SOLVER.CHECKPOINT_PERIOD = 100
 
     cfg.OUTPUT_DIR = './output'
 
@@ -44,7 +45,7 @@ def setup_config(config_path):
     cfg.MODEL.MASK_ON=False
 
 
-    cfg.TEST.EVAL_PERIOD = 3000
+    cfg.TEST.EVAL_PERIOD = 100
 
     return cfg
 
@@ -58,7 +59,7 @@ if __name__ == "__main__":
     wandb.login()
 
     # WandB 프로젝트 초기화
-    wandb.init(project="object-detection",entity="luckyvicky",name="test", config={"learning_rate": 0.001, "batch_size": 16})
+    wandb.init(project="object-detection",entity="luckyvicky",name="test")
 
 
     config_path = 'config/config.yaml'

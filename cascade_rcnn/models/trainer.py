@@ -5,6 +5,7 @@ from detectron2.data import build_detection_train_loader, build_detection_test_l
 from utils.mapper import MyMapper
 from wandbs.wandbhook import WandbHook
 from detectron2.engine import DefaultTrainer
+from detectron2.data import DatasetCatalog
 
 
 class MyTrainer(DefaultTrainer):
@@ -24,5 +25,6 @@ class MyTrainer(DefaultTrainer):
     def build_hooks(self):
         hooks = super().build_hooks()
         val_loader = build_detection_test_loader(self.cfg, self.cfg.DATASETS.TEST[0])  # Validation 데이터 로더
-        hooks.append(WandbHook(cfg=self.cfg, val_loader=val_loader))
+        dataset_dicts = DatasetCatalog.get(self.cfg.DATASETS.TEST[0])  # 데이터셋 딕셔너리 가져오기
+        hooks.append(WandbHook(cfg=self.cfg, val_loader=val_loader, dataset_dicts=dataset_dicts))
         return hooks
