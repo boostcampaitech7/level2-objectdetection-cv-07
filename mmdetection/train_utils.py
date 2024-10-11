@@ -11,4 +11,4 @@ def build_and_train_model(cfg):
     model.init_weights()
     
     # Train the model
-    train_detector(model, datasets[0], cfg, distributed=False, validate=False)
+    train_detector(model, datasets[0], cfg, distributed=False, validate=True)

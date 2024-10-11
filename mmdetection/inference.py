@@ -1,12 +1,24 @@
-from inference_utils import run_inference
+import json
+from inference_utils import get_cfg, build_data, load_model, inference
 
-if __name__ == '__main__':
-    config_path = 'mmdetection/configs/yolo/yolov3_d53_320_273e_coco.py'
-    root = '/data/ephemeral/home/dataset'
-    classes = ("General trash", "Paper", "Paper pack", "Metal", "Glass", 
-               "Plastic", "Styrofoam", "Plastic bag", "Battery", "Clothing")
+# JSON 파일에서 설정값 불러오기
+with open('base_config.json', 'r') as f:
+    config = json.load(f)
+    
+# 전체 inference 파이프라인 실행 함수
+def run_inference(config_file_path, work_dir, dataset_root, classes, epoch):
+    cfg = get_cfg(config_file_path, work_dir, dataset_root, classes, epoch)
+    dataset, data_loader = build_data(cfg)
+    model = load_model(cfg, dataset, epoch)
+    result_file = inference(model, data_loader, cfg, epoch)
+    print(f"Inference complete. Results saved to {result_file}")
 
-    epoch = 'latest'
-
-    # Inference 실행
-    run_inference(config_path, root, classes, epoch)
+for curr_fold in range(config['k_folds']):
+    if __name__ == '__main__':
+        epoch = 'latest'
+        # Inference 실행
+        run_inference(config['config_file_path'], 
+                      f'{config['work_dir']}/fold_{curr_fold},
+                      config['dataset_root'], 
+                      config['classes'],
+                      epoch)
