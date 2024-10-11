@@ -18,7 +18,8 @@ train_data, val_data = split_data(data)
 prepare_datasets(root, data, train_data, val_data)
 
 # Load and update config
-cfg = load_config('mmdetection/configs/yolo/yolov3_d53_320_273e_coco.py')
+# cfg = load_config('mmdetection/configs/yolo/yolov3_d53_320_273e_coco.py')
+cfg = load_config('mmdetection/configs/vfnet/vfnet_x101_64x4d_fpn_mdconv_c3-c5_mstrain_2x_coco.py')
 cfg = update_config(cfg, root, classes)
 
 # Build and train model
