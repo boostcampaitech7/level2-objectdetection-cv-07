@@ -12,3 +12,4 @@ mask_rcnn_swin_train.ipynb
 mmdetection/*
 !mmdetection/ssd_experiment/
 !mmdetection/ssd_experiment/**
+mmdetection/ssd_experiment/work_dirs/
