@@ -9,3 +9,5 @@ work_dirs
 **/wandb/
 **/__pycache__/
 .pyc
+*.pt
+**/runs/

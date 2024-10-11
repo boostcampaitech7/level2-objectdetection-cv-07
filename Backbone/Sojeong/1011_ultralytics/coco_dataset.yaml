@@ -1,0 +1,23 @@
+# Dataset root directory
+path: /data/ephemeral/home/data
+
+# Train/val/test sets
+train: images/train  # train images (relative to 'path')
+val: images/valid  # val images (relative to 'path')
+test: images/test  # test images (optional)
+
+# Number of classes
+nc: 10
+
+# Class names
+names:
+  0: General trash
+  1: Paper
+  2: Paper pack
+  3: Metal
+  4: Glass
+  5: Plastic
+  6: Styrofoam
+  7: Plastic bag
+  8: Battery
+  9: Clothing
