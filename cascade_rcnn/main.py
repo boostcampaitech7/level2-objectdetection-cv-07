@@ -5,7 +5,9 @@ import detectron2
 from detectron2.data import detection_utils as utils
 from detectron2.utils.logger import setup_logger
 setup_logger()
-
+import wandb
+from detectron2.config import get_cfg
+from detectron2.engine import DefaultTrainer
 from detectron2 import model_zoo
 from detectron2.config import get_cfg
 from detectron2.engine import DefaultTrainer
@@ -20,7 +22,7 @@ def setup_config(config_path):
     cfg = get_cfg()
 
     #cfg.merge_from_file(model_zoo.get_config_file(config_path))
-    cfg.merge_from_file('config/config.yaml')
+    cfg.merge_from_file(config_path)
     #cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url(config_path)
 
     cfg.DATASETS.TRAIN = ('coco_trash_train',)
@@ -47,7 +49,19 @@ def setup_config(config_path):
     return cfg
 
 if __name__ == "__main__":
-    config_path = "Misc/config.yaml"
+
+    # 사용자별로 자신의 API Key를 스크립트 안에서 설정
+    user_api_key = input("Enter your WandB API Key: ")
+    os.environ["WANDB_API_KEY"] = user_api_key  # 환경 변수 설정
+
+    # WandB 로그인
+    wandb.login()
+
+    # WandB 프로젝트 초기화
+    wandb.init(project="object-detection",entity="luckyvicky",name="test", config={"learning_rate": 0.001, "batch_size": 16})
+
+
+    config_path = 'config/config.yaml'
 
     # 데이터셋 등록
     register_datasets()

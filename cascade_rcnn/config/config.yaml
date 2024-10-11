@@ -1,4 +1,4 @@
-_BASE_: "/data/ephemeral/home/Seungcheol/cascade_rcnn/detectron2/configs/Base-RCNN-FPN.yaml"
+_BASE_: "/data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/cascade_rcnn/detectron2/configs/Base-RCNN-FPN.yaml"
 MODEL:
   WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
   MASK_ON: True
