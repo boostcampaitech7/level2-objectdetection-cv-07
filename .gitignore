@@ -10,4 +10,4 @@ work_dirs/
 mask_rcnn_swin_inference.ipynb
 mask_rcnn_swin_train.ipynb
 mmdetection/*
-!mmdetection/ssd/
+!mmdetection/ssd_expriment/
