@@ -1,0 +1,16 @@
+*.jpg
+data/
+code/
+.env
+**/work_dirs/
+*.pth
+*.csv
+work_dirs/
+**/wandb/
+mask_rcnn_swin_inference.ipynb
+mask_rcnn_swin_train.ipynb
+mmdetection/*
+!mmdetection/ssd_experiment/
+!mmdetection/ssd_experiment/**
+mmdetection/ssd_experiment/work_dirs/
+!mmdetection/detr_experiment/
