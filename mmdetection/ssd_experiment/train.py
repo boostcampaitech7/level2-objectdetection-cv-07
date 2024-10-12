@@ -12,7 +12,6 @@ import pandas as pd
 from pandas import DataFrame
 import importlib.util
 
-from mmdetection.ssd_experiment.config1.config1 import *
 
 
 
