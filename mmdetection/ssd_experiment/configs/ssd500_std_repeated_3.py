@@ -38,8 +38,8 @@ def get_config():
     cfg.data.train.dataset.pipeline[4]['img_scale'] = (512,512) # Resize ssd
     cfg.data.train.times = 1
     cfg.data.img_norm_cfg = dict(mean=[123.675, 116.28, 110.53], std=[60, 59, 61], to_rgb=True)
-    cfg.data.type = 'ClassBalancedDataset'
-    cfg.data.oversample_thr = 0.1
+    cfg.data.type = 'RepeatDataset'
+    cfg.data.oversample_thr = 3
     #cfg.data.train.pipeline[2]['img_scale'] = (512,512) # Resize faster-rcnn
 
     cfg.data.test.classes = classes
