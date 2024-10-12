@@ -1,3 +1,13 @@
+import sys
+import os
+
+
+# 상위 폴더를 sys.path에 추가
+sys.path.append('/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetection')
+
+
+
+
 from mmdet.datasets import build_dataset
 from mmdet.models import build_detector
 from mmdet.apis import train_detector
@@ -5,11 +15,9 @@ from mmdet.datasets import (build_dataloader, build_dataset,
                             replace_ImageToTensor)
 from mmdet.apis import single_gpu_test
 from mmcv.runner import load_checkpoint
-import os
 from mmcv.parallel import MMDataParallel
 from pycocotools.coco import COCO
 import pandas as pd
-from pandas import DataFrame
 import importlib.util
 
 
@@ -25,7 +33,7 @@ def list_files_in_folder(folder_path):
     return files
 
 # 사용 예시
-folder_path = '/path/to/your/folder'  # 파일이 있는 폴더 경로, 바꿔 줘야 할 부분 ★
+folder_path = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetection/ssd_experiment/configs'  # 파일이 있는 폴더 경로, 바꿔 줘야 할 부분 ★
 files = list_files_in_folder(folder_path)
 
 
@@ -39,8 +47,8 @@ for py_file in files:
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)  # 모듈 실행
     
-
     func = getattr(module, 'get_config')
+
 
 
 

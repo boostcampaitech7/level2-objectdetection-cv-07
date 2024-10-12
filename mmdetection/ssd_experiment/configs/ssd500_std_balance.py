@@ -1,6 +1,15 @@
+import os
+import sys
+
+
+# 상위 폴더를 sys.path에 추가
+sys.path.append('/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetection')
+
+
 from mmcv import Config
 from mmdet.utils import get_device
-import os
+
+
 
 def get_current_filename():
     # __file__ 변수로 파일 경로를 얻고, os.path.basename()으로 파일명만 추출
@@ -16,7 +25,7 @@ def get_config():
     #print(cfg.data.train)
     #print(cfg.model)
     #cfg = Config.fromfile('/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetection/ssd_experiment/ssd300_coco.py')
-    cfg = Config.fromfile('/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetection/configs/ssd/ssd300_coco.py')
+    cfg = Config.fromfile('/data/ephemeral/phome/Jihwan/level2-objectdetection-cv-07/mmdetection/configs/ssd/ssd512_coco.py')
 
 
 
@@ -45,9 +54,12 @@ def get_config():
     filename = get_current_filename()
     cfg.work_dir = f'/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetection/work_dirs/{filename}'
 
+
     cfg.model.bbox_head.num_classes = 10
     #cfg.model.roi_head.bbox_head.num_classes = 10
 
     cfg.optimizer_config.grad_clip = dict(max_norm=35, norm_type=2)
     cfg.checkpoint_config = dict(max_keep_ckpts=3, interval=1)
     cfg.device = get_device()
+
+    return cfg
