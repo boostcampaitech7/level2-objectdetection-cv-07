@@ -1,10 +1,15 @@
 # Dataset root directory
 path: /data/ephemeral/home/data
 
-# Train/val/test sets
-train: images/train  # train images (relative to 'path')
-val: images/valid  # val images (relative to 'path')
-test: images/test  # test images (optional)
+train: /data/ephemeral/home/data/images/train
+val: /data/ephemeral/home/data/images/valid
+test: /data/ephemeral/home/data/images/test
+
+# 라벨 경로를 추가합니다.
+train_labels: /data/ephemeral/home/data/labels/train
+val_labels: /data/ephemeral/home/data/labels/valid
+test_labels: /data/ephemeral/home/data/labels/test
+
 
 # Number of classes
 nc: 10
