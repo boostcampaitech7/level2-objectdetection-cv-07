@@ -3,11 +3,12 @@ import sys
 
 
 # 상위 폴더를 sys.path에 추가
-sys.path.append('/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetection')
+sys.path.append('/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Co-DETR-main')
 
 
 from mmcv import Config
 from mmdet.utils import get_device
+from projects import *
 
 
 
@@ -58,6 +59,7 @@ def get_config():
 
     #cfg.model.roi_head.bbox_head.num_classes = 10
 
+    cfg.optimizer_config = dict(grad_clip=None)
     cfg.checkpoint_config = dict(max_keep_ckpts=3, interval=1)
     cfg.device = get_device()
 
