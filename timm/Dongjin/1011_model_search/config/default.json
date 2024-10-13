@@ -17,5 +17,6 @@
         "Plastic bag",
         "Battery",
         "Clothing"
-    ]
+    ],
+    "lr_scheduler_type": "linear"
 }
