@@ -1,3 +1,4 @@
 {
-    "model_name": "facebook/detr-resnet-101"
+    "model_name": "facebook/detr-resnet-101",
+    "num_train_epochs": 50
 }

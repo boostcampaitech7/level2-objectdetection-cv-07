@@ -1,0 +1,4 @@
+{
+    "model_name": "hustvl/yolos-base",
+    "num_train_epochs": 50
+}

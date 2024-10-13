@@ -1,3 +1,4 @@
 {
-    "model_name": "hustvl/yolos-tiny"
+    "model_name": "hustvl/yolos-tiny",
+    "num_train_epochs": 50
 }
