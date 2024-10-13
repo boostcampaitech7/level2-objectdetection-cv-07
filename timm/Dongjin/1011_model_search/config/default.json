@@ -18,5 +18,6 @@
         "Battery",
         "Clothing"
     ],
-    "lr_scheduler_type": "linear"
+    "lr_scheduler_type": "linear",
+    "save_total_limit": 1
 }
