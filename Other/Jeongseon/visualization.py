@@ -8,8 +8,8 @@ import pdb
 #csv 이미지 시각화
 
 # 설정
-test_images_dir = '/data/ephemeral/home/data/dataset/'
-csv_file = '/data/ephemeral/home/Jeongseon/submission_swin_t.csv'  # CSV 경로
+test_images_dir = '/data/ephemeral/home/dataset/'
+csv_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetection/work_dirs/detr_r50/submission_latest.csv'  # CSV 경로
 output_dir = 'output_visualizations/swin_t'  # 결과 이미지를 저장할 디렉토리
 
 # 출력 디렉토리 생성

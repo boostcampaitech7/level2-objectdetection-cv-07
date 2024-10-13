@@ -14,3 +14,7 @@ mmdetection/*
 !mmdetection/ssd_experiment/**
 mmdetection/ssd_experiment/work_dirs/
 !mmdetection/detr_experiment/
+Other/
+EDA/
+detr_experiment
+!detr_experiment2
