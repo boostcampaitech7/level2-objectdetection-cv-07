@@ -1,11 +1,10 @@
 import json
 from mmcv import Config
-from data_utils import load_annotations, split_data, prepare_datasets
 from config_utils import load_config, update_config
 from train_utils import build_and_train_model
 
 # JSON 파일에서 설정값 불러오기
-with open('base_config.json', 'r') as f:
+with open('mmdetection/base_config.json', 'r') as f:
     config = json.load(f)
 
 for curr_fold in range(config['k_folds']):

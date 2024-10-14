@@ -3,7 +3,7 @@ from ensemble_utils import load_submissions, prepare_boxes, ensemble_boxes_nms, 
 from pycocotools.coco import COCO
 
 # JSON 파일에서 설정값 불러오기
-with open('ensemble_config.json', 'r') as f:
+with open('mmdetection/ensemble_config.json', 'r') as f:
     config = json.load(f)
 
 def run_ensemble(submission_files, annotation_file, output_file, iou_thr=0.4):

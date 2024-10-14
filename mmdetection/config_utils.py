@@ -12,7 +12,7 @@ def update_config(cfg, dataset_root, split_dataset_root, work_dir, classes, k_fo
     cfg.data.train.ann_file = f'{split_dataset_root}/train_{curr_fold}_{k_folds}.json'
     cfg.data.train.pipeline[2]['img_scale'] = (512, 512)
 
-    Update validation dataset config
+    # Update validation dataset config
     cfg.data.val.classes = classes
     cfg.data.val.img_prefix = dataset_root
     cfg.data.val.ann_file = f'{split_dataset_root}/val_{curr_fold}_{k_folds}.json'

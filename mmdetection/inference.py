@@ -2,7 +2,7 @@ import json
 from inference_utils import get_cfg, build_data, load_model, inference
 
 # JSON 파일에서 설정값 불러오기
-with open('base_config.json', 'r') as f:
+with open('mmdetection/base_config.json', 'r') as f:
     config = json.load(f)
     
 # 전체 inference 파이프라인 실행 함수
