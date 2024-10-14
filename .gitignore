@@ -17,4 +17,5 @@ mmdetection/ssd_experiment/work_dirs/
 Other/
 EDA/
 detr_experiment
-!detr_experiment2
+!CoDetr/Co-Detr
+CoDetr/*
