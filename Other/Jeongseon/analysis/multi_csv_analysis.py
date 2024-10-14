@@ -9,6 +9,10 @@ import matplotlib.font_manager as fm
 import colorsys
 #수정
 # threshold 조정할 때 csv 분석 부분은 바뀌지 않음 -> 수정 (이제 바뀜)
+# 여러 csv 한번에 비교 가능
+
+# 페이지 설정을 넓게
+st.set_page_config(layout="wide")  
 
 # 클래스 정의
 CLASSES = ("General trash", "Paper", "Paper pack", "Metal", "Glass", 
@@ -88,9 +92,13 @@ def draw_bounding_boxes(image, objects):
 def main():
     st.title("Object Detection Analysis Dashboard")
 
-    uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
-    if uploaded_file is not None:
-        csv_data = load_csv_file(uploaded_file)
+    uploaded_files = st.file_uploader("Choose a CSV file", type="csv", accept_multiple_files=True)
+        
+    if uploaded_files:
+        dataframes = []
+        for uploaded_file in uploaded_files:
+            csv_data = load_csv_file(uploaded_file)
+            dataframes.append(csv_data)
         st.success("파일 업로드 성공!")
 
         ###################### Threshold 슬라이더 추가 #############################
@@ -101,7 +109,8 @@ def main():
         st.header("Image Visualization")
         
         # 이미지 선택
-        image_ids = csv_data['image_id'].unique()
+        # 첫 번째 CSV 파일에서 이미지 선택
+        image_ids = dataframes[0]['image_id'].unique()
         selected_image_id = st.selectbox("이미지 선택 :", image_ids)
 
         
@@ -111,13 +120,14 @@ def main():
             
             if os.path.exists(image_path):
                 image = load_image(image_path)
-                row = csv_data[csv_data['image_id'] == selected_image_id].iloc[0]
-                objects = parse_predictions(row['PredictionString'], threshold)
-                
-                image_with_boxes = draw_bounding_boxes(image.copy(), objects)
-                
-                # 이미지 표시
-                st.image(image_with_boxes, caption=f"Predictions for {selected_image_id}", use_column_width=True)
+
+                columns = st.columns(len(dataframes))
+                for idx, df in enumerate(dataframes):
+                    row = df[df['image_id'] == selected_image_id].iloc[0]
+                    objects = parse_predictions(row['PredictionString'], threshold)
+                    image_with_boxes = draw_bounding_boxes(image.copy(), objects)
+                    columns[idx].image(image_with_boxes, caption=f"모델 {idx + 1}", use_column_width=True)
+
                 
                 # 예측 결과 표시
                 #st.subheader("Prediction Details")
@@ -125,64 +135,71 @@ def main():
                 #    st.write(f"Class: {obj['class']}, Confidence: {obj['confidence']:.2f}")
                 
                 # 클래스별 예측 수 그래프
-                st.subheader("클래스 당 예측 수")
-                class_counts = pd.Series([obj['class'] for obj in objects]).value_counts()
-                fig = px.bar(x=class_counts.index, y=class_counts.values,
-                            labels={'x': 'Class', 'y': 'Count'},
-                            title="클래스 당 예측 수")
-                st.plotly_chart(fig, use_column_width=True)
+                #st.subheader("클래스 당 예측 수")
+                #class_counts = pd.Series([obj['class'] for obj in objects]).value_counts()
+                #fig = px.bar(x=class_counts.index, y=class_counts.values,
+                #            labels={'x': 'Class', 'y': 'Count'},
+                #            title="클래스 당 예측 수")
+                #st.plotly_chart(fig, use_column_width=True)
 
             else:
                 st.error(f"이미지 파일 찾지 못함: {image_path}")
 
         ######################csv 결과 분석 #############################       
-        metrics = calculate_metrics(csv_data, threshold)
 
         st.header("CSV 파일 분석")
+        # 업로드된 CSV 파일 수에 맞는 열 생성
+        analysis_columns = st.columns(len(dataframes))
 
-        # 신뢰도 분포
-        fig_confidence = px.histogram(metrics['confidence'], nbins=50,
-                                      labels={'value': 'Confidence', 'count': 'Frequency'},
-                                      title="신뢰도 분포")
-        st.plotly_chart(fig_confidence)
+        for idx, csv_data in enumerate(dataframes):
+            with analysis_columns[idx]:
+                st.subheader(f"모델 {idx + 1} 분석")
 
-        # 이미지당 객체 수 분포
-        fig_objects = px.histogram(metrics['objects_per_image'], nbins=30,
-                                   labels={'value': 'Number of Objects', 'count': 'Frequency'},
-                                   title="이미지당 객체 수 분포")
-        st.plotly_chart(fig_objects)
+                metrics = calculate_metrics(csv_data, threshold)
 
-        # 클래스 분포
-        class_dist = pd.DataFrame(list(metrics['class_distribution'].items()), columns=['Class', 'Count'])
-        fig_class = px.bar(class_dist, x='Class', y='Count', title="클래스 분포")
-        fig_class.update_xaxes(tickangle=45)
-        st.plotly_chart(fig_class)
+                # 신뢰도 분포
+                fig_confidence = px.histogram(metrics['confidence'], nbins=50,
+                                            labels={'value': 'Confidence', 'count': 'Frequency'},
+                                            title="신뢰도 분포")
+                st.plotly_chart(fig_confidence)
 
-        # 클래스별 평균 신뢰도
-        class_confidences = {class_name: [] for class_name in CLASSES}
-        for _, row in csv_data.iterrows():
-            objects = parse_predictions(row['PredictionString'], threshold)
-            for obj in objects:
-                class_confidences[obj['class']].append(obj['confidence'])
-        
-        avg_confidences = {class_name: np.mean(confidences) if confidences else 0 
-                           for class_name, confidences in class_confidences.items()}
-        avg_conf_df = pd.DataFrame(list(avg_confidences.items()), columns=['Class', 'Average Confidence'])
-        fig_avg_conf = px.bar(avg_conf_df, x='Class', y='Average Confidence', 
-                              title="클래스별 평균 신뢰도")
-        fig_avg_conf.update_xaxes(tickangle=45)
-        st.plotly_chart(fig_avg_conf)
+                # 이미지당 객체 수 분포
+                fig_objects = px.histogram(metrics['objects_per_image'], nbins=30,
+                                        labels={'value': 'Number of Objects', 'count': 'Frequency'},
+                                        title="이미지당 객체 수 분포")
+                st.plotly_chart(fig_objects)
 
-        # 요약 통계
-        st.subheader("요약 통계")
-        col1, col2, col3 = st.columns(3)
-        col1.metric("평균 신뢰도", f"{np.mean(metrics['confidence']):.4f}")
-        col2.metric("이미지당 평균 Object", f"{np.mean(metrics['objects_per_image']):.2f}")
-        col3.metric("전체 어노테이션 수", sum(metrics['objects_per_image']))
+                # 클래스 분포
+                class_dist = pd.DataFrame(list(metrics['class_distribution'].items()), columns=['Class', 'Count'])
+                fig_class = px.bar(class_dist, x='Class', y='Count', title="클래스 분포")
+                fig_class.update_xaxes(tickangle=45)
+                st.plotly_chart(fig_class)
 
-        # 원본 데이터 표시
-        st.subheader("원본 데이터 표시")
-        st.dataframe(csv_data)
+                # 클래스별 평균 신뢰도
+                class_confidences = {class_name: [] for class_name in CLASSES}
+                for _, row in csv_data.iterrows():
+                    objects = parse_predictions(row['PredictionString'], threshold)
+                    for obj in objects:
+                        class_confidences[obj['class']].append(obj['confidence'])
+                
+                avg_confidences = {class_name: np.mean(confidences) if confidences else 0 
+                                for class_name, confidences in class_confidences.items()}
+                avg_conf_df = pd.DataFrame(list(avg_confidences.items()), columns=['Class', 'Average Confidence'])
+                fig_avg_conf = px.bar(avg_conf_df, x='Class', y='Average Confidence', 
+                                    title="클래스별 평균 신뢰도")
+                fig_avg_conf.update_xaxes(tickangle=45)
+                st.plotly_chart(fig_avg_conf)
+
+                # 요약 통계
+                st.subheader("요약 통계")
+                col1, col2, col3 = st.columns(3)
+                col1.metric("평균 신뢰도", f"{np.mean(metrics['confidence']):.4f}")
+                col2.metric("이미지당 평균 Object", f"{np.mean(metrics['objects_per_image']):.2f}")
+                col3.metric("전체 어노테이션 수", sum(metrics['objects_per_image']))
+
+                # 원본 데이터 표시
+                st.subheader("원본 데이터 표시")
+                st.dataframe(csv_data)
 
 if __name__ == "__main__":
     main()
