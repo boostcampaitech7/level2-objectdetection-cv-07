@@ -17,7 +17,7 @@ def load_csv_file(uploaded_file):
     df = pd.read_csv(uploaded_file, dtype={'PredictionString': str, 'image_id': str})
     return df
 
-def parse_predictions(prediction_string):
+def parse_predictions(prediction_string, threshold=0.5):
     if pd.isna(prediction_string) or prediction_string == '':
         return []
     
@@ -28,11 +28,14 @@ def parse_predictions(prediction_string):
             class_id = int(float(predictions[i]))
             confidence = float(predictions[i+1])
             x, y, w, h = map(float, predictions[i+2:i+6])
-            objects.append({
-                'class': CLASSES[class_id],  # 클래스 ID를 클래스 이름으로 변환
-                'confidence': confidence,
-                'bbox': (x, y, w, h)
-            })
+            
+            # 신뢰도 임계값에 따른 필터링
+            if confidence >= threshold:
+                objects.append({
+                    'class': CLASSES[class_id],  # 클래스 ID를 클래스 이름으로 변환
+                    'confidence': confidence,
+                    'bbox': (x, y, w, h)
+                })
         return objects
     except Exception as e:
         st.error(f"Error parsing prediction string: {prediction_string[:50]}...")
@@ -76,7 +79,7 @@ def draw_bounding_boxes(image, objects):
         x, y, w, h = bbox
         label = f"{obj['class']}: {obj['confidence']:.2f}"
         color = tuple(int(x * 255) for x in COLORS[CLASSES.index(obj['class'])]) 
-        draw.rectangle([x, y, x+w, y+h], outline=color, width=2)
+        draw.rectangle([x, y, w, h], outline=color, width=2)
         draw.text((x, y-15), f"{obj['class']}: {obj['confidence']:.2f}", fill=color, font=font)
     return image
 
@@ -87,6 +90,10 @@ def main():
     if uploaded_file is not None:
         csv_data = load_csv_file(uploaded_file)
         st.success("파일 업로드 성공!")
+
+        ###################### Threshold 슬라이더 추가 #############################
+        threshold = st.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5, step=0.05)
+        st.write(f"Selected threshold: {threshold}")
 
         ###################### 이미지 시각화 섹션#############################
         st.header("Image Visualization")
@@ -103,7 +110,7 @@ def main():
             if os.path.exists(image_path):
                 image = load_image(image_path)
                 row = csv_data[csv_data['image_id'] == selected_image_id].iloc[0]
-                objects = parse_predictions(row['PredictionString'])
+                objects = parse_predictions(row['PredictionString'], threshold)
                 
                 image_with_boxes = draw_bounding_boxes(image.copy(), objects)
                 
