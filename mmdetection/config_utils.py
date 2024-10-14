@@ -5,7 +5,10 @@ from mmdet.utils import get_device
 def load_config(config_file):
     return Config.fromfile(config_file)
 
-def update_config(cfg, dataset_root, split_dataset_root, work_dir, classes, k_folds, curr_fold):
+def update_config(cfg, dataset_root, split_dataset_root, work_dir, 
+                  classes, k_folds, curr_fold, 
+                  wandb_project, wandb_entity, wandb_name):
+    
     # Update train dataset config
     cfg.data.train.classes = classes
     cfg.data.train.img_prefix = dataset_root
@@ -29,28 +32,29 @@ def update_config(cfg, dataset_root, split_dataset_root, work_dir, classes, k_fo
     cfg.gpu_ids = [0]
     cfg.work_dir = f'{work_dir}/fold_{curr_fold}'
 
-    cfg.model.roi_head.bbox_head.num_classes = len(classes)
+    cfg.model.bbox_head.num_classes = len(classes)
     cfg.runner.max_epochs = 15
 
     cfg.optimizer_config.grad_clip = dict(max_norm=35, norm_type=2)
     cfg.checkpoint_config = dict(max_keep_ckpts=3, interval=1)
     cfg.device = get_device()
     
-    cfg.log_config.hooks = [
-        dict(type='TextLoggerHook'),
-        dict(type='MMDetWandbHook',
-             init_kwargs={
-                 'project': 'object-detection',
-                 'entity': 'msdl_wandb',
-                 'name': 'mask_rcnn_r101_2x_dataset_64'},
-             interval=10,
-            #  log_checkpoint=True,
-            #  log_checkpoint_metadata=True,
-            #  num_eval_images=10,
-            #  bbox_score_thr=0.7
-            )
-        ]
-    
+    log_config = dict(
+            hooks=[
+                dict(type='TextLoggerHook'),
+                dict(type='MMDetWandbHook',
+                     init_kwargs={
+                         'project': wandb_project,
+                         'entity': wandb_entity,
+                         'name': wandb_name
+                     },
+                     interval=50,
+                     log_checkpoint=True,
+                     log_checkpoint_metadata=True,
+                     num_eval_images=100,
+                     bbox_score_thr=0.5)
+            ])
+        
     # 수정된 config JSON 파일 저장
     cfg_dict = cfg._cfg_dict.to_dict()
     with open(f'mmdetection/model_configs/config_fold_{curr_fold}.json', 'w') as f:

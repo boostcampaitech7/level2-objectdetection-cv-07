@@ -1,0 +1,47 @@
+2024-10-14 14:55:57,041 - mmdet - WARNING - No meta information found in the runner.
+Traceback (most recent call last):
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/train.py", line 22, in <module>
+    build_and_train_model(cfg)
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/train_utils.py", line 14, in build_and_train_model
+    train_detector(model, datasets[0], cfg, distributed=False, validate=True)
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/mmdet/apis/train.py", line 244, in train_detector
+    runner.run(data_loaders, cfg.workflow)
+  File "/opt/conda/lib/python3.10/site-packages/mmcv/runner/epoch_based_runner.py", line 117, in run
+    self.call_hook('before_run')
+  File "/opt/conda/lib/python3.10/site-packages/mmcv/runner/base_runner.py", line 317, in call_hook
+    getattr(hook, fn_name)(self)
+  File "/opt/conda/lib/python3.10/site-packages/mmcv/runner/dist_utils.py", line 144, in wrapper
+    return func(*args, **kwargs)
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/mmdet/core/hook/wandblogger_hook.py", line 201, in before_run
+    self._add_ground_truth(runner)
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/mmdet/core/hook/wandblogger_hook.py", line 380, in _add_ground_truth
+    wandb_masks = self._get_wandb_masks(
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/mmdet/core/hook/wandblogger_hook.py", line 536, in _get_wandb_masks
+    mask = polygon_to_bitmap(mask, height, width)
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/mmdet/core/mask/structures.py", line 1069, in polygon_to_bitmap
+    rles = maskUtils.frPyObjects(polygons, height, width)
+  File "pycocotools/_mask.pyx", line 307, in pycocotools._mask.frPyObjects
+Exception: input type is not supported.
+Traceback (most recent call last):
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/train.py", line 22, in <module>
+    build_and_train_model(cfg)
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/train_utils.py", line 14, in build_and_train_model
+    train_detector(model, datasets[0], cfg, distributed=False, validate=True)
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/mmdet/apis/train.py", line 244, in train_detector
+    runner.run(data_loaders, cfg.workflow)
+  File "/opt/conda/lib/python3.10/site-packages/mmcv/runner/epoch_based_runner.py", line 117, in run
+    self.call_hook('before_run')
+  File "/opt/conda/lib/python3.10/site-packages/mmcv/runner/base_runner.py", line 317, in call_hook
+    getattr(hook, fn_name)(self)
+  File "/opt/conda/lib/python3.10/site-packages/mmcv/runner/dist_utils.py", line 144, in wrapper
+    return func(*args, **kwargs)
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/mmdet/core/hook/wandblogger_hook.py", line 201, in before_run
+    self._add_ground_truth(runner)
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/mmdet/core/hook/wandblogger_hook.py", line 380, in _add_ground_truth
+    wandb_masks = self._get_wandb_masks(
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/mmdet/core/hook/wandblogger_hook.py", line 536, in _get_wandb_masks
+    mask = polygon_to_bitmap(mask, height, width)
+  File "/data/ephemeral/home/Jungyeon/level2-objectdetection-cv-07/mmdetection/mmdet/core/mask/structures.py", line 1069, in polygon_to_bitmap
+    rles = maskUtils.frPyObjects(polygons, height, width)
+  File "pycocotools/_mask.pyx", line 307, in pycocotools._mask.frPyObjects
+Exception: input type is not supported.

@@ -16,7 +16,10 @@ for curr_fold in range(config['k_folds']):
                         config['work_dir'],
                         config['classes'], 
                         config['k_folds'], 
-                        curr_fold)
+                        curr_fold,
+                        config['wandb_project'],
+                        config['wandb_entity'],
+                        config['wandb_name'])
 
     # Build and train model
     build_and_train_model(cfg)
