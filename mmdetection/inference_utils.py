@@ -11,7 +11,7 @@ from pycocotools.coco import COCO
 
 # 함수: Config 파일 설정
 def get_cfg(config_file_path, work_dir, dataset_root, classes, epoch):
-    cfg = Config.fromfile(config_path)
+    cfg = Config.fromfile(config_file_path)
     cfg.data.test.classes = classes
     cfg.data.test.img_prefix = dataset_root
     cfg.data.test.ann_file = f'{dataset_root}/test.json'
@@ -22,7 +22,7 @@ def get_cfg(config_file_path, work_dir, dataset_root, classes, epoch):
     cfg.seed = 2021
     cfg.gpu_ids = [1]
     cfg.work_dir = work_dir
-    cfg.model.bbox_head.num_classes = len(classes)
+    cfg.model.roi_head.bbox_head.num_classes = len(classes)
     cfg.optimizer_config.grad_clip = dict(max_norm=35, norm_type=2)
     cfg.model.train_cfg = None
     return cfg

@@ -390,7 +390,7 @@
         },
         "val": {
             "type": "CocoDataset",
-            "ann_file": "Other/Dongjin/1010_split/result/val_0_5.json",
+            "ann_file": "Other/Dongjin/1010_split/result/valid_0_5.json",
             "img_prefix": "/data/ephemeral/home/dataset",
             "pipeline": [
                 {

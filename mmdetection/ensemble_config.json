@@ -1,6 +1,5 @@
 {
-    "submission_files" : ["sample_submission/faster_rcnn_torchvision_submission.csv",
-                        "sample_submission/faster_rcnn_mmdetection_submission.csv"],
-    "annotation_file" : "data/ephemeral/dataset/test.json",
-    "output_file" : "mmdetection/submission/ubmission_ensemble.csv"
+    "submission_files" : ["mmdetection/work_dirs/faster_rcnn_r50_fpn_1x_coco_trash/fold_0/submission_latest.csv"],
+    "annotation_file" : "/data/ephemeral/home/dataset/test.json",
+    "output_file" : "mmdetection/submission/submission_ensemble.csv"
 }

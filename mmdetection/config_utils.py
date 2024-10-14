@@ -15,7 +15,7 @@ def update_config(cfg, dataset_root, split_dataset_root, work_dir, classes, k_fo
     # Update validation dataset config
     cfg.data.val.classes = classes
     cfg.data.val.img_prefix = dataset_root
-    cfg.data.val.ann_file = f'{split_dataset_root}/val_{curr_fold}_{k_folds}.json'
+    cfg.data.val.ann_file = f'{split_dataset_root}/valid_{curr_fold}_{k_folds}.json'
     cfg.data.val.pipeline[1]['img_scale'] = (512, 512)
 
     # Update test dataset config
@@ -35,6 +35,21 @@ def update_config(cfg, dataset_root, split_dataset_root, work_dir, classes, k_fo
     cfg.optimizer_config.grad_clip = dict(max_norm=35, norm_type=2)
     cfg.checkpoint_config = dict(max_keep_ckpts=3, interval=1)
     cfg.device = get_device()
+    
+    cfg.log_config.hooks = [
+        dict(type='TextLoggerHook'),
+        dict(type='MMDetWandbHook',
+             init_kwargs={
+                 'project': 'object-detection',
+                 'entity': 'msdl_wandb',
+                 'name': 'mask_rcnn_r101_2x_dataset_64'},
+             interval=10,
+            #  log_checkpoint=True,
+            #  log_checkpoint_metadata=True,
+            #  num_eval_images=10,
+            #  bbox_score_thr=0.7
+            )
+        ]
     
     # 수정된 config JSON 파일 저장
     cfg_dict = cfg._cfg_dict.to_dict()

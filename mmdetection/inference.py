@@ -17,8 +17,9 @@ for curr_fold in range(config['k_folds']):
     if __name__ == '__main__':
         epoch = 'latest'
         # Inference 실행
+        print(config['work_dir'] + f'/fold_{curr_fold}')
         run_inference(config['config_file_path'], 
-                      f'{config['work_dir']}/fold_{curr_fold},
+                      config['work_dir'] + f'/fold_{curr_fold}',
                       config['dataset_root'], 
                       config['classes'],
                       epoch)
