@@ -13,6 +13,7 @@ def main():
     data_dir = '/data/ephemeral/home/data/images/test'  # 테스트 이미지 경로
     score_threshold = 0.05  # confidence threshold
     check_point = '/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/runs/detect/exp12/weights/best.pt'  # YOLOv8 체크포인트 경로
+    iou_threshold = 0.8  # IOU threshold
     
     # YOLOv8 모델 불러오기
     model = YOLO(check_point)
@@ -22,7 +23,7 @@ def main():
     print(f"Using device: {device}")
     
     # YOLOv8 inference (테스트 이미지에서 예측)
-    results = model(data_dir, conf=score_threshold)  # 테스트 이미지에 대한 추론 결과
+    results = model(data_dir, conf=score_threshold, iou=iou_threshold)  # 테스트 이미지에 대한 추론 결과
     
     prediction_strings = []
     file_names = []
@@ -51,7 +52,7 @@ def main():
     })
     
     # 제출 파일로 저장
-    submission.to_csv('./yolov8_submission.csv', index=False)
+    submission.to_csv('./yolov8_submission_iou0.8.csv', index=False)
     print("Submission saved as yolov8_submission.csv")
     print(submission.head())
 
