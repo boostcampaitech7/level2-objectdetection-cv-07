@@ -1,3 +1,5 @@
+baseline/
+create_split_json.py
 *.jpg
 data/
 code/
