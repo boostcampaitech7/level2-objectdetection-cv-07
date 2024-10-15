@@ -4,5 +4,7 @@
 *.pt
 *.pth
 *.bin
+*.pyc
+
 baseline/
 create_split_json.py
