@@ -15,3 +15,11 @@ mmdetection/*
 mmdetection/ssd_experiment/work_dirs/
 CoDetr
 __pycache__
+work_dirs 
+**/wandb/
+**/__pycache__/
+.pyc
+cascade_rcnn/output
+cascade_rcnn/wandb
+baseline/
+create_split_json.py
