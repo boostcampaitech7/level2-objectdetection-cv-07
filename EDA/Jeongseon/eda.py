@@ -378,3 +378,5 @@ st.sidebar.text("클래스 수 : 10개")
 st.sidebar.text("어노테이션 수 : 23144개")
 st.sidebar.text("폴더 경로 : /data/ephemeral/home/data/dataset")
 st.sidebar.text("classe명\n General trash\n Paper\n Paper pack\n Metal\n Glass\n Plastic\n Styrofoam\n Plastic bag\n Battery\n Clothing\n")
+
+# streamlit run /data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/EDA/Jeongseon/eda.py
