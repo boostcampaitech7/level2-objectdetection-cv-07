@@ -1,0 +1,4 @@
+{
+    "model_name": "Omnifact/conditional-detr-resnet-101-dc5",
+    "num_train_epochs": 200
+}
