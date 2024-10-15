@@ -1,7 +1,7 @@
 _base_ = [
     'co_dino_5scale_lsj_r50_1x_coco.py'
 ]
-pretrained = 'models/swin_large_patch4_window12_384_22k.pth'
+pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_large_patch4_window12_384_22k.pth'
 # model settings
 model = dict(
     backbone=dict(
@@ -27,20 +27,20 @@ model = dict(
 
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
-image_size = (1280, 1280)
+image_size = (512, 512)
 load_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
+    dict(type='LoadAnnotations', with_bbox=True),
     dict(
         type='Resize',
         img_scale=image_size,
-        ratio_range=(0.1, 2.0),
+        ratio_range=(0.5, 1.5),
         multiscale_mode='range',
         keep_ratio=True),
     dict(
         type='RandomCrop',
         crop_type='absolute_range',
-        crop_size=image_size,
+        crop_size= (300, 300),
         recompute_bbox=True,
         allow_negative_crop=True),
     dict(type='FilterAnnotations', min_gt_bbox_wh=(1e-2, 1e-2)),
@@ -51,7 +51,7 @@ train_pipeline = [
     dict(type='CopyPaste', max_num_pasted=100),
     dict(type='Normalize', **img_norm_cfg),
     dict(type='DefaultFormatBundle'),
-    dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels', 'gt_masks']),
+    dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels']),
 ]
 test_pipeline = [
     dict(type='LoadImageFromFile'),

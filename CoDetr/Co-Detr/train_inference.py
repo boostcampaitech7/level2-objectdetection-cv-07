@@ -34,7 +34,7 @@ def list_files_in_folder(folder_path):
     return files
 
 # 사용 예시
-folder_path = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/CoDetr/detr_experiment2/configs'  # 파일이 있는 폴더 경로, 바꿔 줘야 할 부분 ★
+folder_path = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/CoDetr/Co-Detr/queue'  # 파일이 있는 폴더 경로, 바꿔 줘야 할 부분 ★
 files = list_files_in_folder(folder_path)
 
 

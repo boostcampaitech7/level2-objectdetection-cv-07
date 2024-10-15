@@ -1,5 +1,5 @@
 _base_ = [
-    '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetection/projects/configs/co_dino/co_dino_5scale_r50_1x_coco.py'
+    '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/CoDetr/Co-Detr/model_configs/co_dino_5scale_r50_1x_coco.py'
 ]
 pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_large_patch4_window12_384_22k.pth'
 # model settings
@@ -22,7 +22,8 @@ model = dict(
         transformer=dict(
             encoder=dict(
                 # number of layers that use checkpoint
-                with_cp=6))))
+                #with_cp=6
+                ))))
 
 data = dict(
     samples_per_gpu=1,

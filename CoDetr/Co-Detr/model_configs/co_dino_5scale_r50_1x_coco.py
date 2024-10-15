@@ -262,13 +262,13 @@ train_pipeline = [
                     type='Resize',
                     # The radio of all image in train dataset < 7
                     # follow the original impl
-                    img_scale=[(400, 1000), (500, 1000), (600, 1000)],
+                    img_scale=[(500, 500), (700, 700), (900, 900)],
                     multiscale_mode='value',
                     keep_ratio=True),
                 dict(
                     type='RandomCrop',
                     crop_type='absolute_range',
-                    crop_size=(384, 600),
+                    crop_size=(400, 400),
                     allow_negative_crop=True),
                 # dict(
                 #     type='Resize',
