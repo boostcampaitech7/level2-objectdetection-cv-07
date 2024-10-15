@@ -1,3 +1,6 @@
+**/others/
+**/__pycache__/
+**/wandb/
 *.jpg
 data/
 code/
