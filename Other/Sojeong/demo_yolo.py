@@ -105,4 +105,4 @@ if uploaded_file is not None:
     else:
         st.write("No detections found.")
         
-# streamlit run /data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Other/Sojeong/demo.py
+# streamlit run /data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Other/Sojeong/demo_yolo.py
