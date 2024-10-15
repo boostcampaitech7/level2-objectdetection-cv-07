@@ -5,7 +5,7 @@ source .env
 wandb login $WANDB_API_KEY
 
 # WANDB_RUN_NAME
-MODEL="yolox_s_8x8_300e_coco"
+MODEL="autoassign_r50_fpn_8x2_1x_coco"
 RUN_SUFFIX="sj_1"
 WANDB_RUN_NAME="mm_${MODEL}_${RUN_SUFFIX}"
 
@@ -13,7 +13,7 @@ python train.py \
     --model $MODEL \
     --root '/data/ephemeral/home/data/dataset/' \
     --classes "General trash" "Paper" "Paper pack" "Metal" "Glass" "Plastic" "Styrofoam" "Plastic bag" "Battery" "Clothing" \
-    --img_scale 512 512 \
+    --img_scale 1024 1024 \
     --samples_per_gpu 4 \
     --seed 2022 \
     --gpu_ids 0 \
