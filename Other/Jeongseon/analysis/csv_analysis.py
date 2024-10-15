@@ -7,6 +7,8 @@ import os
 from PIL import Image, ImageDraw, ImageFont
 import matplotlib.font_manager as fm
 import colorsys
+#수정
+# threshold 조정할 때 csv 분석 부분은 바뀌지 않음 -> 수정 (이제 바뀜)
 
 # 클래스 정의
 CLASSES = ("General trash", "Paper", "Paper pack", "Metal", "Glass", 
@@ -17,7 +19,7 @@ def load_csv_file(uploaded_file):
     df = pd.read_csv(uploaded_file, dtype={'PredictionString': str, 'image_id': str})
     return df
 
-def parse_predictions(prediction_string):
+def parse_predictions(prediction_string, threshold=0.0):
     if pd.isna(prediction_string) or prediction_string == '':
         return []
     
@@ -27,26 +29,29 @@ def parse_predictions(prediction_string):
         for i in range(0, len(predictions), 6):
             class_id = int(float(predictions[i]))
             confidence = float(predictions[i+1])
-            x, y, w, h = map(float, predictions[i+2:i+6])
-            objects.append({
-                'class': CLASSES[class_id],  # 클래스 ID를 클래스 이름으로 변환
-                'confidence': confidence,
-                'bbox': (x, y, w, h)
-            })
+            x_min, y_min, x_max, y_max = map(float, predictions[i+2:i+6])
+            
+            # 신뢰도 임계값에 따른 필터링
+            if confidence >= threshold:
+                objects.append({
+                    'class': CLASSES[class_id],  # 클래스 ID를 클래스 이름으로 변환
+                    'confidence': confidence,
+                    'bbox': (x_min, y_min, x_max, y_max)
+                })
         return objects
     except Exception as e:
         st.error(f"Error parsing prediction string: {prediction_string[:50]}...")
         st.error(f"Error message: {str(e)}")
         return []
 
-def calculate_metrics(csv_data):
+def calculate_metrics(csv_data, threshold=0.0):
     metrics = {
         'confidence': [],
         'objects_per_image': [],
         'class_distribution': {class_name: 0 for class_name in CLASSES}
     }
     for _, row in csv_data.iterrows():
-        objects = parse_predictions(row['PredictionString'])
+        objects = parse_predictions(row['PredictionString'], threshold)
         if objects:
             metrics['confidence'].extend([obj['confidence'] for obj in objects])
             metrics['objects_per_image'].append(len(objects))
@@ -73,11 +78,11 @@ def draw_bounding_boxes(image, objects):
 
     for obj in objects:
         bbox = obj['bbox']
-        x, y, w, h = bbox
+        x_min, y_min, x_max, y_max = bbox
         label = f"{obj['class']}: {obj['confidence']:.2f}"
         color = tuple(int(x * 255) for x in COLORS[CLASSES.index(obj['class'])]) 
-        draw.rectangle([x, y, x+w, y+h], outline=color, width=2)
-        draw.text((x, y-15), f"{obj['class']}: {obj['confidence']:.2f}", fill=color, font=font)
+        draw.rectangle([x_min, y_min, x_max, y_max], outline=color, width=2)
+        draw.text((x_min, y_min-15), f"{obj['class']}: {obj['confidence']:.2f}", fill=color, font=font)
     return image
 
 def main():
@@ -87,6 +92,10 @@ def main():
     if uploaded_file is not None:
         csv_data = load_csv_file(uploaded_file)
         st.success("파일 업로드 성공!")
+
+        ###################### Threshold 슬라이더 추가 #############################
+        threshold = st.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5, step=0.05)
+        st.write(f"Selected threshold: {threshold}")
 
         ###################### 이미지 시각화 섹션#############################
         st.header("Image Visualization")
@@ -103,7 +112,7 @@ def main():
             if os.path.exists(image_path):
                 image = load_image(image_path)
                 row = csv_data[csv_data['image_id'] == selected_image_id].iloc[0]
-                objects = parse_predictions(row['PredictionString'])
+                objects = parse_predictions(row['PredictionString'], threshold)
                 
                 image_with_boxes = draw_bounding_boxes(image.copy(), objects)
                 
@@ -127,7 +136,7 @@ def main():
                 st.error(f"이미지 파일 찾지 못함: {image_path}")
 
         ######################csv 결과 분석 #############################       
-        metrics = calculate_metrics(csv_data)
+        metrics = calculate_metrics(csv_data, threshold)
 
         st.header("CSV 파일 분석")
 
@@ -152,7 +161,7 @@ def main():
         # 클래스별 평균 신뢰도
         class_confidences = {class_name: [] for class_name in CLASSES}
         for _, row in csv_data.iterrows():
-            objects = parse_predictions(row['PredictionString'])
+            objects = parse_predictions(row['PredictionString'], threshold)
             for obj in objects:
                 class_confidences[obj['class']].append(obj['confidence'])
         
