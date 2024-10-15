@@ -1,0 +1,6 @@
+{
+    "submission_files" : ["sample_submission/faster_rcnn_torchvision_submission.csv",
+                        "sample_submission/faster_rcnn_mmdetection_submission.csv"],
+    "annotation_file" : "data/ephemeral/dataset/test.json",
+    "output_file" : "mmdetection/submission/ubmission_ensemble.csv"
+}
