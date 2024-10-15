@@ -2,5 +2,7 @@
 .vscode
 *.safetensors
 *.pt
+*.pth
+*.bin
 baseline/
 create_split_json.py

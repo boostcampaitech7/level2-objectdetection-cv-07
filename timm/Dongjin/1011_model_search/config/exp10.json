@@ -1,4 +1,4 @@
 {
-    "model_name": "conditional-detr-resnet-50",
+    "model_name": "microsoft/conditional-detr-resnet-50",
     "num_train_epochs": 50
 }
