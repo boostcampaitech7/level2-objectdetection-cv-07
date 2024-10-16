@@ -1,4 +1,0 @@
-{
-    "model_name": "SenseTime/deformable-detr",
-    "num_train_epochs": 50
-}
