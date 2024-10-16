@@ -7,7 +7,7 @@ _base_ = [
 ]
 pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_tiny_patch4_window7_224.pth' 
 
-model = dict(
+model = dict( 
     type='AutoAssign',
 backbone=dict(
         type='SwinTransformer',
@@ -47,7 +47,7 @@ backbone=dict(
         min_bbox_size=0,
         score_thr=0.05,
         nms=dict(type='nms', iou_threshold=0.6),
-        max_per_img=100))
+        max_per_img=300))
 img_norm_cfg = dict(
     mean=[102.9801, 115.9465, 122.7717], std=[1.0, 1.0, 1.0], to_rgb=False)
 train_pipeline = [
