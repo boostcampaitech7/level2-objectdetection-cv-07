@@ -1,0 +1,4 @@
+{
+    "model_name": "jozhang97/deta-swin-large",
+    "per_device_train_batch_size": 4
+}

@@ -5,7 +5,7 @@ _base_ = [
 model = dict(with_attn_mask=False)
 
 img_norm_cfg = dict(
-    mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
+    mean=[123.675, 116.28, 109.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 
 image_size = (1024, 1024)
 load_pipeline = [
@@ -64,35 +64,3 @@ dataset_type = 'CocoDataset'
 #         pipeline=train_pipeline),
 #     val=dict(pipeline=test_pipeline),
 #     test=dict(pipeline=test_pipeline))
-
-# # NOTE: LSJ with copy-paste requires segmentation annotations.
-# # If your training data only contains bounding boxes, please use the following code:
-
-train_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations', with_bbox=True, with_mask=False),
-    dict(
-        type='Resize',
-        img_scale=image_size,
-        ratio_range=(0.1, 2.0),
-        multiscale_mode='range',
-        keep_ratio=True),
-    dict(
-        type='RandomCrop',
-        crop_type='absolute_range',
-        crop_size=image_size,
-        recompute_bbox=True,
-        allow_negative_crop=True),
-    dict(type='FilterAnnotations', min_gt_bbox_wh=(1e-2, 1e-2)),
-    dict(type='RandomFlip', flip_ratio=0.5),
-    dict(type='Pad', size=image_size, pad_val=dict(img=(114, 114, 114))),
-    dict(type='Normalize', **img_norm_cfg),
-    dict(type='DefaultFormatBundle'),
-    dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels']),
-]
-data = dict(
-    samples_per_gpu=2,
-    workers_per_gpu=2,
-    train=dict(filter_empty_gt=False, pipeline=train_pipeline),
-    val=dict(pipeline=test_pipeline),
-    test=dict(pipeline=test_pipeline))

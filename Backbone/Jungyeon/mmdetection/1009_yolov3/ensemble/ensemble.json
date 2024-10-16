@@ -1,0 +1,5 @@
+{
+    "submission_files" : ["your ensemble files"],
+    "annotation_file_path" : "/data/ephemeral/home/dataset/test.json",
+    "output_file_path" : "mmdetection/submission/submission_ensemble.csv"
+}
