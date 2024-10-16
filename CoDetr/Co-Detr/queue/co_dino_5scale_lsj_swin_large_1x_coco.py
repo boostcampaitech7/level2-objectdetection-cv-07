@@ -26,21 +26,25 @@ def get_config():
     #print(cfg.data.train)
     #print(cfg.model)
     #cfg = Config.fromfile('/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetection/ssd_experiment/ssd300_coco.py')
-    cfg = Config.fromfile('/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/CoDetr/Co-Detr/model_configs/co_dino_5scale_swin_large_1x_coco.py')
+    cfg = Config.fromfile('/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/CoDetr/Co-Detr/model_configs/co_dino_5scale_lsj_swin_large_1x_coco.py')
 
 
 
-    root='/data/ephemeral/home/dataset/'
+    root='/data/ephemeral/home/data/dataset/'
 
     # dataset config 수정
     if 'dataset' in cfg.data.train:
         cfg.data.train.dataset.classes = classes
-        cfg.data.val.dataset.classes = classes
-        cfg.data.test.dataset.classes = classes
+        cfg.data.train.dataset.img_prefix = root
+        cfg.data.train.dataset.ann_file = root + 'train.json' 
     else:
         cfg.data.train.classes = classes
-        cfg.data.val.classes = classes
-        cfg.data.test.classes = classes
+        cfg.data.train.img_prefix = root
+        cfg.data.train.ann_file = root + 'train.json' 
+
+    cfg.data.val.classes = classes
+    cfg.data.test.classes = classes
+
 
 
     cfg.data.train.img_prefix = root
@@ -51,9 +55,9 @@ def get_config():
 
     cfg.data.test.img_prefix = root
     cfg.data.test.ann_file = root + 'test.json' # test json 정보
-    cfg.data.test.pipeline[1]['img_scale'] = (512,512) # Resize
+    cfg.data.test.pipeline[1]['img_scale'] = (640,640) # Resize
 
-    cfg.data.samples_per_gpu = 4
+    cfg.data.samples_per_gpu = 2
 
     cfg.seed = 2022
     cfg.gpu_ids = [0]
