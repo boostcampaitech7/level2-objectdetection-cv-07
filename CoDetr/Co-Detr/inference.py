@@ -107,4 +107,6 @@ for py_file in files:
     submission = pd.DataFrame()
     submission['PredictionString'] = prediction_strings
     submission['image_id'] = file_names
+    
+
     submission.to_csv(os.path.join(cfg.work_dir, f'{module_name}_{epoch}.csv'), index=None)
