@@ -262,7 +262,7 @@ train_pipeline = [
                     type='Resize',
                     # The radio of all image in train dataset < 7
                     # follow the original impl
-                    img_scale=[(500, 500), (700, 700), (900, 900)],
+                    img_scale=[(800, 800), (1024, 1024), (1200, 1200)],
                     multiscale_mode='value',
                     keep_ratio=True),
                 dict(
