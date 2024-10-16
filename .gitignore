@@ -49,5 +49,4 @@ mmdetection/ssd_experiment/work_dirs/
 Other/
 EDA/
 detr_experiment
-!CoDetr/Co-Detr
 __pycache__
