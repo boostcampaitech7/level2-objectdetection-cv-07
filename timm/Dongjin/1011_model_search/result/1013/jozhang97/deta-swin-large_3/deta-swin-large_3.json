@@ -1,0 +1,26 @@
+{
+    "output_dir_format": "{model_name}",
+    "num_train_epochs": 12,
+    "image_size": 480,
+    "data_dir_path": "/data/ephemeral/home/data/dataset",
+    "coco_dir_path": "/data/ephemeral/home/Dongjin/level2-objectdetection-cv-07/Other/Dongjin/1010_split/result",
+    "train_info_name": "train_3_5.json",
+    "valid_info_name": "valid_3_5.json",
+    "classes": [
+        "General trash",
+        "Paper",
+        "Paper pack",
+        "Metal",
+        "Glass",
+        "Plastic",
+        "Styrofoam",
+        "Plastic bag",
+        "Battery",
+        "Clothing"
+    ],
+    "lr_scheduler_type": "constant",
+    "save_total_limit": 1,
+    "model_name": "jozhang97/deta-swin-large",
+    "per_device_train_batch_size": 4,
+    "output_dir": "/data/ephemeral/home/Dongjin/level2-objectdetection-cv-07/timm/Dongjin/1011_model_search/result/jozhang97/deta-swin-large_3"
+}
