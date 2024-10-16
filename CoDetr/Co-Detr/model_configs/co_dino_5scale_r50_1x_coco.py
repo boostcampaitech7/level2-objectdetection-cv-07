@@ -211,7 +211,7 @@ model = dict(
             debug=False),],
     test_cfg=[
         dict(
-            max_per_img=300,
+            max_per_img=100,
             nms=dict(type='soft_nms', iou_threshold=0.8)),
         dict(
             rpn=dict(
@@ -226,7 +226,7 @@ model = dict(
         dict(
             nms_pre=1000,
             min_bbox_size=0,
-            score_thr=0.0,
+            score_thr=0.02,
             nms=dict(type='nms', iou_threshold=0.6),
             max_per_img=100),
         # soft-nms is also supported for rcnn testing
