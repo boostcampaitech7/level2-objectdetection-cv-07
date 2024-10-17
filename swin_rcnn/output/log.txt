@@ -1,0 +1,652 @@
+[10/18 02:18:43] detectron2 INFO: Rank of current process: 0. World size: 1
+[10/18 02:18:44] detectron2 INFO: Environment info:
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sys.platform                     linux
+Python                           3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]
+numpy                            1.22.4
+detectron2                       0.6 @/opt/conda/lib/python3.10/site-packages/detectron2
+detectron2._C                    not built correctly: /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so: undefined symbol: _ZN2at4_ops7reshape4callERKNS_6TensorEN3c108ArrayRefINS5_6SymIntEEE
+Compiler ($CXX)                  c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+detectron2 arch flags            /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          1.12.1+cu116 @/opt/conda/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            Tesla V100-SXM2-32GB (arch=7.0)
+Driver version                   535.161.08
+CUDA_HOME                        None - invalid!
+Pillow                           9.4.0
+torchvision                      0.13.1+cu116 @/opt/conda/lib/python3.10/site-packages/torchvision
+torchvision arch flags           /opt/conda/lib/python3.10/site-packages/torchvision/_C.so
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.8.1
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.6
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.3.2  (built against CUDA 11.5)
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.6, CUDNN_VERSION=8.3.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.12.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[10/18 02:18:44] detectron2 INFO: Command line arguments: Namespace(config_file='', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:49152', opts=[])
+[10/18 02:18:44] detectron2 INFO: Full config saved to /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/config.yaml
+[10/18 02:18:44] d2.utils.env INFO: Using a generated random seed 44362591
+[10/18 02:19:58] d2.evaluation.coco_evaluation INFO: Fast COCO eval is not built. Falling back to official COCO eval.
+[10/18 02:21:39] detectron2 INFO: Rank of current process: 0. World size: 1
+[10/18 02:21:39] detectron2 INFO: Environment info:
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sys.platform                     linux
+Python                           3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]
+numpy                            1.22.4
+detectron2                       0.6 @/opt/conda/lib/python3.10/site-packages/detectron2
+detectron2._C                    not built correctly: /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so: undefined symbol: _ZN2at4_ops7reshape4callERKNS_6TensorEN3c108ArrayRefINS5_6SymIntEEE
+Compiler ($CXX)                  c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+detectron2 arch flags            /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          1.12.1+cu116 @/opt/conda/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            Tesla V100-SXM2-32GB (arch=7.0)
+Driver version                   535.161.08
+CUDA_HOME                        None - invalid!
+Pillow                           9.4.0
+torchvision                      0.13.1+cu116 @/opt/conda/lib/python3.10/site-packages/torchvision
+torchvision arch flags           /opt/conda/lib/python3.10/site-packages/torchvision/_C.so
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.8.1
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.6
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.3.2  (built against CUDA 11.5)
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.6, CUDNN_VERSION=8.3.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.12.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[10/18 02:21:39] detectron2 INFO: Command line arguments: Namespace(config_file='', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:49152', opts=[])
+[10/18 02:21:39] detectron2 INFO: Full config saved to /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/config.yaml
+[10/18 02:21:39] d2.utils.env INFO: Using a generated random seed 39498885
+[10/18 02:21:47] d2.checkpoint.detection_checkpoint INFO: [DetectionCheckpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 02:21:47] fvcore.common.checkpoint INFO: [Checkpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 02:22:09] d2.evaluation.coco_evaluation INFO: Fast COCO eval is not built. Falling back to official COCO eval.
+[10/18 02:25:23] detectron2 INFO: Rank of current process: 0. World size: 1
+[10/18 02:25:23] detectron2 INFO: Environment info:
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sys.platform                     linux
+Python                           3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]
+numpy                            1.22.4
+detectron2                       0.6 @/opt/conda/lib/python3.10/site-packages/detectron2
+detectron2._C                    not built correctly: /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so: undefined symbol: _ZN2at4_ops7reshape4callERKNS_6TensorEN3c108ArrayRefINS5_6SymIntEEE
+Compiler ($CXX)                  c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+detectron2 arch flags            /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          1.12.1+cu116 @/opt/conda/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            Tesla V100-SXM2-32GB (arch=7.0)
+Driver version                   535.161.08
+CUDA_HOME                        None - invalid!
+Pillow                           9.4.0
+torchvision                      0.13.1+cu116 @/opt/conda/lib/python3.10/site-packages/torchvision
+torchvision arch flags           /opt/conda/lib/python3.10/site-packages/torchvision/_C.so
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.8.1
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.6
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.3.2  (built against CUDA 11.5)
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.6, CUDNN_VERSION=8.3.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.12.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[10/18 02:25:23] detectron2 INFO: Command line arguments: Namespace(config_file='', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:49152', opts=[])
+[10/18 02:25:23] detectron2 INFO: Full config saved to /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/config.yaml
+[10/18 02:25:23] d2.utils.env INFO: Using a generated random seed 23960413
+[10/18 02:25:30] d2.checkpoint.detection_checkpoint INFO: [DetectionCheckpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 02:25:30] fvcore.common.checkpoint INFO: [Checkpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 02:25:35] d2.evaluation.coco_evaluation INFO: Fast COCO eval is not built. Falling back to official COCO eval.
+[10/18 02:32:36] detectron2 INFO: Rank of current process: 0. World size: 1
+[10/18 02:32:36] detectron2 INFO: Environment info:
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sys.platform                     linux
+Python                           3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]
+numpy                            1.22.4
+detectron2                       0.6 @/opt/conda/lib/python3.10/site-packages/detectron2
+detectron2._C                    not built correctly: /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so: undefined symbol: _ZN2at4_ops7reshape4callERKNS_6TensorEN3c108ArrayRefINS5_6SymIntEEE
+Compiler ($CXX)                  c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+detectron2 arch flags            /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          1.12.1+cu116 @/opt/conda/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            Tesla V100-SXM2-32GB (arch=7.0)
+Driver version                   535.161.08
+CUDA_HOME                        None - invalid!
+Pillow                           9.4.0
+torchvision                      0.13.1+cu116 @/opt/conda/lib/python3.10/site-packages/torchvision
+torchvision arch flags           /opt/conda/lib/python3.10/site-packages/torchvision/_C.so
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.8.1
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.6
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.3.2  (built against CUDA 11.5)
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.6, CUDNN_VERSION=8.3.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.12.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[10/18 02:32:36] detectron2 INFO: Command line arguments: Namespace(config_file='', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:49152', opts=[])
+[10/18 02:32:36] detectron2 INFO: Full config saved to /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/config.yaml
+[10/18 02:32:36] d2.utils.env INFO: Using a generated random seed 36237538
+[10/18 02:32:42] d2.checkpoint.detection_checkpoint INFO: [DetectionCheckpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 02:32:42] fvcore.common.checkpoint INFO: [Checkpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 02:36:18] detectron2 INFO: Rank of current process: 0. World size: 1
+[10/18 02:36:18] detectron2 INFO: Environment info:
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sys.platform                     linux
+Python                           3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]
+numpy                            1.22.4
+detectron2                       0.6 @/opt/conda/lib/python3.10/site-packages/detectron2
+detectron2._C                    not built correctly: /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so: undefined symbol: _ZN2at4_ops7reshape4callERKNS_6TensorEN3c108ArrayRefINS5_6SymIntEEE
+Compiler ($CXX)                  c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+detectron2 arch flags            /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          1.12.1+cu116 @/opt/conda/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            Tesla V100-SXM2-32GB (arch=7.0)
+Driver version                   535.161.08
+CUDA_HOME                        None - invalid!
+Pillow                           9.4.0
+torchvision                      0.13.1+cu116 @/opt/conda/lib/python3.10/site-packages/torchvision
+torchvision arch flags           /opt/conda/lib/python3.10/site-packages/torchvision/_C.so
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.8.1
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.6
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.3.2  (built against CUDA 11.5)
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.6, CUDNN_VERSION=8.3.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.12.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[10/18 02:36:18] detectron2 INFO: Command line arguments: Namespace(config_file='', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:49152', opts=[])
+[10/18 02:36:18] detectron2 INFO: Full config saved to /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/config.yaml
+[10/18 02:36:18] d2.utils.env INFO: Using a generated random seed 18933295
+[10/18 02:42:28] detectron2 INFO: Rank of current process: 0. World size: 1
+[10/18 02:42:28] detectron2 INFO: Environment info:
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sys.platform                     linux
+Python                           3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]
+numpy                            1.22.4
+detectron2                       0.6 @/opt/conda/lib/python3.10/site-packages/detectron2
+detectron2._C                    not built correctly: /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so: undefined symbol: _ZN2at4_ops7reshape4callERKNS_6TensorEN3c108ArrayRefINS5_6SymIntEEE
+Compiler ($CXX)                  c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+detectron2 arch flags            /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          1.12.1+cu116 @/opt/conda/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            Tesla V100-SXM2-32GB (arch=7.0)
+Driver version                   535.161.08
+CUDA_HOME                        None - invalid!
+Pillow                           9.4.0
+torchvision                      0.13.1+cu116 @/opt/conda/lib/python3.10/site-packages/torchvision
+torchvision arch flags           /opt/conda/lib/python3.10/site-packages/torchvision/_C.so
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.8.1
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.6
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.3.2  (built against CUDA 11.5)
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.6, CUDNN_VERSION=8.3.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.12.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[10/18 02:42:28] detectron2 INFO: Command line arguments: Namespace(config_file='', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:49152', opts=[])
+[10/18 02:42:28] detectron2 INFO: Full config saved to /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/config.yaml
+[10/18 02:42:28] d2.utils.env INFO: Using a generated random seed 29059993
+[10/18 02:43:59] detectron2 INFO: Rank of current process: 0. World size: 1
+[10/18 02:43:59] detectron2 INFO: Environment info:
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sys.platform                     linux
+Python                           3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]
+numpy                            1.22.4
+detectron2                       0.6 @/opt/conda/lib/python3.10/site-packages/detectron2
+detectron2._C                    not built correctly: /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so: undefined symbol: _ZN2at4_ops7reshape4callERKNS_6TensorEN3c108ArrayRefINS5_6SymIntEEE
+Compiler ($CXX)                  c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+detectron2 arch flags            /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          1.12.1+cu116 @/opt/conda/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            Tesla V100-SXM2-32GB (arch=7.0)
+Driver version                   535.161.08
+CUDA_HOME                        None - invalid!
+Pillow                           9.4.0
+torchvision                      0.13.1+cu116 @/opt/conda/lib/python3.10/site-packages/torchvision
+torchvision arch flags           /opt/conda/lib/python3.10/site-packages/torchvision/_C.so
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.8.1
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.6
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.3.2  (built against CUDA 11.5)
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.6, CUDNN_VERSION=8.3.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.12.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[10/18 02:43:59] detectron2 INFO: Command line arguments: Namespace(config_file='', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:49152', opts=[])
+[10/18 02:43:59] detectron2 INFO: Full config saved to /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/config.yaml
+[10/18 02:43:59] d2.utils.env INFO: Using a generated random seed 59247790
+[10/18 02:44:08] d2.checkpoint.detection_checkpoint INFO: [DetectionCheckpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 02:44:08] fvcore.common.checkpoint INFO: [Checkpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 02:44:29] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:44:29] d2.data.build INFO: Distribution of instances among all 10 categories:
+[36m|   category    | #instances   |  category   | #instances   |  category  | #instances   |
+|:-------------:|:-------------|:-----------:|:-------------|:----------:|:-------------|
+| General trash | 0            |    Paper    | 0            | Paper pack | 0            |
+|     Metal     | 0            |    Glass    | 0            |  Plastic   | 0            |
+|   Styrofoam   | 0            | Plastic bag | 0            |  Battery   | 0            |
+|   Clothing    | 0            |             |              |            |              |
+|     total     | 0            |             |              |            |              |[0m
+[10/18 02:44:29] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:44:29] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:44:29] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:44:29] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:45:15] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:45:15] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:45:15] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:45:15] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:45:15] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:46:02] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:46:02] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:46:02] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:46:02] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:46:02] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:46:54] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:46:54] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:46:54] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:46:54] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:46:54] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:47:45] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:47:46] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:47:46] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:47:46] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:47:46] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:48:27] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:48:27] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:48:27] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:48:27] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:48:27] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:48:53] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:48:53] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:48:53] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:48:53] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:48:53] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:49:01] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:49:02] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:49:02] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:49:02] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:49:02] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:49:41] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:49:41] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:49:41] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:49:41] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:49:41] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:50:05] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:50:05] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:50:05] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:50:05] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:50:05] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:51:11] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:51:11] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:51:11] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:51:11] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:51:11] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:51:11] d2.evaluation.coco_evaluation INFO: Fast COCO eval is not built. Falling back to official COCO eval.
+[10/18 02:51:11] d2.evaluation.evaluator INFO: Start inference on 4871 batches
+[10/18 02:51:16] d2.evaluation.evaluator INFO: Inference done 11/4871. Dataloading: 0.0012 s/iter. Inference: 0.2760 s/iter. Eval: 0.0001 s/iter. Total: 0.2773 s/iter. ETA=0:22:27
+[10/18 02:51:21] d2.evaluation.evaluator INFO: Inference done 30/4871. Dataloading: 0.0015 s/iter. Inference: 0.2750 s/iter. Eval: 0.0001 s/iter. Total: 0.2768 s/iter. ETA=0:22:19
+[10/18 02:51:26] d2.evaluation.evaluator INFO: Inference done 48/4871. Dataloading: 0.0015 s/iter. Inference: 0.2755 s/iter. Eval: 0.0001 s/iter. Total: 0.2772 s/iter. ETA=0:22:17
+[10/18 02:51:32] d2.evaluation.evaluator INFO: Inference done 67/4871. Dataloading: 0.0016 s/iter. Inference: 0.2751 s/iter. Eval: 0.0001 s/iter. Total: 0.2770 s/iter. ETA=0:22:10
+[10/18 02:51:37] d2.evaluation.evaluator INFO: Inference done 86/4871. Dataloading: 0.0017 s/iter. Inference: 0.2752 s/iter. Eval: 0.0001 s/iter. Total: 0.2771 s/iter. ETA=0:22:06
+[10/18 02:51:42] d2.evaluation.evaluator INFO: Inference done 105/4871. Dataloading: 0.0017 s/iter. Inference: 0.2751 s/iter. Eval: 0.0001 s/iter. Total: 0.2771 s/iter. ETA=0:22:00
+[10/18 02:51:48] d2.evaluation.evaluator INFO: Inference done 124/4871. Dataloading: 0.0017 s/iter. Inference: 0.2752 s/iter. Eval: 0.0001 s/iter. Total: 0.2771 s/iter. ETA=0:21:55
+[10/18 02:51:53] d2.evaluation.evaluator INFO: Inference done 143/4871. Dataloading: 0.0017 s/iter. Inference: 0.2752 s/iter. Eval: 0.0001 s/iter. Total: 0.2772 s/iter. ETA=0:21:50
+[10/18 02:51:58] d2.evaluation.evaluator INFO: Inference done 162/4871. Dataloading: 0.0018 s/iter. Inference: 0.2752 s/iter. Eval: 0.0001 s/iter. Total: 0.2772 s/iter. ETA=0:21:45
+[10/18 02:52:03] d2.evaluation.evaluator INFO: Inference done 181/4871. Dataloading: 0.0017 s/iter. Inference: 0.2752 s/iter. Eval: 0.0001 s/iter. Total: 0.2772 s/iter. ETA=0:21:40
+[10/18 02:52:08] d2.evaluation.evaluator INFO: Inference done 199/4871. Dataloading: 0.0018 s/iter. Inference: 0.2753 s/iter. Eval: 0.0001 s/iter. Total: 0.2773 s/iter. ETA=0:21:35
+[10/18 02:52:14] d2.evaluation.evaluator INFO: Inference done 218/4871. Dataloading: 0.0018 s/iter. Inference: 0.2753 s/iter. Eval: 0.0001 s/iter. Total: 0.2773 s/iter. ETA=0:21:30
+[10/18 02:52:19] d2.evaluation.evaluator INFO: Inference done 237/4871. Dataloading: 0.0018 s/iter. Inference: 0.2752 s/iter. Eval: 0.0001 s/iter. Total: 0.2773 s/iter. ETA=0:21:24
+[10/18 02:52:24] d2.evaluation.evaluator INFO: Inference done 255/4871. Dataloading: 0.0018 s/iter. Inference: 0.2753 s/iter. Eval: 0.0001 s/iter. Total: 0.2773 s/iter. ETA=0:21:20
+[10/18 02:52:29] d2.evaluation.evaluator INFO: Inference done 273/4871. Dataloading: 0.0018 s/iter. Inference: 0.2754 s/iter. Eval: 0.0001 s/iter. Total: 0.2774 s/iter. ETA=0:21:15
+[10/18 02:52:34] d2.evaluation.evaluator INFO: Inference done 291/4871. Dataloading: 0.0018 s/iter. Inference: 0.2754 s/iter. Eval: 0.0001 s/iter. Total: 0.2775 s/iter. ETA=0:21:10
+[10/18 02:52:39] d2.evaluation.evaluator INFO: Inference done 309/4871. Dataloading: 0.0018 s/iter. Inference: 0.2755 s/iter. Eval: 0.0001 s/iter. Total: 0.2775 s/iter. ETA=0:21:06
+[10/18 02:52:44] d2.evaluation.evaluator INFO: Inference done 327/4871. Dataloading: 0.0018 s/iter. Inference: 0.2755 s/iter. Eval: 0.0001 s/iter. Total: 0.2776 s/iter. ETA=0:21:01
+[10/18 02:52:49] d2.evaluation.evaluator INFO: Inference done 345/4871. Dataloading: 0.0018 s/iter. Inference: 0.2756 s/iter. Eval: 0.0001 s/iter. Total: 0.2776 s/iter. ETA=0:20:56
+[10/18 02:52:54] d2.evaluation.evaluator INFO: Inference done 363/4871. Dataloading: 0.0018 s/iter. Inference: 0.2756 s/iter. Eval: 0.0001 s/iter. Total: 0.2777 s/iter. ETA=0:20:51
+[10/18 02:52:59] d2.evaluation.evaluator INFO: Inference done 381/4871. Dataloading: 0.0018 s/iter. Inference: 0.2757 s/iter. Eval: 0.0001 s/iter. Total: 0.2777 s/iter. ETA=0:20:46
+[10/18 02:53:04] d2.evaluation.evaluator INFO: Inference done 399/4871. Dataloading: 0.0018 s/iter. Inference: 0.2757 s/iter. Eval: 0.0001 s/iter. Total: 0.2777 s/iter. ETA=0:20:42
+[10/18 02:53:09] d2.evaluation.evaluator INFO: Inference done 418/4871. Dataloading: 0.0018 s/iter. Inference: 0.2757 s/iter. Eval: 0.0001 s/iter. Total: 0.2777 s/iter. ETA=0:20:36
+[10/18 02:53:15] d2.evaluation.evaluator INFO: Inference done 437/4871. Dataloading: 0.0018 s/iter. Inference: 0.2757 s/iter. Eval: 0.0001 s/iter. Total: 0.2777 s/iter. ETA=0:20:31
+[10/18 02:53:20] d2.evaluation.evaluator INFO: Inference done 455/4871. Dataloading: 0.0018 s/iter. Inference: 0.2757 s/iter. Eval: 0.0001 s/iter. Total: 0.2777 s/iter. ETA=0:20:26
+[10/18 02:53:59] detectron2 INFO: Rank of current process: 0. World size: 1
+[10/18 02:53:59] detectron2 INFO: Environment info:
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sys.platform                     linux
+Python                           3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]
+numpy                            1.22.4
+detectron2                       0.6 @/opt/conda/lib/python3.10/site-packages/detectron2
+detectron2._C                    not built correctly: /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so: undefined symbol: _ZN2at4_ops7reshape4callERKNS_6TensorEN3c108ArrayRefINS5_6SymIntEEE
+Compiler ($CXX)                  c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+detectron2 arch flags            /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          1.12.1+cu116 @/opt/conda/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            Tesla V100-SXM2-32GB (arch=7.0)
+Driver version                   535.161.08
+CUDA_HOME                        None - invalid!
+Pillow                           9.4.0
+torchvision                      0.13.1+cu116 @/opt/conda/lib/python3.10/site-packages/torchvision
+torchvision arch flags           /opt/conda/lib/python3.10/site-packages/torchvision/_C.so
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.8.1
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.6
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.3.2  (built against CUDA 11.5)
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.6, CUDNN_VERSION=8.3.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.12.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[10/18 02:53:59] detectron2 INFO: Command line arguments: Namespace(config_file='', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:49152', opts=[])
+[10/18 02:53:59] detectron2 INFO: Full config saved to /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/config.yaml
+[10/18 02:53:59] d2.utils.env INFO: Using a generated random seed 59632441
+[10/18 02:54:08] d2.checkpoint.detection_checkpoint INFO: [DetectionCheckpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 02:54:08] fvcore.common.checkpoint INFO: [Checkpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 02:54:20] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:54:20] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:54:20] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:54:20] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:54:20] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:54:20] d2.evaluation.coco_evaluation INFO: Fast COCO eval is not built. Falling back to official COCO eval.
+[10/18 02:54:20] d2.evaluation.evaluator INFO: Start inference on 4871 batches
+[10/18 02:54:23] d2.evaluation.evaluator INFO: Inference done 11/4871. Dataloading: 0.0012 s/iter. Inference: 0.2746 s/iter. Eval: 0.0001 s/iter. Total: 0.2759 s/iter. ETA=0:22:20
+[10/18 02:54:29] d2.evaluation.evaluator INFO: Inference done 30/4871. Dataloading: 0.0016 s/iter. Inference: 0.2744 s/iter. Eval: 0.0001 s/iter. Total: 0.2762 s/iter. ETA=0:22:17
+[10/18 02:54:34] d2.evaluation.evaluator INFO: Inference done 49/4871. Dataloading: 0.0016 s/iter. Inference: 0.2750 s/iter. Eval: 0.0001 s/iter. Total: 0.2768 s/iter. ETA=0:22:14
+[10/18 02:54:59] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 02:54:59] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 02:54:59] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 02:54:59] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 02:54:59] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 02:54:59] d2.evaluation.coco_evaluation INFO: Fast COCO eval is not built. Falling back to official COCO eval.
+[10/18 02:54:59] d2.evaluation.evaluator INFO: Start inference on 4871 batches
+[10/18 02:55:03] d2.evaluation.evaluator INFO: Inference done 11/4871. Dataloading: 0.0012 s/iter. Inference: 0.2748 s/iter. Eval: 0.0001 s/iter. Total: 0.2760 s/iter. ETA=0:22:21
+[10/18 03:00:20] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 03:00:21] d2.data.datasets.coco INFO: Loaded 4871 images in COCO format from /data/ephemeral/home/data/dataset/test.json
+[10/18 03:00:21] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 03:00:21] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 03:00:21] d2.data.common INFO: Serializing 4871 elements to byte tensors and concatenating them all ...
+[10/18 03:00:21] d2.data.common INFO: Serialized dataset takes 0.61 MiB
+[10/18 03:00:21] d2.evaluation.coco_evaluation INFO: Fast COCO eval is not built. Falling back to official COCO eval.
+[10/18 03:00:21] d2.evaluation.evaluator INFO: Start inference on 4871 batches
+[10/18 03:05:07] detectron2 INFO: Rank of current process: 0. World size: 1
+[10/18 03:05:08] detectron2 INFO: Environment info:
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sys.platform                     linux
+Python                           3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]
+numpy                            1.22.4
+detectron2                       0.6 @/opt/conda/lib/python3.10/site-packages/detectron2
+detectron2._C                    not built correctly: /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so: undefined symbol: _ZN2at4_ops7reshape4callERKNS_6TensorEN3c108ArrayRefINS5_6SymIntEEE
+Compiler ($CXX)                  c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+detectron2 arch flags            /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          1.12.1+cu116 @/opt/conda/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            Tesla V100-SXM2-32GB (arch=7.0)
+Driver version                   535.161.08
+CUDA_HOME                        None - invalid!
+Pillow                           9.4.0
+torchvision                      0.13.1+cu116 @/opt/conda/lib/python3.10/site-packages/torchvision
+torchvision arch flags           /opt/conda/lib/python3.10/site-packages/torchvision/_C.so
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.8.1
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.6
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.3.2  (built against CUDA 11.5)
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.6, CUDNN_VERSION=8.3.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.12.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[10/18 03:05:08] detectron2 INFO: Command line arguments: Namespace(config_file='', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:49152', opts=[])
+[10/18 03:05:08] detectron2 INFO: Full config saved to /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/config.yaml
+[10/18 03:05:08] d2.utils.env INFO: Using a generated random seed 8155451
+[10/18 03:05:20] d2.checkpoint.detection_checkpoint INFO: [DetectionCheckpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 03:05:20] fvcore.common.checkpoint INFO: [Checkpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 03:05:35] d2.data.datasets.coco INFO: Loaded 990 images in COCO format from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/Split_data/valid_1_5.json
+[10/18 03:05:35] d2.data.build INFO: Distribution of instances among all 10 categories:
+[36m|   category    | #instances   |  category   | #instances   |  category  | #instances   |
+|:-------------:|:-------------|:-----------:|:-------------|:----------:|:-------------|
+| General trash | 915          |    Paper    | 1377         | Paper pack | 167          |
+|     Metal     | 167          |    Glass    | 164          |  Plastic   | 627          |
+|   Styrofoam   | 223          | Plastic bag | 1049         |  Battery   | 29           |
+|   Clothing    | 111          |             |              |            |              |
+|     total     | 4829         |             |              |            |              |[0m
+[10/18 03:05:35] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 03:05:35] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 03:05:35] d2.data.common INFO: Serializing 990 elements to byte tensors and concatenating them all ...
+[10/18 03:05:35] d2.data.common INFO: Serialized dataset takes 0.47 MiB
+[10/18 03:05:35] d2.evaluation.coco_evaluation INFO: Fast COCO eval is not built. Falling back to official COCO eval.
+[10/18 03:05:35] d2.evaluation.evaluator INFO: Start inference on 990 batches
+[10/18 03:05:39] d2.evaluation.evaluator INFO: Inference done 11/990. Dataloading: 0.0012 s/iter. Inference: 0.2732 s/iter. Eval: 0.0001 s/iter. Total: 0.2745 s/iter. ETA=0:04:28
+[10/18 03:05:44] d2.evaluation.evaluator INFO: Inference done 30/990. Dataloading: 0.0015 s/iter. Inference: 0.2730 s/iter. Eval: 0.0001 s/iter. Total: 0.2748 s/iter. ETA=0:04:23
+[10/18 03:05:49] d2.evaluation.evaluator INFO: Inference done 49/990. Dataloading: 0.0016 s/iter. Inference: 0.2740 s/iter. Eval: 0.0001 s/iter. Total: 0.2758 s/iter. ETA=0:04:19
+[10/18 03:05:54] d2.evaluation.evaluator INFO: Inference done 67/990. Dataloading: 0.0017 s/iter. Inference: 0.2745 s/iter. Eval: 0.0001 s/iter. Total: 0.2765 s/iter. ETA=0:04:15
+[10/18 03:06:00] d2.evaluation.evaluator INFO: Inference done 86/990. Dataloading: 0.0017 s/iter. Inference: 0.2746 s/iter. Eval: 0.0001 s/iter. Total: 0.2765 s/iter. ETA=0:04:09
+[10/18 03:06:05] d2.evaluation.evaluator INFO: Inference done 105/990. Dataloading: 0.0017 s/iter. Inference: 0.2747 s/iter. Eval: 0.0001 s/iter. Total: 0.2766 s/iter. ETA=0:04:04
+[10/18 03:06:10] d2.evaluation.evaluator INFO: Inference done 124/990. Dataloading: 0.0017 s/iter. Inference: 0.2747 s/iter. Eval: 0.0001 s/iter. Total: 0.2766 s/iter. ETA=0:03:59
+[10/18 03:06:15] d2.evaluation.evaluator INFO: Inference done 142/990. Dataloading: 0.0017 s/iter. Inference: 0.2748 s/iter. Eval: 0.0001 s/iter. Total: 0.2767 s/iter. ETA=0:03:54
+[10/18 03:06:20] d2.evaluation.evaluator INFO: Inference done 161/990. Dataloading: 0.0017 s/iter. Inference: 0.2749 s/iter. Eval: 0.0001 s/iter. Total: 0.2768 s/iter. ETA=0:03:49
+[10/18 03:06:36] detectron2 INFO: Rank of current process: 0. World size: 1
+[10/18 03:06:36] detectron2 INFO: Environment info:
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sys.platform                     linux
+Python                           3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]
+numpy                            1.22.4
+detectron2                       0.6 @/opt/conda/lib/python3.10/site-packages/detectron2
+detectron2._C                    not built correctly: /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so: undefined symbol: _ZN2at4_ops7reshape4callERKNS_6TensorEN3c108ArrayRefINS5_6SymIntEEE
+Compiler ($CXX)                  c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+detectron2 arch flags            /opt/conda/lib/python3.10/site-packages/detectron2/_C.cpython-310-x86_64-linux-gnu.so
+DETECTRON2_ENV_MODULE            <not set>
+PyTorch                          1.12.1+cu116 @/opt/conda/lib/python3.10/site-packages/torch
+PyTorch debug build              False
+torch._C._GLIBCXX_USE_CXX11_ABI  False
+GPU available                    Yes
+GPU 0                            Tesla V100-SXM2-32GB (arch=7.0)
+Driver version                   535.161.08
+CUDA_HOME                        None - invalid!
+Pillow                           9.4.0
+torchvision                      0.13.1+cu116 @/opt/conda/lib/python3.10/site-packages/torchvision
+torchvision arch flags           /opt/conda/lib/python3.10/site-packages/torchvision/_C.so
+fvcore                           0.1.5.post20221221
+iopath                           0.1.9
+cv2                              4.8.1
+-------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.6
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.3.2  (built against CUDA 11.5)
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.6, CUDNN_VERSION=8.3.2, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.12.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[10/18 03:06:36] detectron2 INFO: Command line arguments: Namespace(config_file='', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:49152', opts=[])
+[10/18 03:06:36] detectron2 INFO: Full config saved to /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/config.yaml
+[10/18 03:06:36] d2.utils.env INFO: Using a generated random seed 36494646
+[10/18 03:06:41] d2.checkpoint.detection_checkpoint INFO: [DetectionCheckpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 03:06:41] fvcore.common.checkpoint INFO: [Checkpointer] Loading from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output/model_final.pth ...
+[10/18 03:06:45] d2.data.datasets.coco INFO: Loaded 550 images in COCO format from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/Split_data/valid_1_10.json
+[10/18 03:06:45] d2.data.build INFO: Distribution of instances among all 10 categories:
+[36m|   category    | #instances   |  category   | #instances   |  category  | #instances   |
+|:-------------:|:-------------|:-----------:|:-------------|:----------:|:-------------|
+| General trash | 438          |    Paper    | 763          | Paper pack | 97           |
+|     Metal     | 117          |    Glass    | 82           |  Plastic   | 340          |
+|   Styrofoam   | 154          | Plastic bag | 624          |  Battery   | 39           |
+|   Clothing    | 51           |             |              |            |              |
+|     total     | 2705         |             |              |            |              |[0m
+[10/18 03:06:45] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 03:06:45] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 03:06:45] d2.data.common INFO: Serializing 550 elements to byte tensors and concatenating them all ...
+[10/18 03:06:45] d2.data.common INFO: Serialized dataset takes 0.26 MiB
+[10/18 03:06:45] d2.evaluation.coco_evaluation INFO: Fast COCO eval is not built. Falling back to official COCO eval.
+[10/18 03:06:45] d2.evaluation.evaluator INFO: Start inference on 550 batches
+[10/18 03:06:49] d2.evaluation.evaluator INFO: Inference done 11/550. Dataloading: 0.0013 s/iter. Inference: 0.2755 s/iter. Eval: 0.0001 s/iter. Total: 0.2768 s/iter. ETA=0:02:29
+[10/18 03:06:54] d2.evaluation.evaluator INFO: Inference done 30/550. Dataloading: 0.0015 s/iter. Inference: 0.2747 s/iter. Eval: 0.0001 s/iter. Total: 0.2765 s/iter. ETA=0:02:23
+[10/18 03:06:59] d2.evaluation.evaluator INFO: Inference done 49/550. Dataloading: 0.0017 s/iter. Inference: 0.2749 s/iter. Eval: 0.0001 s/iter. Total: 0.2768 s/iter. ETA=0:02:18
+[10/18 03:07:04] d2.evaluation.evaluator INFO: Inference done 68/550. Dataloading: 0.0018 s/iter. Inference: 0.2751 s/iter. Eval: 0.0001 s/iter. Total: 0.2771 s/iter. ETA=0:02:13
+[10/18 03:07:09] d2.evaluation.evaluator INFO: Inference done 86/550. Dataloading: 0.0018 s/iter. Inference: 0.2755 s/iter. Eval: 0.0001 s/iter. Total: 0.2775 s/iter. ETA=0:02:08
+[10/18 03:07:14] d2.evaluation.evaluator INFO: Inference done 104/550. Dataloading: 0.0018 s/iter. Inference: 0.2756 s/iter. Eval: 0.0001 s/iter. Total: 0.2776 s/iter. ETA=0:02:03
+[10/18 03:07:19] d2.evaluation.evaluator INFO: Inference done 122/550. Dataloading: 0.0018 s/iter. Inference: 0.2757 s/iter. Eval: 0.0001 s/iter. Total: 0.2777 s/iter. ETA=0:01:58
+[10/18 03:07:24] d2.evaluation.evaluator INFO: Inference done 140/550. Dataloading: 0.0019 s/iter. Inference: 0.2757 s/iter. Eval: 0.0001 s/iter. Total: 0.2778 s/iter. ETA=0:01:53
+[10/18 03:07:30] d2.evaluation.evaluator INFO: Inference done 159/550. Dataloading: 0.0018 s/iter. Inference: 0.2757 s/iter. Eval: 0.0001 s/iter. Total: 0.2778 s/iter. ETA=0:01:48
+[10/18 03:07:35] d2.evaluation.evaluator INFO: Inference done 177/550. Dataloading: 0.0019 s/iter. Inference: 0.2758 s/iter. Eval: 0.0001 s/iter. Total: 0.2779 s/iter. ETA=0:01:43
+[10/18 03:07:40] d2.evaluation.evaluator INFO: Inference done 195/550. Dataloading: 0.0019 s/iter. Inference: 0.2760 s/iter. Eval: 0.0001 s/iter. Total: 0.2781 s/iter. ETA=0:01:38
+[10/18 03:07:45] d2.evaluation.evaluator INFO: Inference done 213/550. Dataloading: 0.0019 s/iter. Inference: 0.2759 s/iter. Eval: 0.0001 s/iter. Total: 0.2781 s/iter. ETA=0:01:33
+[10/18 03:07:50] d2.evaluation.evaluator INFO: Inference done 231/550. Dataloading: 0.0019 s/iter. Inference: 0.2760 s/iter. Eval: 0.0001 s/iter. Total: 0.2781 s/iter. ETA=0:01:28
+[10/18 03:07:55] d2.evaluation.evaluator INFO: Inference done 249/550. Dataloading: 0.0019 s/iter. Inference: 0.2761 s/iter. Eval: 0.0001 s/iter. Total: 0.2782 s/iter. ETA=0:01:23
+[10/18 03:08:00] d2.evaluation.evaluator INFO: Inference done 267/550. Dataloading: 0.0019 s/iter. Inference: 0.2761 s/iter. Eval: 0.0001 s/iter. Total: 0.2782 s/iter. ETA=0:01:18
+[10/18 03:08:05] d2.evaluation.evaluator INFO: Inference done 285/550. Dataloading: 0.0019 s/iter. Inference: 0.2762 s/iter. Eval: 0.0001 s/iter. Total: 0.2783 s/iter. ETA=0:01:13
+[10/18 03:08:10] d2.evaluation.evaluator INFO: Inference done 303/550. Dataloading: 0.0019 s/iter. Inference: 0.2762 s/iter. Eval: 0.0001 s/iter. Total: 0.2784 s/iter. ETA=0:01:08
+[10/18 03:08:15] d2.evaluation.evaluator INFO: Inference done 321/550. Dataloading: 0.0019 s/iter. Inference: 0.2763 s/iter. Eval: 0.0001 s/iter. Total: 0.2785 s/iter. ETA=0:01:03
+[10/18 03:08:20] d2.evaluation.evaluator INFO: Inference done 339/550. Dataloading: 0.0019 s/iter. Inference: 0.2763 s/iter. Eval: 0.0001 s/iter. Total: 0.2785 s/iter. ETA=0:00:58
+[10/18 03:08:25] d2.evaluation.evaluator INFO: Inference done 357/550. Dataloading: 0.0019 s/iter. Inference: 0.2764 s/iter. Eval: 0.0001 s/iter. Total: 0.2785 s/iter. ETA=0:00:53
+[10/18 03:08:30] d2.evaluation.evaluator INFO: Inference done 375/550. Dataloading: 0.0019 s/iter. Inference: 0.2763 s/iter. Eval: 0.0001 s/iter. Total: 0.2785 s/iter. ETA=0:00:48
+[10/18 03:08:35] d2.evaluation.evaluator INFO: Inference done 393/550. Dataloading: 0.0019 s/iter. Inference: 0.2763 s/iter. Eval: 0.0001 s/iter. Total: 0.2785 s/iter. ETA=0:00:43
+[10/18 03:08:40] d2.evaluation.evaluator INFO: Inference done 411/550. Dataloading: 0.0019 s/iter. Inference: 0.2763 s/iter. Eval: 0.0001 s/iter. Total: 0.2785 s/iter. ETA=0:00:38
+[10/18 03:08:45] d2.evaluation.evaluator INFO: Inference done 429/550. Dataloading: 0.0019 s/iter. Inference: 0.2764 s/iter. Eval: 0.0001 s/iter. Total: 0.2785 s/iter. ETA=0:00:33
+[10/18 03:08:50] d2.evaluation.evaluator INFO: Inference done 447/550. Dataloading: 0.0019 s/iter. Inference: 0.2764 s/iter. Eval: 0.0001 s/iter. Total: 0.2785 s/iter. ETA=0:00:28
+[10/18 03:08:55] d2.evaluation.evaluator INFO: Inference done 465/550. Dataloading: 0.0019 s/iter. Inference: 0.2764 s/iter. Eval: 0.0001 s/iter. Total: 0.2785 s/iter. ETA=0:00:23
+[10/18 03:09:00] d2.evaluation.evaluator INFO: Inference done 483/550. Dataloading: 0.0019 s/iter. Inference: 0.2764 s/iter. Eval: 0.0001 s/iter. Total: 0.2785 s/iter. ETA=0:00:18
+[10/18 03:09:05] d2.evaluation.evaluator INFO: Inference done 501/550. Dataloading: 0.0019 s/iter. Inference: 0.2764 s/iter. Eval: 0.0001 s/iter. Total: 0.2786 s/iter. ETA=0:00:13
+[10/18 03:09:10] d2.evaluation.evaluator INFO: Inference done 519/550. Dataloading: 0.0019 s/iter. Inference: 0.2765 s/iter. Eval: 0.0001 s/iter. Total: 0.2786 s/iter. ETA=0:00:08
+[10/18 03:09:15] d2.evaluation.evaluator INFO: Inference done 537/550. Dataloading: 0.0019 s/iter. Inference: 0.2765 s/iter. Eval: 0.0001 s/iter. Total: 0.2786 s/iter. ETA=0:00:03
+[10/18 03:09:19] d2.evaluation.evaluator INFO: Total inference time: 0:02:32.055846 (0.279002 s / iter per device, on 1 devices)
+[10/18 03:09:19] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:02:30 (0.276464 s / iter per device, on 1 devices)
+[10/18 03:09:19] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[10/18 03:09:19] d2.evaluation.coco_evaluation INFO: Evaluating predictions with official COCO API...
+[10/18 03:09:19] d2.evaluation.coco_evaluation WARNING: No predictions from the model!
+[10/18 03:39:52] d2.data.datasets.coco INFO: Loaded 550 images in COCO format from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/Split_data/valid_1_10.json
+[10/18 03:39:52] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 03:39:52] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 03:39:52] d2.data.common INFO: Serializing 550 elements to byte tensors and concatenating them all ...
+[10/18 03:39:52] d2.data.common INFO: Serialized dataset takes 0.26 MiB
+[10/18 03:40:39] d2.data.datasets.coco INFO: Loaded 550 images in COCO format from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/Split_data/valid_1_10.json
+[10/18 03:40:39] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 03:40:39] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 03:40:39] d2.data.common INFO: Serializing 550 elements to byte tensors and concatenating them all ...
+[10/18 03:40:39] d2.data.common INFO: Serialized dataset takes 0.26 MiB
+[10/18 03:44:06] d2.data.datasets.coco INFO: Loaded 550 images in COCO format from /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/Split_data/valid_1_10.json
+[10/18 03:44:06] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(1024, 1024), max_size=1024)]
+[10/18 03:44:06] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[10/18 03:44:06] d2.data.common INFO: Serializing 550 elements to byte tensors and concatenating them all ...
+[10/18 03:44:06] d2.data.common INFO: Serialized dataset takes 0.26 MiB

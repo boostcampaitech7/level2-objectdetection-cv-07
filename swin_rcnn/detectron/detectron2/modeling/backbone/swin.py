@@ -11,7 +11,7 @@ Written by Ze Liu, Yutong Lin, Yixuan Wei
 --------------------------------------------------------
 LICENSE: https://github.com/SwinTransformer/Swin-Transformer-Object-Detection/blob/461e003166a8083d0b620beacd4662a2df306bd6/LICENSE
 """
-
+import timm
 import numpy as np
 import torch
 import torch.nn as nn
