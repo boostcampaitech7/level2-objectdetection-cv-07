@@ -33,3 +33,4 @@ create_split_json.py
 mmdetection_dino/
 mmdetection/
 **/.DS_Store
+**/checkpoints/

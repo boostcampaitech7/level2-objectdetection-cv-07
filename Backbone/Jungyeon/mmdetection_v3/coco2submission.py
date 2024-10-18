@@ -42,7 +42,7 @@ def inference(output):
     print(len(prediction_strings))
     submission['PredictionString'] = prediction_strings
     submission['image_id'] = file_names
-    submission.to_csv(os.path.join('./', 'submission_pas.csv'), index=None)
+    submission.to_csv(os.path.join('./', 'submission_pas_dino_swin-l.csv'), index=None)
     submission.head()
     return
 
