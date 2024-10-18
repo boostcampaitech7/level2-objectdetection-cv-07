@@ -25,8 +25,8 @@ del model.roi_heads['mask_in_features']
 del model.roi_heads['mask_pooler']
 del model.roi_heads['mask_head']
 
-train.eval_period=100
-train.max_iter=100
+train.eval_period=5000
+#train.max_iter
 train.init_checkpoint = "detectron2://ImageNetPretrained/swin/swin_large_patch4_window7_224_22k.pth"
 train.output_dir='/data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output'
 
