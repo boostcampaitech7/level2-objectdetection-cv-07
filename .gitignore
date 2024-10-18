@@ -5,6 +5,8 @@
 **/others/
 **/__pycache__/
 **/wandb/
+baseline/
+create_split_json.py
 *.jpg
 data/
 code/
@@ -30,3 +32,5 @@ cascade_rcnn/output
 cascade_rcnn/wandb
 baseline/
 create_split_json.py
+*.pt
+**/runs/

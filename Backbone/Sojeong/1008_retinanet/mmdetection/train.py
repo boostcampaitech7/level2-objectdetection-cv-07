@@ -16,7 +16,8 @@ AVAILABLE_MODELS = {
     'mask_rcnn': './configs/mask_rcnn/mask_rcnn_r50_fpn_1x_coco.py',
     'retinanet_r50_fpn_1x_coco': './configs/retinanet/retinanet_r50_fpn_1x_coco.py',
     'retinanet': './configs/retinanet/retinanet_r50_caffe_fpn_mstrain_1x_coco.py',
-    'yolox_s_8x8_300e_coco': './configs/yolox/yolox_s_8x8_300e_coco.py'
+    'yolox_s_8x8_300e_coco': './configs/yolox/yolox_s_8x8_300e_coco.py',
+    'autoassign_r50_fpn_8x2_1x_coco': '/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/autoassign/autoassign_r50_fpn_8x2_1x_coco.py',
 }
 
 def parse_args():

@@ -1,35 +1,41 @@
 # We follow the original implementation which
 # adopts the Caffe pre-trained backbone.
 _base_ = [
-    '../_base_/datasets/coco_detection.py',
-    '../_base_/schedules/schedule_1x.py', '../_base_/default_runtime.py'
+    '/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/1008_retinanet/mmdetection/configs/_base_/datasets/coco_detection.py',
+    '/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/1008_retinanet/mmdetection/configs/_base_/schedules/schedule_1x.py', 
+    '/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/1008_retinanet/mmdetection/configs/_base_/default_runtime.py'
 ]
-model = dict(
+pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_tiny_patch4_window7_224.pth' 
+
+model = dict( 
     type='AutoAssign',
-    backbone=dict(
-        type='ResNet',
-        depth=50,
-        num_stages=4,
+backbone=dict(
+        type='SwinTransformer',
+        embed_dims=96,  # 체크포인트와 일치하도록 수정
+        depths=[2, 2, 6, 2],  # 체크포인트와 일치하도록 수정
+        num_heads=[3, 6, 12, 24],  # 체크포인트와 일치하도록 수정
+        window_size=7,
+        mlp_ratio=4,
+        qkv_bias=True,
+        qk_scale=None,
+        drop_rate=0.,
+        attn_drop_rate=0.,
+        drop_path_rate=0.2,
+        patch_norm=True,
         out_indices=(0, 1, 2, 3),
-        frozen_stages=1,
-        norm_cfg=dict(type='BN', requires_grad=False),
-        norm_eval=True,
-        style='caffe',
-        init_cfg=dict(
-            type='Pretrained',
-            checkpoint='open-mmlab://detectron2/resnet50_caffe')),
+        with_cp=False,
+        convert_weights=True,
+        init_cfg=dict(type='Pretrained', checkpoint=pretrained)),  # 체크포인트 경로
     neck=dict(
         type='FPN',
-        in_channels=[256, 512, 1024, 2048],
+        in_channels=[96, 192, 384, 768],
         out_channels=256,
         start_level=1,
         add_extra_convs=True,
-        num_outs=5,
-        relu_before_extra_convs=True,
-        init_cfg=dict(type='Caffe2Xavier', layer='Conv2d')),
+        num_outs=5),
     bbox_head=dict(
         type='AutoAssignHead',
-        num_classes=80,
+        num_classes=10,
         in_channels=256,
         stacked_convs=4,
         feat_channels=256,
