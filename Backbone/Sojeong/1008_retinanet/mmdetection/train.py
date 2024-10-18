@@ -18,6 +18,7 @@ AVAILABLE_MODELS = {
     'retinanet': './configs/retinanet/retinanet_r50_caffe_fpn_mstrain_1x_coco.py',
     'yolox_s_8x8_300e_coco': './configs/yolox/yolox_s_8x8_300e_coco.py',
     'autoassign_r50_fpn_8x2_1x_coco': '/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/autoassign/autoassign_r50_fpn_8x2_1x_coco.py',
+    'detr_r50_8x2_150e_coco' : '/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/detr_eva/detr_r50_8x2_150e_coco.py'
 }
 
 def parse_args():
@@ -26,7 +27,7 @@ def parse_args():
     # 모델 선택 인자 추가
     parser.add_argument('--model', type=str, default='faster_rcnn',
                         choices=AVAILABLE_MODELS.keys(),
-                        help='사용할 모델을 선택하세요 (faster_rcnn, mask_rcnn, retinanet)')
+                        help='사용할 모델을 선택하세요')
     
     # 기존 인자들 추가
     parser.add_argument('--root', type=str, default='/data/ephemeral/home/data/dataset/',

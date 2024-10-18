@@ -5,7 +5,7 @@ source .env
 wandb login $WANDB_API_KEY
 
 # WANDB_RUN_NAME
-MODEL="autoassign_r50_fpn_8x2_1x_coco"
+MODEL="detr_r50_8x2_150e_coco"
 RUN_SUFFIX="sj_1"
 WANDB_RUN_NAME="mm_${MODEL}_${RUN_SUFFIX}"
 

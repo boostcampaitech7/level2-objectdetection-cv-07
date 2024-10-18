@@ -1,22 +1,30 @@
+from mmcv.runner import BaseModule
+from transformers import AutoModel
+
+# CustomBackbone 클래스 정의
+class CustomBackbone(BaseModule):
+    def __init__(self, model_name='timm/eva_large_patch14_196.in22k_ft_in22k_in1k', pretrained=True):
+        super().__init__()
+        self.backbone = AutoModel.from_pretrained(model_name)
+
+    def forward(self, x):
+        # EVA 모델의 forward 함수를 호출하여 특징을 추출
+        return self.backbone(x)
+    
 _base_ = [
     '../_base_/datasets/coco_detection.py', '../_base_/default_runtime.py'
 ]
 model = dict(
     type='DETR',
     backbone=dict(
-        type='ResNet',
-        depth=50,
-        num_stages=4,
-        out_indices=(3, ),
-        frozen_stages=1,
-        norm_cfg=dict(type='BN', requires_grad=False),
-        norm_eval=True,
-        style='pytorch',
-        init_cfg=dict(type='Pretrained', checkpoint='torchvision://resnet50')),
+        type='CustomBackbone',  # eva backbone
+        model_name='timm/eva_large_patch14_196.in22k_ft_in22k_in1k',  # EVA model
+        pretrained=True
+    ),
     bbox_head=dict(
         type='DETRHead',
         num_classes=80,
-        in_channels=2048,
+        in_channels=1024, # eva의 출력 채널에 맞게 조정
         transformer=dict(
             type='Transformer',
             encoder=dict(
