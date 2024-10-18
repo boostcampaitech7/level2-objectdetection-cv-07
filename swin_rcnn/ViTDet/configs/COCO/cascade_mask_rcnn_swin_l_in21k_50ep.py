@@ -29,3 +29,5 @@ train.eval_period=100
 train.max_iter=100
 train.init_checkpoint = "detectron2://ImageNetPretrained/swin/swin_large_patch4_window7_224_22k.pth"
 train.output_dir='/data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/swin_rcnn/output'
+
+optimizer.lr=0.0001
