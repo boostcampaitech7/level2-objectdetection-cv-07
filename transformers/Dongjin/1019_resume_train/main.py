@@ -30,8 +30,8 @@ def main(exp_conf_path):
     id2label = utils.get_id2label(conf['classes'])
     label2id = utils.get_label2id(id2label)
 
-    train = dataset.COCO2dataset(conf['data_dir_path'], coco_train, range(10))
-    valid = dataset.COCO2dataset(conf['data_dir_path'], coco_valid, range(10))
+    train = dataset.COCO2dataset(conf['data_dir_path'], coco_train)
+    valid = dataset.COCO2dataset(conf['data_dir_path'], coco_valid)
 
     train_augment_and_transform, validation_transform = dataset.get_transforms()
 

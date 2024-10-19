@@ -43,7 +43,10 @@ def load_train_args(conf):
         subprocess.call(f"wandb login {WANDB_API_KEY}", shell=True)
         
         default_conf['run_name'] = conf['run_name_format'].format(**conf) # 실행이름 지정
-
+        idx = default_conf['run_name'].find('result') + len('result') + 1
+        default_conf['run_name'] = default_conf['run_name'][idx:]
+        default_conf['run_name'] = default_conf['run_name'].replace('/', '-')
+        
     return TrainingArguments(**default_conf)
 
 
