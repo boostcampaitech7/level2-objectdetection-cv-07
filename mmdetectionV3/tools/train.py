@@ -130,7 +130,7 @@ def main():
     cfg.test_evaluator.ann_file = '/data/ephemeral/home/dataset/test.json'
 
     cfg.train_dataloader.batch_size = 3
-    print('aaaaaaaaaaaaaaaaa', cfg.param_scheduler)
+    
     # build the runner from config
     if 'runner_type' not in cfg:
         # build the default runner
