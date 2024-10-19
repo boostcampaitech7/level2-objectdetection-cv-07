@@ -16,6 +16,7 @@ def load_train_args(conf):
             "fp16": False,
             "per_device_train_batch_size": 8,
             "per_device_eval_batch_size": 8,
+            "eval_accumulation_steps": None,
             "dataloader_num_workers": 4,
             "learning_rate": 5e-5, 
             "lr_scheduler_type": "cosine",

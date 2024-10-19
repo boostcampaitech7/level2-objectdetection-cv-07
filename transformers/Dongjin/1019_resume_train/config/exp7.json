@@ -4,7 +4,7 @@
     "per_device_train_batch_size": 1,
     "train_info_name": "train_2_5.json",
     "valid_info_name": "valid_2_5.json",
-    "num_train_epochs": 6,
+    "num_train_epochs": 1,
     "image_size": 900,
     "output_dir_format": "{model_name}_2_size_{image_size}"
 }

@@ -6,7 +6,7 @@ from pycocotools.coco import COCO
 import torch
 
 def test_eval(conf, model, image_processor):
-    batch_size = 8
+    batch_size = 1
     test_info_name = 'test.json'
 
     test_info_path = os.path.join(conf['data_dir_path'], test_info_name)

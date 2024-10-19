@@ -6,6 +6,7 @@ import argparse
 import utils
 import dataset
 import train_eval
+import torch
 
 def main(exp_conf_path):
     current_path = os.path.dirname(os.path.abspath(__file__))
@@ -91,7 +92,6 @@ def main(exp_conf_path):
     log_path = os.path.join(conf['output_dir'], conf['output_dir'].split('/')[-1] + '.txt')
     utils.save_log(trainer, log_path)
     
-
     train_eval.test_eval(conf, model, image_processor)
 
 
