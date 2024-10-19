@@ -14,6 +14,7 @@ def main(exp_conf_path):
 
     conf['output_dir'] = os.path.join(current_path, 'result/' + conf['output_dir_format'].format(**conf)) # 결과 저장 경로
     conf['output_dir'] = utils.renew_if_path_exist(conf['output_dir'])
+    conf['checkpoint_path'] = utils.find_checkpoint_path(conf['saved_model_path'])
 
     # conf 저장
     os.makedirs(conf['output_dir'], exist_ok=True)
@@ -29,8 +30,8 @@ def main(exp_conf_path):
     id2label = utils.get_id2label(conf['classes'])
     label2id = utils.get_label2id(id2label)
 
-    train = dataset.COCO2dataset(conf['data_dir_path'], coco_train)
-    valid = dataset.COCO2dataset(conf['data_dir_path'], coco_valid)
+    train = dataset.COCO2dataset(conf['data_dir_path'], coco_train, range(10))
+    valid = dataset.COCO2dataset(conf['data_dir_path'], coco_valid, range(10))
 
     train_augment_and_transform, validation_transform = dataset.get_transforms()
 
@@ -57,12 +58,21 @@ def main(exp_conf_path):
         train_eval.compute_metrics, image_processor=image_processor, id2label=id2label, threshold=0.0
     )
 
-    model = AutoModelForObjectDetection.from_pretrained(
-        conf['model_name'],
-        id2label=id2label,
-        label2id=label2id,
-        ignore_mismatched_sizes=True,
-    )
+    if 'checkpoint_path' in conf:
+        model = AutoModelForObjectDetection.from_pretrained(
+            conf['checkpoint_path'],
+            id2label=id2label,
+            label2id=label2id,
+            ignore_mismatched_sizes=True,
+        )
+
+    else:
+        model = AutoModelForObjectDetection.from_pretrained(
+            conf['model_name'],
+            id2label=id2label,
+            label2id=label2id,
+            ignore_mismatched_sizes=True,
+        )
 
     training_args = train_eval.load_train_args(conf)
 

@@ -5,7 +5,9 @@ from dataclasses import dataclass
 from torchmetrics.detection.mean_ap import MeanAveragePrecision
 from transformers import TrainingArguments
 import utils 
-
+from dotenv import load_dotenv
+import os
+import subprocess
 
 def load_train_args(conf):
     default_conf = {
@@ -30,9 +32,18 @@ def load_train_args(conf):
             "push_to_hub": False,
             "logging_steps": 100,
             "report_to": "none"
-    }
-    
+    }        
+
     default_conf = utils.override_conf_if_exist(default_conf, conf)
+    
+    # wandb 설정 
+    if default_conf['report_to'] != 'none':
+        load_dotenv() #.env 불러오기
+        WANDB_API_KEY = os.environ.get("WANDB_API_KEY")
+        subprocess.call(f"wandb login {WANDB_API_KEY}", shell=True)
+        
+        default_conf['run_name'] = conf['run_name_format'].format(**conf) # 실행이름 지정
+
     return TrainingArguments(**default_conf)
 
 

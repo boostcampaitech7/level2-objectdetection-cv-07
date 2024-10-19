@@ -3,7 +3,7 @@
     "num_train_epochs": 25,
     "image_size": 480,
     "data_dir_path": "/data/ephemeral/home/data/dataset",
-    "coco_dir_path": "/data/ephemeral/home/Dongjin/level2-objectdetection-cv-07/Other/Dongjin/1010_split/result",
+    "coco_dir_path": "/data/ephemeral/home/Dongjin/level2-objectdetection-cv-07/Split_data",
     "train_info_name": "train_0_5.json",
     "valid_info_name": "valid_0_5.json",
     "classes": [
@@ -19,5 +19,7 @@
         "Clothing"
     ],
     "lr_scheduler_type": "constant",
-    "save_total_limit": 1
+    "save_total_limit": 1,
+    "report_to": "wandb",
+    "run_name_format": "{model_name}_dj_v1"
 }

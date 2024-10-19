@@ -1,5 +1,6 @@
 import os
 import json
+from glob import glob
 
 def get_id2label(classes):
     id2label = {id: label for id, label in enumerate(classes)}
@@ -59,3 +60,12 @@ def load_conf(default_conf_path, new_conf_path):
     conf = override_conf(default_conf, new_conf)
     return conf
     
+
+def find_checkpoint_path(input_path):
+    output_paths = glob(input_path + '/checkpoint*')
+
+    if 1 < len(output_paths):
+        raise Exception(f'checkpoint는 1개여야 합니다. {len(output_path)}개 있습니다.')
+
+    output_path = output_paths[0]
+    return output_path
