@@ -28,7 +28,7 @@ analysis_mode = st.sidebar.radio(
 st.title("Object Detection EDA")
 
 # 기본 데이터셋 경로 설정
-base_path = '/data/ephemeral/home/data/dataset'
+base_path = '/data/ephemeral/home/dataset'
 
 # COCO annotation 파일 로드
 def load_annotations(json_path):

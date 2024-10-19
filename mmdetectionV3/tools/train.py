@@ -117,11 +117,11 @@ def main():
     cfg.model.roi_head[0].bbox_head.num_classes = 10
 
     cfg.train_dataloader.dataset.data_root = '/data/ephemeral/home/dataset/'
-    cfg.train_dataloader.dataset.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/train_0_5.json'
+    cfg.train_dataloader.dataset.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/train_1_5.json'
 
     cfg.val_dataloader.dataset.data_root = '/data/ephemeral/home/dataset/'
-    cfg.val_dataloader.dataset.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/valid_0_5.json'
-    cfg.val_evaluator.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/valid_0_5.json'
+    cfg.val_dataloader.dataset.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/valid_1_5.json'
+    cfg.val_evaluator.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/valid_1_5.json'
     cfg.val_dataloader.dataset.data_prefix=dict(img='')
 
 
@@ -130,7 +130,7 @@ def main():
     cfg.test_evaluator.ann_file = '/data/ephemeral/home/dataset/test.json'
 
     cfg.train_dataloader.batch_size = 3
-    print('aaaaaaaaaaaaaaaaa', cfg.param_scheduler)
+
     # build the runner from config
     if 'runner_type' not in cfg:
         # build the default runner
