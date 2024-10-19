@@ -52,7 +52,7 @@ def parse_args():
     # will pass the `--local-rank` parameter to `tools/train.py` instead
     # of `--local_rank`.
     parser.add_argument('--local_rank', '--local-rank', type=int, default=0)
-    args = parser.parse_args()
+    args = parser.parse_args(['/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetectionV3/projects/CO-DETR/configs/codino/co_dino_5scale_swin_l_16xb1_3x_coco.py'])
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
 
@@ -122,13 +122,15 @@ def main():
     cfg.val_dataloader.dataset.data_root = '/data/ephemeral/home/dataset/'
     cfg.val_dataloader.dataset.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/valid_0_5.json'
     cfg.val_evaluator.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/valid_0_5.json'
+    cfg.val_dataloader.dataset.data_prefix=dict(img='')
+
 
     cfg.test_dataloader.dataset.data_root = '/data/ephemeral/home/dataset/'
     cfg.test_dataloader.dataset.ann_file = '/data/ephemeral/home/dataset/test.json'
     cfg.test_evaluator.ann_file = '/data/ephemeral/home/dataset/test.json'
 
-    cfg.train_dataloader.batch_size = 1
-    
+    cfg.train_dataloader.batch_size = 3
+    print('aaaaaaaaaaaaaaaaa', cfg.param_scheduler)
     # build the runner from config
     if 'runner_type' not in cfg:
         # build the default runner
@@ -137,6 +139,7 @@ def main():
         # build customized runner from the registry
         # if 'runner_type' is set in the cfg
         runner = RUNNERS.build(cfg)
+
 
     # start training
     runner.train()

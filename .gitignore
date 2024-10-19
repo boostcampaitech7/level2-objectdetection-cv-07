@@ -46,3 +46,4 @@ mmdetection/ssd_experiment/work_dirs/
 Other/
 EDA/
 __pycache__
+work_dir
