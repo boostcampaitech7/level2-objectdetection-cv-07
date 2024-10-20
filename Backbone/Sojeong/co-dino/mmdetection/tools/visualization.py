@@ -5,7 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval
-import mmcv
 import pickle
 
 def parse_args():
@@ -19,25 +18,37 @@ def parse_args():
         default='./work_dir')
     return parser.parse_args()
 
-def plot_precision_recall_curve(coco_eval, class_ids, iou_thr=0.5):
+def plot_precision_recall_curve(coco_eval, class_ids, class_names, iou_thr=0.5, mAP=None):
     """각 클래스에 대한 Precision-Recall Curve 그리기 함수"""
     precision = coco_eval.eval['precision']
     iou_thr_idx = np.where(np.isclose(coco_eval.params.iouThrs, iou_thr))[0][0]  # 특정 IoU에 대한 인덱스 가져오기
     
-    for class_id in class_ids:
+    plt.figure(figsize=(10, 8))
+    
+    for idx, class_id in enumerate(class_ids):
         pr_curve = precision[iou_thr_idx, :, class_id, 0, 2]  # 특정 클래스와 IoU에서의 PR Curve
         recall = np.linspace(0, 1, pr_curve.shape[0])
+
+        # AP 계산
+        ap = np.mean(pr_curve)
         
-        plt.plot(recall, pr_curve, label=f'Class {class_id} (IoU={iou_thr})')
-    
+        # 클래스 이름과 AP를 레이블에 포함
+        class_name = class_names[idx]
+        plt.plot(recall, pr_curve, label=f'{class_name} (AP={ap:.2f}, IoU={iou_thr})')
+
     plt.xlabel('Recall')
     plt.ylabel('Precision')
-    plt.title(f'Precision-Recall Curve for Classes (IoU={iou_thr})')
-    plt.legend(loc="lower left")
+    # mAP를 제목에 포함
+    plt.title(f'Precision-Recall Curve for Classes (IoU={iou_thr})\nmAP: {mAP:.2f}')
+    
+    # legend를 그래프 밖에 배치
+    plt.legend(loc='center left', bbox_to_anchor=(1, 0.5), fontsize='small')
     plt.grid(False)
-    # 5. 이미지 저장
-    output_image_path = '/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/co-dino/mmdetection/work_dirs/co_dino/plot/precision_recall_curve.png'  # 저장할 경로
-    plt.savefig(output_image_path)  # 이미지 저장
+
+    # 이미지 저장
+    output_image_path = '/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/co-dino/mmdetection/work_dirs/co_dino/plot/precision_recall_curve.png'
+    plt.tight_layout()  # 레이아웃 조정
+    plt.savefig(output_image_path, bbox_inches='tight')  # 그래프를 저장할 때 legend 포함하여 저장
     plt.show()
 
 def convert_to_coco_format(results, img_ids):
@@ -83,11 +94,17 @@ def main():
     coco_eval.accumulate()
     coco_eval.summarize()
 
+    # 전체 mAP 계산 (평균 AP)
+    mAP = coco_eval.stats[0]  # COCOeval의 첫 번째 요소가 mAP (IoU=0.5:0.95)
+
+    # 클래스 메타 정보 (클래스 이름)
+    metainfo = {'classes': ('General trash', 'Paper', 'Paper pack', 'Metal', 'Glass', 'Plastic', 'Styrofoam', 'Plastic bag', 'Battery', 'Clothing')}
+
     # COCO에 있는 클래스 ID 가져오기
     class_ids = coco.getCatIds()
 
-    # 클래스별 Precision-Recall Curve 그리기
-    plot_precision_recall_curve(coco_eval, class_ids, iou_thr=0.5)
+    # 클래스별 Precision-Recall Curve 그리기, mAP 추가
+    plot_precision_recall_curve(coco_eval, class_ids, metainfo['classes'], iou_thr=0.5, mAP=mAP)
 
 if __name__ == '__main__':
     main()
