@@ -15,7 +15,9 @@ def main(exp_conf_path):
 
     conf['output_dir'] = os.path.join(current_path, 'result/' + conf['output_dir_format'].format(**conf)) # 결과 저장 경로
     conf['output_dir'] = utils.renew_if_path_exist(conf['output_dir'])
-    conf['checkpoint_path'] = utils.find_checkpoint_path(conf['saved_model_path'])
+
+    if conf['saved_model_path']:
+        conf['checkpoint_path'] = utils.find_checkpoint_path(conf['saved_model_path'])
 
     # conf 저장
     os.makedirs(conf['output_dir'], exist_ok=True)
@@ -59,7 +61,7 @@ def main(exp_conf_path):
         train_eval.compute_metrics, image_processor=image_processor, id2label=id2label, threshold=0.0
     )
 
-    if 'checkpoint_path' in conf:
+    if conf['saved_model_path']:
         model = AutoModelForObjectDetection.from_pretrained(
             conf['checkpoint_path'],
             id2label=id2label,
@@ -92,7 +94,7 @@ def main(exp_conf_path):
     log_path = os.path.join(conf['output_dir'], conf['output_dir'].split('/')[-1] + '.txt')
     utils.save_log(trainer, log_path)
     
-    train_eval.test_eval(conf, model, image_processor)
+    # train_eval.test_eval(conf, model, image_processor) # 메모리 문제인 것 같아서 주석처리
 
 
 if __name__ == "__main__":

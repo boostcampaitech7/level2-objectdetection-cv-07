@@ -1,10 +1,9 @@
 {
     "model_name": "jozhang97/deta-swin-large",
-    "saved_model_path": "/data/ephemeral/home/Dongjin/level2-objectdetection-cv-07/transformers/Dongjin/1011_model_search/result/1015/jozhang97/deta-swin-large_1_img_size_720",
     "per_device_train_batch_size": 1,
-    "train_info_name": "train_1_5.json",
-    "valid_info_name": "valid_1_5.json",
-    "num_train_epochs": 6,
+    "train_info_name": "train_3_5.json",
+    "valid_info_name": "valid_3_5.json",
+    "num_train_epochs": 12,
     "image_size": 1024,
-    "output_dir_format": "{model_name}_1_size_{image_size}"
+    "output_dir_format": "{model_name}_3_size_{image_size}"
 }
