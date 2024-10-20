@@ -130,12 +130,12 @@ def main():
     metainfo = {'classes': ("General trash", "Paper", "Paper pack", "Metal", "Glass", "Plastic", "Styrofoam", "Plastic bag", "Battery", "Clothing")}
     cfg.train_dataloader.dataset.metainfo = metainfo  
     cfg.val_dataloader.dataset.metainfo = metainfo
-    cfg.train_dataloader.batch_size = 2
+    cfg.test_dataloader.batch_size = 16
     cfg.work_dir = f'/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetectionV3/work_dir/co_dino'
 
-    cfg.model.bbox_head[0].num_classes = 10
-    cfg.model.query_head.num_classes = 10
-    cfg.model.roi_head[0].bbox_head.num_classes = 10
+    # cfg.model.bbox_head[0].num_classes = 10
+    # cfg.model.query_head.num_classes = 10
+    # cfg.model.roi_head[0].bbox_head.num_classes = 10
 
     cfg.train_dataloader.dataset.data_root = '/data/ephemeral/home/dataset/'
     cfg.train_dataloader.dataset.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/train_0_5.json'
@@ -147,6 +147,7 @@ def main():
     cfg.test_dataloader.dataset.data_root = '/data/ephemeral/home/dataset/'
     cfg.test_dataloader.dataset.ann_file = '/data/ephemeral/home/dataset/test.json'
     cfg.test_evaluator.ann_file = '/data/ephemeral/home/dataset/test.json'
+    cfg.test_dataloader.dataset.data_prefix=dict(img='')
 
     # build the runner from config
     if 'runner_type' not in cfg:
