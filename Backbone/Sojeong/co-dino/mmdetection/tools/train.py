@@ -59,7 +59,6 @@ def parse_args():
     parser.add_argument('--num_classes', type=int, default=10)
     parser.add_argument('--work_dir', type=str, default='/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/co-dino/mmdetection/work_dirs/co_dino')
     parser.add_argument('--eval_ann_file', type=str, default='/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Split_data/valid_0_5.json')
-    parser.add_argument('--test_ann_file', type=str, default='/data/ephemeral/home/dataset/test.json')
     parser.add_argument('--image_size', type=int, nargs=2, default=(800, 800))
     parser.add_argument('--num_workers', type=int, default=2)
     args = parser.parse_args()
@@ -135,20 +134,13 @@ def main():
     cfg.val_dataloader.dataset.ann_file = args.eval_ann_file
     cfg.val_evaluator.ann_file = args.eval_ann_file
     cfg.val_dataloader.dataset.data_prefix=dict(img='')
-    
-    cfg.test_dataloader.dataset.data_root = args.data_root
-    cfg.test_dataloader.dataset.ann_file = args.test_ann_file
-    cfg.test_evaluator.ann_file = args.test_ann_file
-    cfg.test_dataloader.dataset.data_prefix=dict(img='')
-    
+        
     cfg.train_dataloader.batch_size = args.batch_size
     cfg.val_dataloader.batch_size = args.batch_size
-    cfg.test_dataloader.batch_size = args.batch_size
     
     cfg.train_dataloader.num_workers = args.num_workers
     cfg.val_dataloader.num_workers = args.num_workers
-    cfg.test_dataloader.num_workers = args.num_workers
-    #import IPython; IPython.embed(colors='Linux');exit(1);
+
     # build the runner from config
     if 'runner_type' not in cfg:
         # build the default runner
