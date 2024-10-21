@@ -1,5 +1,5 @@
 {
-  "_name_or_path": "jozhang97/deta-swin-large",
+  "_name_or_path": "/data/ephemeral/home/Dongjin/level2-objectdetection-cv-07/transformers/Dongjin/1011_model_search/result/1015/jozhang97/deta-swin-large_3_img_size_720/checkpoint-15704",
   "activation_dropout": 0.0,
   "activation_function": "relu",
   "architectures": [

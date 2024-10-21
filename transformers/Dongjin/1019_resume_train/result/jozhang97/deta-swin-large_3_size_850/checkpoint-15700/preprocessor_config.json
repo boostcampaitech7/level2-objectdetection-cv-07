@@ -17,13 +17,13 @@
     0.225
   ],
   "pad_size": {
-    "height": 1024,
-    "width": 1024
+    "height": 850,
+    "width": 850
   },
   "resample": 2,
   "rescale_factor": 0.00392156862745098,
   "size": {
-    "max_height": 1024,
-    "max_width": 1024
+    "max_height": 850,
+    "max_width": 850
   }
 }

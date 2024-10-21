@@ -94,7 +94,7 @@ def main(exp_conf_path):
     log_path = os.path.join(conf['output_dir'], conf['output_dir'].split('/')[-1] + '.txt')
     utils.save_log(trainer, log_path)
     
-    # train_eval.test_eval(conf, model, image_processor) # 메모리 문제인 것 같아서 주석처리
+    train_eval.test_eval(conf, model, image_processor) 
 
 
 if __name__ == "__main__":
