@@ -36,6 +36,8 @@
 ## [5] Final Model Architecture
 ![최종 모델 아키텍쳐]()
 
+## [6] Installation Guide
+
 <div align='center'>
   <h1>Team Members</h1>
   <h3>럭키비키🍀</h3>
