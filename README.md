@@ -20,12 +20,7 @@
 
 ## Project Overview
 #### **Timeline (9/30 - 10/24)**
-<img  alt="프로젝트 타임라인" src='' width="80%"/>
-
-1. EDA 및 baseline code 분석
-2. Baseline model 실험
-3. Baseline model 일반화 성능 개선
-4. 최종 결과 분석
+<img width="80%" alt="프로젝트 타임라인" src="https://github.com/user-attachments/assets/ac1d0694-b99a-4a40-af17-6f8bc87cb741">
 
 #### **최종 결과(추후 수정)**
 <img width="80%" alt="최종 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
