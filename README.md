@@ -19,21 +19,21 @@
 많은 물건이 대량으로 생산되고, 소비되는 문화는 '쓰레기 대란', '매립지 부족'과 같은 여러 사회 문제를 낳고 있습니다. 잘 분리배출 된 쓰레기는 자원으로서 가치를 인정받아 재활용되기에 분리수거는 이러한 환경 부담을 줄일 수 있는 방법 중 하나입니다. 따라서 우리는 사진에서 쓰레기를 Detection 하는 모델을 만들어 이러한 문제점을 해결해보고자 합니다. <br>
 
 **Goal :** 쓰레기 객체를 탐지하는 모델을 개발하여 정확한 분리수거와 환경 보호를 지원 <br>
-**Data :** COCO format의 쓰레기 객체 이미지 9754장
-
-<br>
+**Data :** COCO format의 쓰레기 객체 이미지 9754장<br>
+**Metric :** Test set의 mAP50(Mean Average Precision)
 
 ## Project Overview
-많은 물건이 대량으로 생산되고, 소비되는 문화는 '쓰레기 대란', '매립지 부족'과 같은 여러 사회 문제를 낳고 있습니다. 잘 분리배출 된 쓰레기는 자원으로서 가치를 인정받아 재활용되기에 분리수거는 이러한 환경 부담을 줄일 수 있는 방법 중 하나입니다. 따라서 우리는 사진에서 쓰레기를 Detection 하는 모델을 만들어 이러한 문제점을 해결해보고자 합니다. <br>
-**Timeline ⏳ (9/30 - 10/24)**<br>
+먼저 데이터에 대한 EDA와 baseline 모델 분석을 수행한 후 mmdetection, detectron2, transformers 등의 라이브러리를 활용하여 다양한 모델의 성능을 실험했습니다. 최종적으로 앙상블 기법을 통해 성능을 극대화하였고, 이를 바탕으로 최종 모델 아키텍처를 구성하여 분석을 진행했습니다. 결과적으로 mAP50 ""를 달성하며 리더보드에서 Private N 순위와 Public N 순위를 기록하였습니다.<br>
+
+**1. Timeline ⏳ (9/30 - 10/24)**<br>
 EDA 및 baseline code 분석 → Baseline model 실험 → 앙상블 → 최종 결과 분석<br>&emsp;
 
-**최종 결과 📈(추후 수정)**
+**2. 최종 결과 📈(추후 수정)**
 <br>
 <img align="center" width="80%" alt="최종 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
 
 ## Final Model
-많은 물건이 대량으로 생산되고, 소비되는 문화는 '쓰레기 대란', '매립지 부족'과 같은 여러 사회 문제를 낳고 있습니다. 잘 분리배출 된 쓰레기는 자원으로서 가치를 인정받아 재활용되기에 분리수거는 이러한 환경 부담을 줄일 수 있는 방법 중 하나입니다. 따라서 우리는 사진에서 쓰레기를 Detection 하는 모델을 만들어 이러한 문제점을 해결해보고자 합니다. <br>
+다음은 최종 모델 구성에 사용된 모델들입니다. 최종적으로 DETA 5-fold 결과와 Co-DINO 5-fold 결과를 기반으로 threshold를 0.7로 설정하여 WBS를 실행한 결과, 최종 성능 ""를 달성했습니다.<br>
 Model | Backbone | Lr schd | 더 넣고 싶은 특징!! | box mAP50 |                        Config                         |  Download  |
 | :------: | :---------: | :-----: | :----------: | :----: | :---------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |   Co-Dino   | R-50  |   12e   |         |    |     [config](./dino-4scale_r50_8xb2-12e_coco.py)      |                   [model](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth) \| [log](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705.log.json)                   |
@@ -45,7 +45,6 @@ Model | Backbone | Lr schd | 더 넣고 싶은 특징!! | box mAP50 |           
 |    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
 
 ## Installation Guide
-많은 물건이 대량으로 생산되고, 소비되는 문화는 '쓰레기 대란', '매립지 부족'과 같은 여러 사회 문제를 낳고 있습니다. 잘 분리배출 된 쓰레기는 자원으로서 가치를 인정받아 재활용되기에 분리수거는 이러한 환경 부담을 줄일 수 있는 방법 중 하나입니다. 따라서 우리는 사진에서 쓰레기를 Detection 하는 모델을 만들어 이러한 문제점을 해결해보고자 합니다. <br>
 1. Installation(추후 수정)
 ```
 # Step 1. Create a conda environment and activate it
@@ -78,7 +77,6 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
 
 ```
 ## File Tree(추후 수정)
-많은 물건이 대량으로 생산되고, 소비되는 문화는 '쓰레기 대란', '매립지 부족'과 같은 여러 사회 문제를 낳고 있습니다. 잘 분리배출 된 쓰레기는 자원으로서 가치를 인정받아 재활용되기에 분리수거는 이러한 환경 부담을 줄일 수 있는 방법 중 하나입니다. 따라서 우리는 사진에서 쓰레기를 Detection 하는 모델을 만들어 이러한 문제점을 해결해보고자 합니다. <br>
 ```
   ├─.github
   ├─ mmdetection
@@ -98,7 +96,6 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
   ├─README.md
 ```
 ## Environment Setting(추후수정)
-많은 물건이 대량으로 생산되고, 소비되는 문화는 '쓰레기 대란', '매립지 부족'과 같은 여러 사회 문제를 낳고 있습니다. 잘 분리배출 된 쓰레기는 자원으로서 가치를 인정받아 재활용되기에 분리수거는 이러한 환경 부담을 줄일 수 있는 방법 중 하나입니다. 따라서 우리는 사진에서 쓰레기를 Detection 하는 모델을 만들어 이러한 문제점을 해결해보고자 합니다. <br>
 **1. System Setup & Libraries**
 <table>
   <tr>
