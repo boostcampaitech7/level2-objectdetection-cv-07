@@ -25,15 +25,13 @@
 
 ## Project Overview
 **Timeline ⏳ (9/30 - 10/24)**<br>
-: **EDA 및 baseline code 분석** → **Baseline model 실험** → **앙상블** → **최종 결과 분석**
+EDA 및 baseline code 분석 → Baseline model 실험 → 앙상블 → 최종 결과 분석<br>&emsp;
 
-**최종 결과 📈(추후 수정)**<br>
-<img width="80%" alt="최종 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
-
+**최종 결과 📈(추후 수정)**
 <br>
+<img align="center" width="80%" alt="최종 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
 
 ## Final Model
-
 Model | Backbone | Lr schd | 더 넣고 싶은 특징!! | box mAP50 |                        Config                         |  Download  |
 | :------: | :---------: | :-----: | :----------: | :----: | :---------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |   Co-Dino   | R-50  |   12e   |         |    |     [config](./dino-4scale_r50_8xb2-12e_coco.py)      |                   [model](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth) \| [log](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705.log.json)                   |
@@ -43,8 +41,6 @@ Model | Backbone | Lr schd | 더 넣고 싶은 특징!! | box mAP50 |           
 |    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
 |    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
 |    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
-
-<br>
 
 ## Installation Guide
 1. Installation(추후 수정)
@@ -78,9 +74,6 @@ Step 2. Verify the inference demo.
 python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth
 
 ```
-
-<br>
-
 ## File Tree(추후 수정)
 ```
   ├─.github
@@ -100,9 +93,6 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
   ├─requirements.txt
   ├─README.md
 ```
-
-<br>
-
 ## Environment Setting(추후수정)
 **1. System Setup & Libraries**
 <table>
@@ -147,6 +137,7 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
     <td>NVIDIA RTX 3090</td>
   </tr>
 </table>
+<br>
 
 **2. Dependencies**  
 아래 주요 라이브러리 및 버전이 필요합니다. 전체 목록은 [requirements.txt](./requirements.txt)에서 확인할 수 있습니다.
