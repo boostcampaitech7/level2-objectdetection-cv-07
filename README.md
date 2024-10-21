@@ -1,20 +1,19 @@
 <div align='center'>
-  <img width="70%" src='https://github.com/user-attachments/assets/2aeb6c57-296d-43f3-b883-5b5e7fe06d16'/>
   <h2>🏆 재활용 품목 분류를 위한 Object Detection</h1>
 </div>
 <div align="center">
 
-[📘Documentation](https://detrex.readthedocs.io/en/latest/index.html) |
+[📘Wrap-Up Report](https://detrex.readthedocs.io/en/latest/index.html) |
 [🛠️Installation](https://detrex.readthedocs.io/en/latest/tutorials/Installation.html) |
-[👀Model Zoo](https://detrex.readthedocs.io/en/latest/tutorials/Model_Zoo.html) |
-[🚀Awesome DETR](https://github.com/IDEA-Research/awesome-detection-transformer) |<br>
+[👀Model](https://detrex.readthedocs.io/en/latest/tutorials/Model_Zoo.html) |
+[🚀Model Library](https://github.com/IDEA-Research/awesome-detection-transformer) |<br>
 [🆕News](#whats-new) |
-[🤔Reporting Issues](https://github.com/IDEA-Research/detrex/issues/new/choose)
+[🤔Issues](https://github.com/IDEA-Research/detrex/issues/new/choose)
 
 </div>
 
 ## Introduction
-프로젝트 소개 간단히 줄글로 적기
+많은 물건이 대량으로 생산되고, 소비되는 문화는 '쓰레기 대란', '매립지 부족'과 같은 여러 사회 문제를 낳고 있습니다. 잘 분리배출 된 쓰레기는 자원으로서 가치를 인정받아 재활용되기에 분리수거는 이러한 환경 부담을 줄일 수 있는 방법 중 하나입니다. 따라서 우리는 사진에서 쓰레기를 Detection 하는 모델을 만들어 이러한 문제점을 해결해보고자 합니다. <br>
 
 **Goal :** 쓰레기 객체를 탐지하는 모델을 개발하여 정확한 분리수거와 환경 보호를 지원 <br>
 **Data :** COCO format의 쓰레기 객체 이미지 9754장
