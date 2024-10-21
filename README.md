@@ -44,9 +44,10 @@
   ├─ mmdetection
     ├─
     ├─
+  ├─tranformers
     ├─
     ├─
-  ├─
+  ├─ensemble_inference.py
   ├─requirements.txt
   ├─README.md
 ```
