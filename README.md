@@ -6,9 +6,9 @@
 [📘Wrap-Up Report](https://detrex.readthedocs.io/en/latest/index.html) |
 [🛠️Installation](https://detrex.readthedocs.io/en/latest/tutorials/Installation.html) |
 [👀Model](https://detrex.readthedocs.io/en/latest/tutorials/Model_Zoo.html) |
-[🚀Model Library](https://github.com/IDEA-Research/awesome-detection-transformer) |<br>
-[🆕News](#whats-new) |
-[🤔Issues](https://github.com/IDEA-Research/detrex/issues/new/choose)
+[🤔Issues](https://github.com/boostcampaitech7/level2-objectdetection-cv-07/issues) | <br>
+[🚀MMDetection](https://github.com/open-mmlab/mmdetection) |
+[🤗Transformers](https://huggingface.co/docs/transformers/en/index) |
 
 </div>
 
@@ -28,7 +28,7 @@
 4. 최종 결과 분석
 
 #### **최종 결과**
-<img width="80%" alt="최종 리더보드 순위" src=""><br>
+<img width="80%" alt="최종 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
 
 #### **Final Model Architecture**
 ![최종 모델 아키텍쳐]()
