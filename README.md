@@ -1,7 +1,10 @@
 <div align='center'>
-  <h2>🏆 재활용 품목 분류를 위한 Object Detection</h1>
+  <img width="524" alt="Screenshot 2024-10-21 at 10 08 24 PM" src="https://github.com/user-attachments/assets/d7db3331-a5fe-49d6-b107-82cc10bd42d1">  
+  <h2>🏆 재활용 품목 분류를 위한 Object Detection</h2>
 </div>
+
 <div align="center">
+
 
 [📘Wrap-Up Report](https://detrex.readthedocs.io/en/latest/index.html) |
 [🛠️Installation](https://detrex.readthedocs.io/en/latest/tutorials/Installation.html) |
