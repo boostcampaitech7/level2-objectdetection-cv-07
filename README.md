@@ -28,11 +28,20 @@
 #### **최종 결과(추후 수정)**
 <img width="80%" alt="최종 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
 
-#### **Final Model Architecture(추후 수정)**
-<img width="80%" alt="최종 모델 아키텍쳐" src="https://github.com/user-attachments/assets/a871f048-4afd-4047-b886-ae7627210cf1">
+## Final Models
+
+Model | Backbone | Lr schd | 더 넣고 싶은 특징!! | box mAP50 |                        Config                         |                                                                                                                                                                    Download                                                                                                                                                                    |
+| :------: | :---------: | :-----: | :----------: | :----: | :---------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|   Co-Dino   | R-50  |   12e   |         |    |     [config](./dino-4scale_r50_8xb2-12e_coco.py)      |                   [model](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth) \| [log](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705.log.json)                   |
+|  Deta  | Swin-L |   36e   |         |    |    [config](./dino-5scale_swin-l_8xb2-36e_coco.py)    |                                                 [model](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/dino-5scale_swin-l_8xb2-36e_coco-5486e051.pth) \| [log](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/20230307_032359.log)                                                 |
+|    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
+|    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
+|    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
+|    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
+|    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
 
 ## Installation Guide
-1. Installation
+1. Installation(추후 수정)
 ```
 # Step 1. Create a conda environment and activate it
 conda create --name openmmlab python=3.8 -y
@@ -54,7 +63,7 @@ pip install requirements.txt
 ```
 <br>
 
-2. Run Demo
+2. Run Demo(추후 수정)
 ```
 Step 1. We need to download config and checkpoint files.
 mim download mmdet --config rtmdet_tiny_8xb32-300e_coco --dest .
