@@ -28,9 +28,9 @@
 #### **최종 결과(추후 수정)**
 <img width="80%" alt="최종 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
 
-## Final Models
+## Final Model
 
-Model | Backbone | Lr schd | 더 넣고 싶은 특징!! | box mAP50 |                        Config                         |                                                                                                                                                                    Download                                                                                                                                                                    |
+Model | Backbone | Lr schd | 더 넣고 싶은 특징!! | box mAP50 |                        Config                         |  Download  |
 | :------: | :---------: | :-----: | :----------: | :----: | :---------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |   Co-Dino   | R-50  |   12e   |         |    |     [config](./dino-4scale_r50_8xb2-12e_coco.py)      |                   [model](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth) \| [log](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705.log.json)                   |
 |  Deta  | Swin-L |   36e   |         |    |    [config](./dino-5scale_swin-l_8xb2-36e_coco.py)    |                                                 [model](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/dino-5scale_swin-l_8xb2-36e_coco-5486e051.pth) \| [log](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/20230307_032359.log)                                                 |
@@ -73,7 +73,7 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
 
 ```
 
-## File Tree
+## File Tree(추후 수정)
 ```
   ├─.github
   ├─ mmdetection
@@ -93,15 +93,60 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
   ├─README.md
 ```
 
-## Environment
-OS : Linux-5.4.0 <br>
-GPU : Tesla V100 (32GB) <br>
-Python Version: 3.10.13 <br>
-IDE: Visual Studio Code <br>
-Tool : Github, Slack, Notion, Zoom <br>
-Experiment Tracking: Weights and Biases (WandB)
+## Environment Setting
+**1. System Setup & Libraries**
+<table>
+  <tr>
+    <th colspan="2">System Information</th> <!-- 행 병합 -->
+    <th colspan="2">Tools and Libraries</th> <!-- 열 병합 -->
+  </tr>
+  <tr>
+    <th>Category</th>
+    <th>Details</th>
+    <th>Category</th>
+    <th>Details</th>
+  </tr>
+  <tr>
+    <td>Operating System</td>
+    <td>Linux 5.4.0</td>
+    <td>Docker</td>
+    <td>Linux 5.4.0</td>
+  </tr>
+  <tr>
+    <td>Python</td>
+    <td>3.8.13</td>
+    <td>Git</td>
+    <td>3.8.13</td>
+  </tr>
+  <tr>
+    <td>GPU</td>
+    <td>NVIDIA RTX 3090</td>
+    <td>Conda</td>
+    <td>NVIDIA RTX 3090</td>
+  </tr>
+  <tr>
+    <td>CUDA</td>
+    <td>NVIDIA RTX 3090</td>
+    <td>Tmux</td>
+    <td>NVIDIA RTX 3090</td>
+  </tr>
+  <tr>
+    <td>CUDNN</td>
+    <td>NVIDIA RTX 3090</td>
+    <td>OS</td>
+    <td>NVIDIA RTX 3090</td>
+  </tr>
+</table>
 
-## Team Members
+**2. Dependencies**  
+아래 주요 라이브러리 및 버전이 필요합니다. 전체 목록은 [requirements.txt](./requirements.txt)에서 확인할 수 있습니다.
+- `torch==1.12.1`  
+- `torchvision==0.13.1`  
+- `numpy==1.21.2`  
+- `pandas==1.3.3`  
+- `scikit-learn==0.24.2`  
+
+##  Team Members
 <div align='center'>
   <h3>럭키비키🍀</h3>
   <table width="98%">
