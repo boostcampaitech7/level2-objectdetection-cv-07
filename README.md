@@ -21,12 +21,16 @@
 **Goal :** 쓰레기 객체를 탐지하는 모델을 개발하여 정확한 분리수거와 환경 보호를 지원 <br>
 **Data :** COCO format의 쓰레기 객체 이미지 9754장
 
+<br>
+
 ## Project Overview
 **Timeline ⏳ (9/30 - 10/24)**<br>
 : **EDA 및 baseline code 분석** → **Baseline model 실험** → **앙상블** → **최종 결과 분석**
 
 **최종 결과 📈(추후 수정)**<br>
 <img width="80%" alt="최종 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
+
+<br>
 
 ## Final Model
 
@@ -39,6 +43,8 @@ Model | Backbone | Lr schd | 더 넣고 싶은 특징!! | box mAP50 |           
 |    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
 |    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
 |    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
+
+<br>
 
 ## Installation Guide
 1. Installation(추후 수정)
@@ -73,6 +79,8 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
 
 ```
 
+<br>
+
 ## File Tree(추후 수정)
 ```
   ├─.github
@@ -93,7 +101,9 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
   ├─README.md
 ```
 
-## Environment Setting
+<br>
+
+## Environment Setting(추후수정)
 **1. System Setup & Libraries**
 <table>
   <tr>
@@ -145,7 +155,6 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
 - `numpy==1.21.2`  
 - `pandas==1.3.3`  
 - `scikit-learn==0.24.2`
-
 
 <p align='center'>© 2024 LuckyVicky Team.</p>
 <p align='center'>Supported by Naver BoostCamp AI Tech.</p>
