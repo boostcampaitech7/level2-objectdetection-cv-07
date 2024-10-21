@@ -6,7 +6,7 @@
 **Goal :** 쓰레기 객체를 탐지하는 모델을 개발하여 정확한 분리수거와 환경 보호를 지원 <br>
 **Data :** COCO format의 쓰레기 객체 이미지 9754장
 
-## [1] Project Overview
+## Project Overview
 ### ⏲️ Timeline (9/30 - 10/24)
 <img  alt="프로젝트 타임라인" src='' width="80%"/>
 
@@ -18,7 +18,7 @@
 ### 🥇 최종 결과
 <img width="80%" alt="최종 리더보드 순위" src=""><br>
 
-## [2] Environment
+## Environment
 - OS : Linux-5.4.0
 - GPU : Tesla V100 (32GB)
 - Python Version: 3.10.13
@@ -26,7 +26,7 @@
 - Tool : Github, Slack, Notion, Zoom
 - Experiment Tracking: Weights and Biases (WandB)
 
-## [3] File Tree
+## File Tree
 ```
   ├─.github
   ├─ mmdetection
@@ -38,12 +38,16 @@
   ├─requirements.txt
   ├─README.md
 ```
-## [4] Demo
-
-## [5] Final Model Architecture
+## Final Model Architecture
 ![최종 모델 아키텍쳐]()
 
-## [6] Installation Guide
+## Installation Guide
+```
+
+```
+
+
+
 
 <div align='center'>
   <h1>Team Members</h1>
