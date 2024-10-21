@@ -25,7 +25,7 @@ dataloader:
       recompute_boxes: false
       use_instance_mask: false
     num_workers: 2
-    total_batch_size: 2
+    total_batch_size: 4
 lr_multiplier:
   _target_: detectron2.solver.WarmupParamScheduler
   scheduler:
@@ -103,10 +103,20 @@ model:
     post_nms_topk: [1000, 1000]
     pre_nms_topk: [2000, 1000]
   roi_heads:
-    _target_: detectron2.modeling.StandardROIHeads
+    _target_: detectron2.modeling.roi_heads.CascadeROIHeads
     batch_size_per_image: 128
-    box_head:
-      _target_: detectron2.modeling.roi_heads.FastRCNNConvFCHead
+    box_heads:
+    - _target_: detectron2.modeling.roi_heads.FastRCNNConvFCHead
+      conv_dims: [256, 256, 256, 256]
+      conv_norm: LN
+      fc_dims: [1024]
+      input_shape: !!python/object:detectron2.layers.shape_spec.ShapeSpec {channels: 256, height: 7, stride: null, width: 7}
+    - _target_: detectron2.modeling.roi_heads.FastRCNNConvFCHead
+      conv_dims: [256, 256, 256, 256]
+      conv_norm: LN
+      fc_dims: [1024]
+      input_shape: !!python/object:detectron2.layers.shape_spec.ShapeSpec {channels: 256, height: 7, stride: null, width: 7}
+    - _target_: detectron2.modeling.roi_heads.FastRCNNConvFCHead
       conv_dims: [256, 256, 256, 256]
       conv_norm: LN
       fc_dims: [1024]
@@ -118,21 +128,46 @@ model:
       pooler_type: ROIAlignV2
       sampling_ratio: 0
       scales: [0.25, 0.125, 0.0625, 0.03125]
-    box_predictor:
-      _target_: detectron2.modeling.FastRCNNOutputLayers
+    box_predictors:
+    - _target_: detectron2.modeling.FastRCNNOutputLayers
       box2box_transform:
         _target_: detectron2.modeling.box_regression.Box2BoxTransform
         weights: [10, 10, 5, 5]
+      cls_agnostic_bbox_reg: true
       input_shape: !!python/object:detectron2.layers.shape_spec.ShapeSpec {channels: 1024, height: null, stride: null, width: null}
-      num_classes: ${..num_classes}
+      num_classes: ${...num_classes}
+      test_score_thresh: 0.05
+    - _target_: detectron2.modeling.FastRCNNOutputLayers
+      box2box_transform:
+        _target_: detectron2.modeling.box_regression.Box2BoxTransform
+        weights: [20, 20, 10, 10]
+      cls_agnostic_bbox_reg: true
+      input_shape: !!python/object:detectron2.layers.shape_spec.ShapeSpec {channels: 1024, height: null, stride: null, width: null}
+      num_classes: ${...num_classes}
+      test_score_thresh: 0.05
+    - _target_: detectron2.modeling.FastRCNNOutputLayers
+      box2box_transform:
+        _target_: detectron2.modeling.box_regression.Box2BoxTransform
+        weights: [30, 30, 15, 15]
+      cls_agnostic_bbox_reg: true
+      input_shape: !!python/object:detectron2.layers.shape_spec.ShapeSpec {channels: 1024, height: null, stride: null, width: null}
+      num_classes: ${...num_classes}
       test_score_thresh: 0.05
     num_classes: 10
     positive_fraction: 0.25
-    proposal_matcher:
-      _target_: detectron2.modeling.matcher.Matcher
+    proposal_matchers:
+    - _target_: detectron2.modeling.matcher.Matcher
       allow_low_quality_matches: false
       labels: [0, 1]
       thresholds: [0.5]
+    - _target_: detectron2.modeling.matcher.Matcher
+      allow_low_quality_matches: false
+      labels: [0, 1]
+      thresholds: [0.6]
+    - _target_: detectron2.modeling.matcher.Matcher
+      allow_low_quality_matches: false
+      labels: [0, 1]
+      thresholds: [0.7]
 optimizer:
   _target_: torch.optim.AdamW
   betas: [0.9, 0.999]
@@ -153,11 +188,11 @@ optimizer:
   weight_decay: 0.1
 train:
   amp: {enabled: true}
-  checkpointer: {max_to_keep: 100, period: 5000}
+  checkpointer: {max_to_keep: 5, period: 5000}
   ddp: {broadcast_buffers: false, find_unused_parameters: false, fp16_compression: true}
   device: cuda
-  eval_period: 5000
+  eval_period: 500
   init_checkpoint: detectron2://ImageNetPretrained/MAE/mae_pretrain_vit_large.pth?matching_heuristics=True
   log_period: 20
   max_iter: 184375
-  output_dir: /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/vitdet_rcnn/output
+  output_dir: /data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/vitdet_rcnn_768/output
