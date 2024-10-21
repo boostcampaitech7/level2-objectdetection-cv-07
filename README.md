@@ -27,11 +27,11 @@
 3. Baseline model 일반화 성능 개선
 4. 최종 결과 분석
 
-#### **최종 결과**
+#### **최종 결과(추후 수정)**
 <img width="80%" alt="최종 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
 
-#### **Final Model Architecture**
-![최종 모델 아키텍쳐]()
+#### **Final Model Architecture(추후 수정)**
+<img width="80%" alt="최종 모델 아키텍쳐" src="https://github.com/user-attachments/assets/a871f048-4afd-4047-b886-ae7627210cf1">
 
 ## Installation
 ```
