@@ -31,8 +31,36 @@
 #### **Final Model Architecture(추후 수정)**
 <img width="80%" alt="최종 모델 아키텍쳐" src="https://github.com/user-attachments/assets/a871f048-4afd-4047-b886-ae7627210cf1">
 
-## Installation
+## Installation Guide
+1. Installation
 ```
+# Step 1. Create a conda environment and activate it
+conda create --name openmmlab python=3.8 -y
+conda activate openmmlab
+
+# Step 2. Install PyTorch following official instructions, e.g.
+conda install pytorch torchvision -c pytorch
+
+# Step 3. Install MMEngine and MMCV using MIM.
+pip install -U openmim
+mim install mmengine
+mim install "mmcv>=2.0.0"
+
+# Step 4. Install MMDetection.
+git clone https://github.com/open-mmlab/mmdetection.git
+cd mmdetection
+pip install -v -e .
+pip install requirements.txt
+```
+<br>
+
+2. Run Demo
+```
+Step 1. We need to download config and checkpoint files.
+mim download mmdet --config rtmdet_tiny_8xb32-300e_coco --dest .
+
+Step 2. Verify the inference demo.
+python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth
 
 ```
 
@@ -40,12 +68,18 @@
 ```
   ├─.github
   ├─ mmdetection
-    ├─
-    ├─
+    ├─config 파일
+    ├─checkpoint 파일
+    ├─test 파일
+    ├─train 파일
   ├─tranformers
-    ├─
-    ├─
+    ├─config 파일
+    ├─checkpoint 파일
+    ├─test 파일
+    ├─train 파일
   ├─ensemble_inference.py
+  ├─demo
+    ├─model_demo.py
   ├─requirements.txt
   ├─README.md
 ```
