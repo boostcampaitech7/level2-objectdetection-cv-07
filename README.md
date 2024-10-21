@@ -22,13 +22,10 @@
 **Data :** COCO format의 쓰레기 객체 이미지 9754장
 
 ## Project Overview
-#### **Timeline (9/30 - 10/24)**
-1. EDA 및 baseline code 분석
-2. Baseline model 실험
-3. 앙상블
-4. 최종 결과 분석
+**Timeline ⏳ (9/30 - 10/24)**<br>
+: **EDA 및 baseline code 분석** → **Baseline model 실험** → **앙상블** → **최종 결과 분석**
 
-#### **최종 결과(추후 수정)**
+**최종 결과 📈(추후 수정)**<br>
 <img width="80%" alt="최종 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
 
 ## Final Model
@@ -147,12 +144,17 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
 - `torchvision==0.13.1`  
 - `numpy==1.21.2`  
 - `pandas==1.3.3`  
-- `scikit-learn==0.24.2`  
+- `scikit-learn==0.24.2`
 
-##  Team Members
+
+<p align='center'>© 2024 LuckyVicky Team.</p>
+<p align='center'>Supported by Naver BoostCamp AI Tech.</p>
+
+---
+
 <div align='center'>
-  <h3>럭키비키🍀</h3>
-  <table width="98%">
+  <h3>👥 Team Members of LuckyVicky</h3>
+  <table width="80%">
     <tr>
       <td align="center" valign="top" width="15%"><a href="https://github.com/jinlee24"><img src="https://avatars.githubusercontent.com/u/137850412?v=4"></a></td>
       <td align="center" valign="top" width="15%"><a href="https://github.com/stop0729"><img src="https://avatars.githubusercontent.com/u/78136790?v=4"></a></td>
@@ -162,12 +164,12 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
       <td align="center" valign="top" width="15%"><a href="https://github.com/cyndii20"><img src="https://avatars.githubusercontent.com/u/90389093?v=4"></a></td>
     </tr>
     <tr>
-      <td align="center">이동진</td>
-      <td align="center">정지환</td>
-      <td align="center">유정선</td>
-      <td align="center">신승철</td>
-      <td align="center">김소정</td>
-      <td align="center">서정연</td>
+      <td align="center">🍀이동진</td>
+      <td align="center">🍀정지환</td>
+      <td align="center">🍀유정선</td>
+      <td align="center">🍀신승철</td>
+      <td align="center">🍀김소정</td>
+      <td align="center">🍀서정연</td>
     </tr>
     <tr>
       <td align="center"></td>
