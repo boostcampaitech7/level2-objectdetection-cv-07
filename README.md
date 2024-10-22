@@ -39,10 +39,8 @@
 |   Model  | Backbone |  Lr schd |  k-fold  |  ensemble<br>(threshold)  |   box mAP  |  Config  |   Download   |
 | :------: | :------: | :------: | :------: | :-------------------: | :--------: | :------: |   :------:   |
 |  Co-Dino |   R-50   |   12e    |  5-fold  |        WBF(0.7)       |   0.9999   | [config](./dino-4scale_r50_8xb2-12e_coco.py) | [model](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth) \| [log](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705.log.json) |
-|  Deta    | Swin-L   |   36e    |  5-fold  |        WBF(0.7)       |   0.9999   | [config](./dino-5scale_swin-l_8xb2-36e_coco.py) | [model](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/dino-5scale_swin-l_8xb2-36e_coco-5486e051.pth) \| [log](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/20230307_032359.log) |
-|  Cascade R-CNN |   MViTv2   |      |         |    |        |    [config]()    |    [model]() \| [log]()                                                 |
-|          |      |      |         |    |        |    [config]()    |    [model]() \| [log]()                                                 |
-|    Final Model      |      |      |         |    |        |    [config]()    |    [model]() \| [log]()                                                 |
+|   Deta   |  Swin-L  |   36e   |  5-fold  |        WBF(0.8)       |   0.9999   | [config](./dino-5scale_swin-l_8xb2-36e_coco.py) | [model](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/dino-5scale_swin-l_8xb2-36e_coco-5486e051.pth) \| [log](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/20230307_032359.log) |
+|  Cascade R-CNN |   MViTv2   |   30e   |  3-fold  |  WBF(0.6) |  0.9999  |  [config]()  |  [model]() \| [log]() |
 
 ## Installation Guide
 1. Installation(추후 수정)
