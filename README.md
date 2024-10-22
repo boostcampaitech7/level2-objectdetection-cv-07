@@ -90,7 +90,6 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
   ├─README.md
 ```
 ## Environment Setting
-**1. System Setup & Libraries**
 <table>
   <tr>
     <th colspan="2">System Information</th> <!-- 행 병합 -->
@@ -128,14 +127,6 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
   </tr>
 </table>
 <br>
-
-**2. Dependencies**  
-아래 주요 라이브러리 및 버전이 필요합니다. 전체 목록은 [requirements.txt](./requirements.txt)에서 확인할 수 있습니다.
-- `torch==1.12.1`  
-- `torchvision==0.13.1`  
-- `numpy==1.21.2`  
-- `pandas==1.3.3`  
-- `scikit-learn==0.24.2`
 
 <p align='center'>© 2024 LuckyVicky Team.</p>
 <p align='center'>Supported by Naver BoostCamp AI Tech.</p>
