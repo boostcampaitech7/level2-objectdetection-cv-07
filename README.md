@@ -25,11 +25,7 @@
 ## Project Overview
 먼저 EDA와 baseline 모델 분석을 수행한 후, mmdetection, transformers 등의 라이브러리를 활용하여 데이터셋에 대한 다양한 모델의 성능을 실험했습니다. 최종적으로 앙상블 기법을 통해 성능을 극대화하였고, 이를 바탕으로 최종 모델 아키텍처를 구성하여 분석을 진행했습니다.<br> 결과적으로 **mAP50 0.9999**를 달성하여 리더보드에서 Public N 순위와 Private N 순위를 기록하였습니다.<br>
 
-1️⃣ Public Score<br>
-<img width="60%" alt="최종 public 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b"><br>
-
-2️⃣ Private Score<br>
-<img width="60%" alt="최종 private 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
+<img width="70%" alt="최종 public 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b"><br>
 
 ## Final Model
 다음은 최종 모델 구성에 사용된 모델들입니다. 최종적으로 DETA 5-fold 결과와 Co-DINO 5-fold 결과를 기반으로 threshold를 0.7로 설정하여 WBF를 실행한 결과, 최종 성능 **mAP50 0.9999**를 달성했습니다.<br>
@@ -93,7 +89,7 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
   ├─requirements.txt
   ├─README.md
 ```
-## Environment Setting(추후수정)
+## Environment Setting
 **1. System Setup & Libraries**
 <table>
   <tr>
@@ -109,32 +105,26 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
   <tr>
     <td>Operating System</td>
     <td>Linux 5.4.0</td>
-    <td>Docker</td>
-    <td>Linux 5.4.0</td>
+    <td>Git</td>
+    <td>2.25.1</td>
   </tr>
   <tr>
     <td>Python</td>
-    <td>3.8.13</td>
-    <td>Git</td>
-    <td>3.8.13</td>
+    <td>3.10.13</td>
+    <td>Conda</td>
+    <td>23.9.0</td>
   </tr>
   <tr>
     <td>GPU</td>
-    <td>NVIDIA RTX 3090</td>
-    <td>Conda</td>
-    <td>NVIDIA RTX 3090</td>
+    <td>Tesla V100-SXM2-32GB</td>
+    <td>Tmux</td>
+    <td>3.0a</td>
   </tr>
   <tr>
     <td>CUDA</td>
-    <td>NVIDIA RTX 3090</td>
-    <td>Tmux</td>
-    <td>NVIDIA RTX 3090</td>
-  </tr>
-  <tr>
-    <td>CUDNN</td>
-    <td>NVIDIA RTX 3090</td>
-    <td>OS</td>
-    <td>NVIDIA RTX 3090</td>
+    <td>12.2</td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 <br>
