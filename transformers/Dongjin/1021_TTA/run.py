@@ -53,24 +53,24 @@ def main(model_rel_path):
     # %%
 
 
-    tta_transforms_list = [
-            (TTA.Compose([TTA.horizontal_flip]), 'hflip'),
-        ]
-
-    select = 'test'
-    save_dir_path = os.path.join(py_dir_path, f'result/TTA/{select}')
-    os.makedirs(save_dir_path, exist_ok=True)
-
-    if select == 'test':
-        for tta_transforms, tta_info in tta_transforms_list:
-            save_path = f'{save_dir_path}/{run_name}_{tta_info}.csv'
-            save_path = utils.renew_if_path_exist(save_path)
-            test_eval(model, image_processor, coco_test, test, tta_transforms, save_path)
-
     # tta_transforms_list = [
     #         (TTA.Compose([TTA.horizontal_flip]), 'hflip'),
-    #         (TTA.Compose([TTA.identity]), 'identity')
     #     ]
+
+    # select = 'test'
+    # save_dir_path = os.path.join(py_dir_path, f'result/TTA/{select}')
+    # os.makedirs(save_dir_path, exist_ok=True)
+
+    # if select == 'test':
+    #     for tta_transforms, tta_info in tta_transforms_list:
+    #         save_path = f'{save_dir_path}/{run_name}_{tta_info}.csv'
+    #         save_path = utils.renew_if_path_exist(save_path)
+    #         test_eval(model, image_processor, coco_test, test, tta_transforms, save_path)
+
+    tta_transforms_list = [
+            (TTA.Compose([TTA.horizontal_flip]), 'hflip'),
+            (TTA.Compose([TTA.identity]), 'identity')
+        ]
 
     select = 'valid'
     save_dir_path = os.path.join(py_dir_path, f'result/TTA/{select}')
