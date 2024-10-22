@@ -20,12 +20,12 @@ train_pipeline = [
                     type='RandomChoiceResize',
                     # The radio of all image in train dataset < 7
                     # follow the original implement
-                    scales=[(700, 700), (800, 800), (900, 900)],
+                    scales=[(640, 640), (768, 768)], # 700, 800, 900 train_1_5 // 600 725 800 train_25 // , (896, 896)
                     keep_ratio=True),
                 dict(
                     type='RandomCrop',
                     crop_type='absolute_range',
-                    crop_size=(700, 700),
+                    crop_size=(608, 608),
                     allow_negative_crop=False),
             ]
         ]),

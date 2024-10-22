@@ -28,4 +28,4 @@ model = dict(
     neck=dict(in_channels=[192, 384, 768, 1536]),
     query_head=dict(transformer=dict(encoder=dict(with_cp=6))))
 
-train_dataloader = dict(batch_size=1, num_workers=1)
+train_dataloader = dict(batch_size=1, num_workers=2)

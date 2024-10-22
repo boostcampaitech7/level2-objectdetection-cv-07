@@ -1,7 +1,7 @@
 _base_ = ['co_dino_5scale_swin_l_16xb1_1x_coco.py']
 # model settings
 model = dict(backbone=dict(drop_path_rate=0.6))
-max_epochs = 36
+max_epochs = 35
 
 param_scheduler = [
     dict(
@@ -9,7 +9,7 @@ param_scheduler = [
         begin=0,
         end=max_epochs,
         by_epoch=True,
-        milestones=[30],
+        milestones=[28],
         gamma=0.1)
 ]
 

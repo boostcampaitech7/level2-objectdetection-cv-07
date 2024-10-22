@@ -1,4 +1,4 @@
-# Copyright (c) OpenMMLab. All rights reserved.
+ # Copyright (c) OpenMMLab. All rights reserved.
 import argparse
 import os
 import os.path as osp
@@ -14,6 +14,10 @@ from mmdet.evaluation import DumpDetResults
 from mmdet.registry import RUNNERS
 from mmdet.utils import setup_cache_size_limit_of_dynamo
 
+from pycocotools.coco import COCO
+import pandas as pd
+
+import pickle
 
 # TODO: support fuse_conv_bn and format_only
 def parse_args():
@@ -24,10 +28,6 @@ def parse_args():
     parser.add_argument(
         '--work-dir',
         help='the directory to save the file containing evaluation metrics')
-    parser.add_argument(
-        '--out',
-        type=str,
-        help='dump predictions to a pickle file for offline evaluation')
     parser.add_argument(
         '--show', action='store_true', help='show prediction results')
     parser.add_argument(
@@ -57,7 +57,11 @@ def parse_args():
     # will pass the `--local-rank` parameter to `tools/train.py` instead
     # of `--local_rank`.
     parser.add_argument('--local_rank', '--local-rank', type=int, default=0)
-    args = parser.parse_args(['/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetectionV3/projects/CO-DETR/configs/codino/co_dino_5scale_swin_l_16xb1_3x_coco.py', '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetectionV3/work_dir/co_dino/epoch_36.pth'])
+    parser.add_argument(
+        '--skip',
+        action='store_true',
+        default=False)
+    args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
     return args
@@ -70,8 +74,6 @@ def main():
     # testing speed.
     setup_cache_size_limit_of_dynamo()
 
-
-    
     # load config
     cfg = Config.fromfile(args.config)
     cfg.launcher = args.launcher
@@ -87,7 +89,7 @@ def main():
         cfg.work_dir = osp.join('./work_dirs',
                                 osp.splitext(osp.basename(args.config))[0])
 
-    cfg.load_from = args.checkpoint
+    cfg.load_from = cfg.work_dir + '/' + args.checkpoint
 
     if args.show or args.show_dir:
         cfg = trigger_visualization_hook(cfg, args)
@@ -127,22 +129,8 @@ def main():
         cfg.model = ConfigDict(**cfg.tta_model, module=cfg.model)
         cfg.test_dataloader.dataset.pipeline = cfg.tta_pipeline
 
- 
-
-    metainfo = {'classes': ("General trash", "Paper", "Paper pack", "Metal", "Glass", "Plastic", "Styrofoam", "Plastic bag", "Battery", "Clothing")}
-    
-    cfg.test_dataloader.dataset.metainfo = metainfo
-    cfg.test_dataloader.batch_size = 1
-    cfg.work_dir = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetectionV3/work_dir/co_dino'
-
-    cfg.model.bbox_head[0].num_classes = 10
-    cfg.model.query_head.num_classes = 10
-    cfg.model.roi_head[0].bbox_head.num_classes = 10
-
-    cfg.test_dataloader.dataset.data_root = '/data/ephemeral/home/dataset/'
-    cfg.test_dataloader.dataset.ann_file = '/data/ephemeral/home/dataset/test.json'
-    cfg.test_evaluator.ann_file = '/data/ephemeral/home/dataset/test.json'
-    cfg.test_dataloader.dataset.data_prefix=dict(img='')
+    # evaluate를 생략하기 위해, evaluator 부분을 비활성화
+    cfg.evaluator = None  # 평가를 위한 evaluator를 None으로 설정
 
     # build the runner from config
     if 'runner_type' not in cfg:
@@ -153,16 +141,60 @@ def main():
         # if 'runner_type' is set in the cfg
         runner = RUNNERS.build(cfg)
 
-    # add `DumpResults` dummy metric
-    if args.out is not None:
-        assert args.out.endswith(('.pkl', '.pickle')), \
-            'The dump file must be a pkl file.'
+    if args.skip is False:
+        # add `DumpResults` dummy metric
         runner.test_evaluator.metrics.append(
-            DumpDetResults(out_file_path=args.out))
-    
-    # start testing
-    runner.test()
+            DumpDetResults(out_file_path='results.pkl'))
 
+        # start testing
+        test_results = runner.test()
+    
+    with open('results.pkl', 'rb') as f:
+        test_results = pickle.load(f)
+
+    # --- 결과 후처리 및 submission.csv 파일 생성 ---
+        # COCO dataset 정보를 이용하여 output을 후처리
+        ann_file_path = cfg.test_evaluator.get('ann_file', None)
+        if ann_file_path is None:
+            raise AttributeError("Annotation file path is missing in the config")
+        coco = COCO(ann_file_path)
+
+        img_ids = coco.getImgIds()  # 이미지 ID 가져오기
+        class_num = len(coco.getCatIds())  # 클래스 수 정의 (10 등)
+        
+        prediction_strings = []
+        file_names = []
+
+        # test_results를 COCO 형식으로 변환 후 submission 파일 작성
+        for i, out in enumerate(test_results):
+            prediction_string = ''
+            image_info = coco.loadImgs(img_ids[i])[0]  # 이미지 정보 로드
+
+            pred_instance = out['pred_instances']
+            for i in range(len(pred_instance['scores'])):
+                
+                if pred_instance['scores'][i].item() <= 0.05:
+                    pass
+
+                label = str(pred_instance['labels'][i].item())
+                score = str(pred_instance['scores'][i].item())
+                bbox_str = ' '.join(map(str, pred_instance['bboxes'][i].tolist()))
+                
+                prediction_string += label + ' ' + score + ' ' + bbox_str + ' '
+
+            # 파일 이름과 함께 prediction_string을 저장
+            prediction_strings.append(prediction_string)
+            file_names.append(image_info['file_name'])
+
+        # 결과를 데이터프레임으로 저장 (submission.csv 파일 생성)
+        submission = pd.DataFrame()
+        submission['PredictionString'] = prediction_strings
+        submission['image_id'] = file_names
+
+        # 결과 CSV 저장
+        submission.to_csv(os.path.join(cfg.work_dir, 'submission.csv'), index=False)
+
+        print(submission.head())  # 결과 미리보기
 
 if __name__ == '__main__':
     main()
