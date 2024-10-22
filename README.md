@@ -6,9 +6,9 @@
 <div align="center">
 
 
-[📘Wrap-Up Report](https://detrex.readthedocs.io/en/latest/index.html) |
-[🛠️Installation](https://detrex.readthedocs.io/en/latest/tutorials/Installation.html) |
-[👀Model](https://detrex.readthedocs.io/en/latest/tutorials/Model_Zoo.html) |
+[📘Wrap-Up Report]() |
+[🛠️Installation](#installation-guide) |
+[👀Model](#final-model) |
 [🤔Issues](https://github.com/boostcampaitech7/level2-objectdetection-cv-07/issues) | <br>
 [🚀MMDetection](https://github.com/open-mmlab/mmdetection) |
 [🤗Transformers](https://huggingface.co/docs/transformers/en/index) |
