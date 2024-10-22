@@ -23,26 +23,27 @@
 **Metric :** Test set의 mAP50(Mean Average Precision)
 
 ## Project Overview
-먼저 데이터에 대한 EDA와 baseline 모델 분석을 수행한 후 mmdetection, detectron2, transformers 등의 라이브러리를 활용하여 다양한 모델의 성능을 실험했습니다. 최종적으로 앙상블 기법을 통해 성능을 극대화하였고, 이를 바탕으로 최종 모델 아키텍처를 구성하여 분석을 진행했습니다. 결과적으로 mAP50 ""를 달성하며 리더보드에서 Private N 순위와 Public N 순위를 기록하였습니다.<br>
+먼저 EDA와 baseline 모델 분석을 수행한 후, mmdetection, transformers 등의 라이브러리를 활용하여 데이터셋에 대한 다양한 모델의 성능을 실험했습니다. 최종적으로 앙상블 기법을 통해 성능을 극대화하였고, 이를 바탕으로 최종 모델 아키텍처를 구성하여 분석을 진행했습니다.<br> 결과적으로 **mAP50 0.9999**를 달성하여 리더보드에서 Public N 순위와 Private N 순위를 기록하였습니다.<br>
 
-**1. Timeline ⏳ (9/30 - 10/24)**<br>
-EDA 및 baseline code 분석 → Baseline model 실험 → 앙상블 → 최종 결과 분석<br>&emsp;
+1️⃣ Public Score<br>
+<img width="60%" alt="최종 public 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b"><br>
 
-**2. 최종 결과 📈(추후 수정)**
-<br>
-<img align="center" width="80%" alt="최종 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
+2️⃣ Private Score<br>
+<img width="60%" alt="최종 private 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b">
 
 ## Final Model
-다음은 최종 모델 구성에 사용된 모델들입니다. 최종적으로 DETA 5-fold 결과와 Co-DINO 5-fold 결과를 기반으로 threshold를 0.7로 설정하여 WBS를 실행한 결과, 최종 성능 ""를 달성했습니다.<br>
-Model | Backbone | Lr schd | 더 넣고 싶은 특징!! | box mAP50 |                        Config                         |  Download  |
-| :------: | :---------: | :-----: | :----------: | :----: | :---------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|   Co-Dino   | R-50  |   12e   |         |    |     [config](./dino-4scale_r50_8xb2-12e_coco.py)      |                   [model](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth) \| [log](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705.log.json)                   |
-|  Deta  | Swin-L |   36e   |         |    |    [config](./dino-5scale_swin-l_8xb2-36e_coco.py)    |                                                 [model](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/dino-5scale_swin-l_8xb2-36e_coco-5486e051.pth) \| [log](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/20230307_032359.log)                                                 |
-|    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
-|    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
-|    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
-|    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
-|    |  |      |         |    |    [config]()    |                                                 [model]() \| [log]()                                                 |
+다음은 최종 모델 구성에 사용된 모델들입니다. 최종적으로 DETA 5-fold 결과와 Co-DINO 5-fold 결과를 기반으로 threshold를 0.7로 설정하여 WBF를 실행한 결과, 최종 성능 **mAP50 0.9999**를 달성했습니다.<br>
+<img width="80%" alt="최종 모델 아키텍쳐" src="">
+
+
+|   Model  | Backbone |  Lr schd |  k-fold  |  ensemble(threshold)  |   box mAP  |  Config  |   Download   | 더 추가할 항목 |
+| :------: | :------: | :------: | :------: | :-------------------: | :--------: | :------: |   :------:   |   :------:   |
+|  Co-Dino |   R-50   |   12e    |  5-fold  |        WBF(0.7)       |   0.9999   | [config](./dino-4scale_r50_8xb2-12e_coco.py) | [model](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth) \| [log](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705.log.json) |
+|  Deta    | Swin-L   |   36e    |  5-fold  |        WBF(0.7)       |   0.9999   | [config](./dino-5scale_swin-l_8xb2-36e_coco.py) | [model](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/dino-5scale_swin-l_8xb2-36e_coco-5486e051.pth) \| [log](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/20230307_032359.log) |
+|          |      |      |         |    |        |    [config]()    |    [model]() \| [log]()                                                 |
+|          |      |      |         |    |        |    [config]()    |    [model]() \| [log]()                                                 |
+|          |      |      |         |    |        |    [config]()    |    [model]() \| [log]()                                                 |
+|    Final Model      |      |      |         |    |        |    [config]()    |    [model]() \| [log]()                                                 |
 
 ## Installation Guide
 1. Installation(추후 수정)
@@ -69,10 +70,10 @@ pip install requirements.txt
 
 2. Run Demo(추후 수정)
 ```
-Step 1. We need to download config and checkpoint files.
+# Step 1. We need to download config and checkpoint files.
 mim download mmdet --config rtmdet_tiny_8xb32-300e_coco --dest .
 
-Step 2. Verify the inference demo.
+# Step 2. Verify the inference demo.
 python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth
 
 ```
