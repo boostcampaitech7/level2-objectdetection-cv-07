@@ -13,6 +13,6 @@
     "annotation_path": "/data/ephemeral/home/data/dataset/test.json",
     "checkpoint_path": "runs/detect/yolov8_swin/weights/best.pt",
     "score_threshold": 0.05,
-    "iou_threshold": 0.7,
+    "iou_threshold": 0.6,
     "submission_save_path": "./yolov8_swin_submission.csv"
 }
