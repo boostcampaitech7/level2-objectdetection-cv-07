@@ -84,8 +84,10 @@ def main(model_rel_path):
 
 if __name__ == '__main__':
     fold_path = '../1011_model_search/result/1015/jozhang97'
-    model_paths = ['deta-swin-large_0_img_size_720', 'deta-swin-large_1_img_size_720', 'deta-swin-large_2_img_size_680',
-                  'deta-swin-large_3_img_size_720', 'deta-swin-large_4_img_size_720']  
+    model_paths = ['deta-swin-large_4_img_size_720']  
+  
+    # model_paths = ['deta-swin-large_0_img_size_720', 'deta-swin-large_1_img_size_720', 'deta-swin-large_2_img_size_680',
+    #               'deta-swin-large_3_img_size_720', 'deta-swin-large_4_img_size_720']  
     
     for model_path in model_paths:
         path = os.path.join(fold_path, model_path)
