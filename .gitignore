@@ -49,3 +49,4 @@ work_dirs
 .pyc
 *.pt
 **/runs/
+*.pkl
