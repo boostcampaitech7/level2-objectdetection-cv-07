@@ -1,0 +1,18 @@
+{
+    "model_path": "yolov8x.pt",
+    "data": "dataset.yaml",
+    "epochs": 100,
+    "batch_size": 16,
+    "patience": 30,
+    "imgsz": 640,
+    "device": 0,
+    "amp": false,
+    "run_name": "exp1",
+    "save_dir": "runs/detect",
+    "data_dir": "/data/ephemeral/home/data/images/test",
+    "annotation_path": "/data/ephemeral/home/data/images/test.json",
+    "checkpoint_path": "runs/detect/exp1/weights/best.pt",
+    "score_threshold": 0.05,
+    "iou_threshold": 0.7,
+    "submission_save_path": "./yolov8_submission.csv"
+}
