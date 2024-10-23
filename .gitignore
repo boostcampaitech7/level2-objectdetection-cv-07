@@ -36,6 +36,10 @@ cascade_rcnn/wandb
 
 baseline/
 create_split_json.py
+mmdetection_dino/
+mmdetection/
+**/.DS_Store
+**/checkpoints/
 *.jpg
 data/
 code/
