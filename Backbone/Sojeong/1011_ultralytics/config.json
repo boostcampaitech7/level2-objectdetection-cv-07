@@ -1,18 +1,18 @@
 {
     "model_path": "yolov8x.pt",
-    "data": "dataset.yaml",
+    "data": "/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/1011_ultralytics/dataset/dataset.yaml",
     "epochs": 100,
-    "batch_size": 16,
+    "batch_size": 8,
     "patience": 30,
-    "imgsz": 640,
+    "imgsz": 960,
     "device": 0,
     "amp": false,
-    "run_name": "exp1",
+    "run_name": "yolov8_swin",
     "save_dir": "runs/detect",
     "data_dir": "/data/ephemeral/home/data/images/test",
-    "annotation_path": "/data/ephemeral/home/data/images/test.json",
-    "checkpoint_path": "runs/detect/exp1/weights/best.pt",
+    "annotation_path": "/data/ephemeral/home/data/dataset/test.json",
+    "checkpoint_path": "runs/detect/yolov8_swin/weights/best.pt",
     "score_threshold": 0.05,
-    "iou_threshold": 0.7,
-    "submission_save_path": "./yolov8_submission.csv"
+    "iou_threshold": 0.6,
+    "submission_save_path": "./yolov8_swin_submission.csv"
 }

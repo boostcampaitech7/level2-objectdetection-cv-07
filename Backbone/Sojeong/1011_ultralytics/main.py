@@ -5,11 +5,30 @@ import argparse
 from ultralytics import YOLO
 from pycocotools.coco import COCO
 from utils.utils import load_config
+import timm
+from torch import nn
+
+class SwinBackbone(nn.Module):
+    def __init__(self):
+        super(SwinBackbone, self).__init__()
+        # Load the Swin Transformer Base model
+        self.model = timm.create_model('swin_large_patch4_window7_224', pretrained=True)
+        
+        # Remove the classification head and keep it as a feature extractor
+        self.model.head = nn.Identity()
+
+    def forward(self, x):
+        # Forward pass through the Swin Transformer
+        x = self.model(x)
+        return x        
 
 def train_model(config):
     # Load YOLO model
     model = YOLO(config["model_path"])
 
+    # Swin base backbone
+    model.model.backbone = SwinBackbone()
+    
     # Train the model
     model.train(
         data=config["data"],  # path to dataset YAML
