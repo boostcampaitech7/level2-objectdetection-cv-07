@@ -17,12 +17,12 @@ from detectron2.data import build_detection_test_loader, build_detection_train_l
 class register_datasets:
     # Register Dataset
     try:
-        register_coco_instances('coco_trash_train', {}, '/data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/Split_data/train_0_10.json', '/data/ephemeral/home/data/dataset/')
+        register_coco_instances('coco_trash_train', {}, '/data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/Split_data/train_0_5.json', '/data/ephemeral/home/data/dataset/')
     except AssertionError:
         pass
 
     try:
-        register_coco_instances('coco_trash_test', {}, '/data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/Split_data/valid_0_10.json', '/data/ephemeral/home/data/dataset/')
+        register_coco_instances('coco_trash_test', {}, '/data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/Split_data/valid_0_5.json', '/data/ephemeral/home/data/dataset/')
     except AssertionError:
         pass
 
