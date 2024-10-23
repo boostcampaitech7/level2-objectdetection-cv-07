@@ -1,0 +1,9 @@
+{
+    "model_name": "jozhang97/deta-swin-large",
+    "per_device_train_batch_size": 2,
+    "train_info_name": "train_4_5.json",
+    "valid_info_name": "valid_4_5.json",
+    "num_train_epochs": 12,
+    "image_size": 680,
+    "output_dir_format": "{model_name}_4_img_size_{image_size}"
+}

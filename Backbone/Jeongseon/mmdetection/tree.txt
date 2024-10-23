@@ -1,0 +1,40 @@
+mmdetection/
+│
+├── configs/
+│   ├── _base_/
+│   │   ├── datasets/
+│   │   │   └── coco_detection.py, instance.py
+│   │   ├── models/
+│   │   │   ├── faster_rcnn_r50_fpn.py
+│   │   │   └── retinanet_r50_fpn.py
+│   │   ├── schedules/
+│   │   │   └── schedule_1x.py
+│   │   └── default_runtime.py
+│   ├── swin/
+│   │   └── faster_rcnn_swin_tiny_fpn_1x_coco.py
+│   └── efficientnet/
+│       └── retinanet_effb3_fpn_8x4_1x_coco.py
+│
+├── mmdet/
+│   └── (MMDetection 소스 코드)
+│
+├── tools/
+│   ├── train.py
+│   └── test.py
+│
+├── data/
+│   └── coco/
+│       ├── annotations/
+│       ├── train2017/
+│       └── val2017/
+│
+├── work_dirs/
+│   ├── faster_rcnn_swin_tiny_fpn_1x_coco/
+│   └── retinanet_effb3_fpn_8x4_1x_coco/
+│
+├── experiments/
+│   ├── swin_experiment.yaml
+│   └── efficientnet_experiment.yaml
+│
+├── main.py
+|__.env
