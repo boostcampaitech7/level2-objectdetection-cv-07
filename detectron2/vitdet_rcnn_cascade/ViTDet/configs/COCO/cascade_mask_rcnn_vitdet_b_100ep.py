@@ -55,9 +55,9 @@ dataloader.test.dataset.names='coco_trash_test'
 dataloader.evaluator.dataset_name='coco_trash_test'
 
 
-# del model.roi_heads['mask_in_features']
-# del model.roi_heads['mask_pooler']
-# del model.roi_heads['mask_head']
+del model.roi_heads['mask_in_features']
+del model.roi_heads['mask_pooler']
+del model.roi_heads['mask_head']
 model.roi_heads.num_classes=10
 
 train.eval_period=500
@@ -65,20 +65,5 @@ train.output_dir='/data/ephemeral/home/Seungcheol/level2-objectdetection-cv-07/v
 train.checkpointer.max_to_keep=5
 train.checkpointer.period=5000
 
-# ## 증강
-# dataloader.train.mapper.augmentations = [
-#     #{"_target_": "detectron2.data.transforms.ResizeShortestEdge", "max_size": 768, "short_edge_length": 768},
-#     {"_target_": "detectron2.data.transforms.RandomFlip", "prob" : 0.5, "horizontal" : False ,"vertical" : True},
-#     {"_target_": "detectron2.data.transforms.RandomBrightness", "intensity_min" : 0.8, "intensity_max" : 1.8},
-#     {"_target_": "detectron2.data.transforms.RandomContrast", "intensity_min" : 0.6, "intensity_max" : 1.3}
-# ]
-
-# dataloader.test.mapper.augmentations = [
-#     #{"_target_": "detectron2.data.transforms.ResizeShortestEdge", "max_size": 768, "short_edge_length": 768}
-# ]
-# dataloader.train.num_workers=4
-# dataloader.test.num_workers=4
 ### batch size
 dataloader.train.total_batch_size=2
-# model.proposal_generator.batch_size_per_image=128
-# model.roi_heads.batch_size_per_image=128
