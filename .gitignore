@@ -5,6 +5,8 @@
 **/others/
 **/__pycache__/
 **/wandb/
+baseline/
+create_split_json.py
 *.jpg
 data/
 code/
