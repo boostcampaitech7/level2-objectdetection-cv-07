@@ -5,16 +5,14 @@ import numpy as np
 if __name__ == '__main__':
     conf = {}
     py_dir_path = os.path.dirname(os.path.abspath(__file__))
-    submission_file_formats = [
-                               'deta-swin-large_4_img_size_720_{transform}.csv',]
     
-    # submission_file_formats = ['deta-swin-large_0_img_size_720_{transform}.csv', 
-    #                            'deta-swin-large_1_img_size_720_{transform}.csv',
-    #                            'deta-swin-large_2_img_size_680_{transform}.csv',
-    #                            'deta-swin-large_3_img_size_720_{transform}.csv',
-    #                            'deta-swin-large_4_img_size_720_{transform}.csv',]
+    submission_file_formats = ['deta-swin-large_0_img_size_720_{transform}.csv', 
+                               'deta-swin-large_1_img_size_720_{transform}.csv',
+                               'deta-swin-large_2_img_size_680_{transform}.csv',
+                               'deta-swin-large_3_img_size_720_{transform}.csv',
+                               'deta-swin-large_4_img_size_720_{transform}.csv',]
 
-    conf['mode'] = 'test'
+    conf['mode'] = 'valid'
     conf['transforms'] = ['identity', 'hflip']
     conf['prefix'] = '1022'
     conf['ensemble-fold'] = 1
