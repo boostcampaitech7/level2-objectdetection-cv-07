@@ -51,3 +51,4 @@ del model.roi_heads['mask_head']
 ### batch size
 dataloader.train.total_batch_size=4
 
+train.output_dir='./ouput1'
