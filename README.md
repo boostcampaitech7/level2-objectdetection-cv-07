@@ -38,6 +38,43 @@
 |   Deta   |  Swin-L  |   36e   |  5-fold  |        WBF(0.8)       |   0.9999   | [config](./dino-5scale_swin-l_8xb2-36e_coco.py) | [model](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/dino-5scale_swin-l_8xb2-36e_coco-5486e051.pth) \| [log](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/20230307_032359.log) |
 |  Cascade R-CNN |   MViTv2   |   30e   |  3-fold  |  WBF(0.6) |  0.9999  |  [config]()  |  [model]() \| [log]() |
 
+## Data
+1. 기본 데이터셋
+```
+dataset
+  ├── annotations
+      ├── train.json # train image에 대한 annotation file (coco format)
+      └── test.json # test image에 대한 annotation file (coco format)
+  ├── train # 4883장의 train image
+  └── test # 4871장의 test image
+```
+
+2. k-fold split 데이터셋
+```
+split_dataset
+  ├── annotations
+      ├── 5-fold # 5-fold로 split
+          ├── train
+              ├──train_0_5.json
+              ...
+              └──train_4_5.json
+          └── valid
+              ├──valid_0_5.json
+              ...
+              └──valid_4_5.json
+      └── 10-fold # 10-fold로 split
+          ├── train
+              ├──train_0_10.json
+              ...
+              └──train_4_10.json
+          └── valid
+              ├──valid_0_10.json
+              ...
+              └──valid_4_10.json
+  ├── train # 4883장의 train image
+  └── test # 4871장의 test image
+```
+
 ## Installation Guide
 1. Installation(추후 수정)
 ```
@@ -72,22 +109,32 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
 ```
 ## File Tree(추후 수정)
 ```
-  ├─.github
-  ├─ mmdetection
-    ├─config 파일
-    ├─checkpoint 파일
-    ├─test 파일
-    ├─train 파일
-  ├─tranformers
-    ├─config 파일
-    ├─checkpoint 파일
-    ├─test 파일
-    ├─train 파일
-  ├─ensemble_inference.py
-  ├─demo
-    ├─model_demo.py
-  ├─requirements.txt
-  ├─README.md
+├── .github
+├── mmdetection
+    ├── configs
+    ├── checkpoint
+├── tranformers
+    ├── configs
+    ├── checkpoint
+├── demo
+    ├── model_demo.py
+├── dataset
+    ├── annotations
+        ├── train.json
+        └── test.json
+    ├── train
+    └── test
+├── split_dataset
+    └── annotations
+        ├── 5-fold
+            ├── train
+            └── valid
+        └── 10-fold
+            ├── train
+            └── valid
+├── ensemble_inference.py
+├── requirements.txt
+└── README.md
 ```
 ## Environment Setting
 <table>
