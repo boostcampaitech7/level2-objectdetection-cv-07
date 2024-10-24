@@ -12,7 +12,7 @@
 [🤔Issues](https://github.com/boostcampaitech7/level2-objectdetection-cv-07/issues) | <br>
 [🚀MMDetection](https://github.com/open-mmlab/mmdetection) |
 [🤗Transformers](https://huggingface.co/docs/transformers/en/index) |
-
+[💎Detectron2](https://github.com/facebookresearch/detectron2) |
 </div>
 
 ## Introduction
@@ -62,15 +62,6 @@ split_dataset
               ├──valid_0_5.json
               ...
               └──valid_4_5.json
-      └── 10-fold # 10-fold로 split
-          ├── train
-              ├──train_0_10.json
-              ...
-              └──train_4_10.json
-          └── valid
-              ├──valid_0_10.json
-              ...
-              └──valid_4_10.json
   ├── train # 4883장의 train image
   └── test # 4871장의 test image
 ```
@@ -127,9 +118,6 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
 ├── split_dataset
     └── annotations
         ├── 5-fold
-            ├── train
-            └── valid
-        └── 10-fold
             ├── train
             └── valid
 ├── ensemble_inference.py
