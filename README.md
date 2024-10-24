@@ -23,9 +23,9 @@
 **Metric :** Test set의 mAP50(Mean Average Precision)
 
 ## Project Overview
-먼저 EDA와 baseline 모델 분석을 수행한 후, mmdetection, transformers 등의 라이브러리를 활용하여 데이터셋에 대한 다양한 모델의 성능을 실험했습니다. 최종적으로 앙상블 기법을 통해 성능을 극대화하였고, 이를 바탕으로 최종 모델 아키텍처를 구성하여 분석을 진행했습니다.<br> 결과적으로 **mAP50 0.9999**를 달성하여 리더보드에서 Public N 순위와 Private N 순위를 기록하였습니다.<br>
+먼저 EDA와 baseline 모델 분석을 수행한 후, mmdetection, transformers 등의 라이브러리를 활용하여 데이터셋에 대한 다양한 모델의 성능을 실험했습니다. 최종적으로 앙상블 기법을 통해 성능을 극대화하였고, 이를 바탕으로 최종 모델 아키텍처를 구성하여 분석을 진행했습니다.<br> 결과적으로 **mAP50 0.7382**를 달성하여 리더보드에서 3위를 기록하였습니다.<br>
 
-<img width="70%" alt="최종 public 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b"><br>
+<img width="70%" alt="최종 public 리더보드 순위" src="https://github.com/user-attachments/assets/78a3accd-ed78-4560-bc97-a5c5421089b1"><br>
 
 ## Final Model
 다음은 최종 모델 구성에 사용된 모델들입니다. 최종적으로 DETA 5-fold 결과와 Co-DINO 5-fold 결과를 기반으로 threshold를 0.7로 설정하여 WBF를 실행한 결과, 최종 성능 **mAP50 0.9999**를 달성했습니다.<br>
