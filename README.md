@@ -33,7 +33,7 @@
 
 |      Model     | Backbone |  Lr schd |   tta  |  k-fold  |  ensemble<br>(threshold)  |   box mAP   |   Configs   |   Download   |
 | :------------: | :------: | :------: | :----: | :------: | :-----------------------: | :---------: | :---------: | :----------: |
-|  Co-DINO       |  R-50    |   36e    |    y   |  5-fold  |          WBF(0.6)         |   0.6807    |  [config]() |   [model]()  |
+|  Co-DINO       |  Swin-L    |   36e    |    y   |  5-fold  |          WBF(0.6)         |   0.6807    |  [config]() |   [model]()  |
 |  DETA          |  Swin-L  |   12e    |    y   |  5-fold  |          WBF(0.7)         |   0.7287    |  [config]() |   [model]()  |
 |  Cascade<br> R-CNN |  MViTv2  |   20e    |    y   |  5-fold  |          WBF(0.7)         |   0.6762    |  [config]() |   [model]()  |
 
