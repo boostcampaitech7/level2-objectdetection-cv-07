@@ -103,8 +103,9 @@ def main():
     args = parse_args()
 
     # 모델에 맞는 config 경로 설정
-    config_path = f"./configs/yolox/{args.model}.py"  
+    #config_path = f"./configs/yolox/{args.model}.py"  
     #config_path = "./configs/retinanet/retinanet_r50_caffe_fpn_mstrain_1x_coco.py"
+    config_path = "/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/autoassign/autoassign_r50_fpn_8x2_1x_coco.py"
     cfg = load_config(config_path, args.root, args.num_classes)
 
     # 모델을 빌드하고 체크포인트 불러오기

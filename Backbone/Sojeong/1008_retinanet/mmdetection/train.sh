@@ -27,6 +27,5 @@ python train.py \
     --wandb_entity $WANDB_ENTITY
 
 
-
 # chmod +x ./train.sh
 # ./train.sh

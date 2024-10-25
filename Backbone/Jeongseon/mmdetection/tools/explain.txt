@@ -1,0 +1,6 @@
+#명령어 실행 : 모델 학습하고 평가 가능
+# 학습
+python tools/train.py configs/swin/faster_rcnn_swin_tiny_fpn_1x_coco.py
+
+# 테스트
+python tools/test.py configs/swin/faster_rcnn_swin_tiny_fpn_1x_coco.py work_dirs/faster_rcnn_swin_tiny_fpn_1x_coco/latest.pth --eval bbox
