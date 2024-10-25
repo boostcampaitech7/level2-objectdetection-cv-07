@@ -49,6 +49,6 @@ del model.roi_heads['mask_pooler']
 del model.roi_heads['mask_head']
 
 ### batch size
-dataloader.train.total_batch_size=4
+dataloader.train.total_batch_size=8
 
-train.output_dir='./ouput1'
+train.output_dir='./ouput2'
