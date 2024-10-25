@@ -8,10 +8,10 @@ import dataset
 import train_eval
 import torch
 
-def main(exp_conf_path):
+def main(exp_path):
     current_path = os.path.dirname(os.path.abspath(__file__))
     default_conf_path = os.path.join(current_path, 'config/default.json')
-    conf = utils.load_conf(default_conf_path, exp_conf_path)
+    conf = utils.load_conf(default_conf_path, exp_path)
 
     conf['output_dir'] = os.path.join(current_path, 'result/' + conf['output_dir_format'].format(**conf)) # 결과 저장 경로
     conf['output_dir'] = utils.renew_if_path_exist(conf['output_dir'])
@@ -33,8 +33,8 @@ def main(exp_conf_path):
     id2label = utils.get_id2label(conf['classes'])
     label2id = utils.get_label2id(id2label)
 
-    train = dataset.COCO2dataset(conf['data_dir_path'], coco_train)
-    valid = dataset.COCO2dataset(conf['data_dir_path'], coco_valid)
+    train = dataset.COCO2dataset(conf['data_dir_path'], coco_train, range(10))
+    valid = dataset.COCO2dataset(conf['data_dir_path'], coco_valid, range(10))
 
     train_augment_and_transform, validation_transform = dataset.get_transforms()
 
@@ -98,9 +98,15 @@ def main(exp_conf_path):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='TIMM training script')
-    parser.add_argument('exp_conf_path', type=str, help='exp.json file path')
-    args = parser.parse_args()
-    exp_conf_path = args.exp_conf_path
+    # Transformers object detection training script
+    # 실험 설정은 config/default.json를 이용하여 동작합니다.
+    # --exp_path를 이용하여 default.json의 설정을 덮어쓰기할 수 있습니다.
+    # default.json으로 기본 설정을 하고, 세부 실험 조건을 설정하는 json 파일을 이용하여
+    # 여러 실험을 쉽게 돌릴 수 있습니다. (예시: config/exp1.json)
 
-    main(exp_conf_path)
+    parser = argparse.ArgumentParser(description='Transformers training script')
+    parser.add_argument('--exp_path', type=str, default=None, help='exp.json file path (optional)')
+    args = parser.parse_args()
+    exp_path = args.exp_path
+
+    main(exp_path)

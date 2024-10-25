@@ -1,4 +1,5 @@
 {
+    "model_name": "jozhang97/deta-swin-large",
     "output_dir_format": "{model_name}",
     "num_train_epochs": 25,
     "image_size": 480,

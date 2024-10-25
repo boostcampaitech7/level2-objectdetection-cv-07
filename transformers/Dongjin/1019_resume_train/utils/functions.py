@@ -55,9 +55,11 @@ def read_json(file_path):
     return data
 
 def load_conf(default_conf_path, new_conf_path):
-    default_conf = read_json(default_conf_path)
-    new_conf = read_json(new_conf_path)
-    conf = override_conf(default_conf, new_conf)
+    conf = read_json(default_conf_path)
+    if new_conf_path is not None:
+        new_conf = read_json(new_conf_path)
+        conf = override_conf(conf, new_conf)
+        
     return conf
     
 
