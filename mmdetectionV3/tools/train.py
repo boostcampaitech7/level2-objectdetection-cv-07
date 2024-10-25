@@ -2,14 +2,12 @@
 import argparse
 import os
 import os.path as osp
-import sys
 
 from mmengine.config import Config, DictAction
 from mmengine.registry import RUNNERS
 from mmengine.runner import Runner
 
 from mmdet.utils import setup_cache_size_limit_of_dynamo
-sys.path.append('/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetectionV3')
 
 
 def parse_args():
@@ -52,6 +50,17 @@ def parse_args():
     # will pass the `--local-rank` parameter to `tools/train.py` instead
     # of `--local_rank`.
     parser.add_argument('--local_rank', '--local-rank', type=int, default=0)
+    
+    # add parser ; data metainfo
+    parser.add_argument('--classes', type=str, default='General trash, Paper, Paper pack, Metal, Glass, Plastic, Styrofoam, Plastic bag, Battery, Clothing')
+    parser.add_argument('--data_root', type=str, default='/data/ephemeral/home/dataset/')
+    parser.add_argument('--ann_file', type=str, default='/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Split_data/train_0_5.json') 
+    parser.add_argument('--batch_size', type=int, default=2)
+    parser.add_argument('--num_classes', type=int, default=10)
+    parser.add_argument('--work_dir', type=str, default='/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/co-dino/mmdetection/work_dirs/co_dino')
+    parser.add_argument('--eval_ann_file', type=str, default='/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Split_data/valid_0_5.json')
+    parser.add_argument('--image_size', type=int, nargs=2, default=(800, 800))
+    parser.add_argument('--num_workers', type=int, default=2)
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
@@ -106,24 +115,31 @@ def main():
         cfg.resume = True
         cfg.load_from = args.resume
 
-    metainfo = {'classes': ("General trash", "Paper", "Paper pack", "Metal", "Glass", "Plastic", "Styrofoam", "Plastic bag", "Battery", "Clothing")}
-    cfg.train_dataloader.dataset.metainfo = metainfo  
+    metainfo = {'classes': args.classes.split(', ')}
+    cfg.train_dataloader.dataset.metainfo = metainfo
     cfg.val_dataloader.dataset.metainfo = metainfo
-    cfg.work_dir = f'/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetectionV3/work_dir/co_dino_3-5'
-
-    cfg.model.bbox_head[0].num_classes = 10
-    cfg.model.query_head.num_classes = 10
-    cfg.model.roi_head[0].bbox_head.num_classes = 10
-
-    cfg.train_dataloader.dataset.data_root = '/data/ephemeral/home/dataset/'
-    cfg.train_dataloader.dataset.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/train_3_5.json'
-
-    cfg.val_dataloader.dataset.data_root = '/data/ephemeral/home/dataset/'
-    cfg.val_dataloader.dataset.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/valid_3_5.json'
-    cfg.val_evaluator.ann_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/Split_data/valid_3_5.json'
+    
+    cfg.image_size = args.image_size
+    cfg.work_dir = args.work_dir
+    
+    cfg.model.bbox_head[0].num_classes = args.num_classes
+    cfg.model.query_head.num_classes = args.num_classes
+    cfg.model.roi_head[0].bbox_head.num_classes = args.num_classes
+    
+    cfg.train_dataloader.dataset.data_root = args.data_root
+    cfg.train_dataloader.dataset.ann_file = args.ann_file
+    cfg.train_dataloader.dataset.data_prefix=dict(img='')
+        
+    cfg.val_dataloader.dataset.data_root = args.data_root
+    cfg.val_dataloader.dataset.ann_file = args.eval_ann_file
+    cfg.val_evaluator.ann_file = args.eval_ann_file
     cfg.val_dataloader.dataset.data_prefix=dict(img='')
-
-    cfg.train_dataloader.batch_size = 3
+        
+    cfg.train_dataloader.batch_size = args.batch_size
+    cfg.val_dataloader.batch_size = args.batch_size
+    
+    cfg.train_dataloader.num_workers = args.num_workers
+    cfg.val_dataloader.num_workers = args.num_workers
 
     # build the runner from config
     if 'runner_type' not in cfg:
@@ -133,7 +149,6 @@ def main():
         # build customized runner from the registry
         # if 'runner_type' is set in the cfg
         runner = RUNNERS.build(cfg)
-
 
     # start training
     runner.train()

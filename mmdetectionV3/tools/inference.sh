@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# 환경 변수 설정 (필요시 추가)
-export PYTHONPATH=/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/co-dino/mmdetection:$PYTHONPATH
-
 # 기본 변수 설정
 CONFIG_PATH="/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetectionV3/projects/CO-DETR/configs/codino/co_dino_5scale_swin_l_16xb1_3x_coco.py"  # config 파일 경로
 CHECKPOINT_FILE="epoch_35.pth"           # checkpoint 파일 이름
@@ -15,8 +12,10 @@ python ./tools/inference.py \
     $CONFIG_PATH \
     $CHECKPOINT_FILE \
     --work-dir $WORK_DIR \
+    --classes "General trash, Paper, Paper pack, Metal, Glass, Plastic, Styrofoam, Plastic bag, Battery, Clothing" \
     --data_root $DATA_ROOT \
     --test_ann_file $TEST_ANN_FILE \
+    --batch_size 8 \
     --tta
 
 # 옵션 설명:d

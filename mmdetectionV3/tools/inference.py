@@ -65,6 +65,11 @@ def parse_args():
       # 추가된 인자들
     parser.add_argument('--data_root', type=str, help='path to dataset root')
     parser.add_argument('--test_ann_file', type=str, help='path to test annotation file')
+    parser.add_argument('--batch_size', type=int, default=2)
+    parser.add_argument('--num_classes', type=int, default=10)
+    parser.add_argument('--classes', type=str, default='General trash, Paper, Paper pack, Metal, Glass, Plastic, Styrofoam, Plastic bag, Battery, Clothing')
+    
+
     
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
@@ -96,11 +101,12 @@ def main():
 
     cfg.load_from = cfg.work_dir + '/' + args.checkpoint
     
-    metainfo = {'classes' : ('General trash', 'Paper', 'Paper pack', 'Metal', 'Glass', 'Plastic', 'Styrofoam', 'Plastic bag', 'Battery', 'Clothing'),}
-    
-    cfg.model.bbox_head[0].num_classes = 10
-    cfg.model.query_head.num_classes = 10
-    cfg.model.roi_head[0].bbox_head.num_classes = 10
+    metainfo = {'classes': args.classes.split(', ')}
+    cfg.train_dataloader.dataset.metainfo = metainfo
+
+    cfg.model.bbox_head[0].num_classes = args.num_classes
+    cfg.model.query_head.num_classes = args.num_classes
+    cfg.model.roi_head[0].bbox_head.num_classes = args.num_classes
     
     cfg.test_dataloader.dataset.data_root = args.data_root
     cfg.test_dataloader.dataset.ann_file = args.test_ann_file
@@ -108,7 +114,7 @@ def main():
 
     cfg.test_dataloader.dataset.metainfo = metainfo
     cfg.test_evaluator.ann_file = args.test_ann_file
-    cfg.test_dataloader.batch_size = 8
+    cfg.test_dataloader.batch_size = args.batch_size
     
     
     if args.show or args.show_dir:
