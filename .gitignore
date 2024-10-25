@@ -16,7 +16,6 @@ code/
 **/wandb/
 mask_rcnn_swin_inference.ipynb
 mask_rcnn_swin_train.ipynb
-mmdetection/*
 !mmdetection/ssd_experiment/
 !mmdetection/ssd_experiment/**
 CoDetr
@@ -38,7 +37,6 @@ create_split_json.py
 baseline/
 create_split_json.py
 mmdetection_dino/
-mmdetection/
 **/.DS_Store
 **/checkpoints/
 *.jpg
@@ -48,7 +46,6 @@ code/
 *.pth
 *.csv
 **/wandb/
-mmdetection/*
 !mmdetection/ssd_experiment/
 !mmdetection/ssd_experiment/**
 __pycache__
