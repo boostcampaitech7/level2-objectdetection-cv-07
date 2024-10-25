@@ -12,7 +12,7 @@
 [🤔Issues](https://github.com/boostcampaitech7/level2-objectdetection-cv-07/issues) | <br>
 [🚀MMDetection](https://github.com/open-mmlab/mmdetection) |
 [🤗Transformers](https://huggingface.co/docs/transformers/en/index) |
-
+[💎Detectron2](https://github.com/facebookresearch/detectron2) |
 </div>
 
 ## Introduction
@@ -23,20 +23,29 @@
 **Metric :** Test set의 mAP50(Mean Average Precision)
 
 ## Project Overview
-먼저 EDA와 baseline 모델 분석을 수행한 후, mmdetection, transformers 등의 라이브러리를 활용하여 데이터셋에 대한 다양한 모델의 성능을 실험했습니다. 최종적으로 앙상블 기법을 통해 성능을 극대화하였고, 이를 바탕으로 최종 모델 아키텍처를 구성하여 분석을 진행했습니다.<br> 결과적으로 **mAP50 0.9999**를 달성하여 리더보드에서 Public N 순위와 Private N 순위를 기록하였습니다.<br>
+먼저 EDA와 baseline 모델 분석을 수행한 후, mmdetection, transformers 등의 라이브러리를 활용하여 데이터셋에 대한 다양한 모델의 성능을 실험했습니다. 최종적으로 앙상블 기법을 통해 성능을 극대화하였고, 이를 바탕으로 최종 모델 아키텍처를 구성하여 분석을 진행했습니다.<br> 결과적으로 **mAP50 0.7382**를 달성하여 리더보드에서 3위를 기록하였습니다.<br>
 
-<img width="70%" alt="최종 public 리더보드 순위" src="https://github.com/user-attachments/assets/e5e90019-dda0-4753-9df1-b70ad4174f9b"><br>
+<img width="70%" alt="최종 public 리더보드 순위" src="https://github.com/user-attachments/assets/78a3accd-ed78-4560-bc97-a5c5421089b1"><br>
 
 ## Final Model
-다음은 최종 모델 구성에 사용된 모델들입니다. 최종적으로 DETA 5-fold 결과와 Co-DINO 5-fold 결과를 기반으로 threshold를 0.7로 설정하여 WBF를 실행한 결과, 최종 성능 **mAP50 0.9999**를 달성했습니다.<br>
-<img width="80%" alt="최종 모델 아키텍쳐" src="">
+최종 모델은 DETA, Co-DINO, Cascade R-CNN의 5-fold 앙상블로 구성되었습니다. <br> 각 모델의 예측 결과를 바탕으로 threshold = 0.7로 설정한 Weighted Box Fusion (WBF) 기법을 적용하여 앙상블을 수행했습니다. <br> 그 결과, 최종 성능으로 **mAP50 0.7382**를 달성했습니다.<br>
 
 
-|   Model  | Backbone |  Lr schd |  k-fold  |  ensemble<br>(threshold)  |   box mAP  |  Config  |   Download   |
-| :------: | :------: | :------: | :------: | :-------------------: | :--------: | :------: |   :------:   |
-|  Co-Dino |   R-50   |   12e    |  5-fold  |        WBF(0.7)       |   0.9999   | [config](./dino-4scale_r50_8xb2-12e_coco.py) | [model](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth) \| [log](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705.log.json) |
-|   Deta   |  Swin-L  |   36e   |  5-fold  |        WBF(0.8)       |   0.9999   | [config](./dino-5scale_swin-l_8xb2-36e_coco.py) | [model](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/dino-5scale_swin-l_8xb2-36e_coco-5486e051.pth) \| [log](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/20230307_032359.log) |
-|  Cascade R-CNN |   MViTv2   |   30e   |  3-fold  |  WBF(0.6) |  0.9999  |  [config]()  |  [model]() \| [log]() |
+|      Model     | Backbone |  Lr schd |   tta  |  k-fold  |  ensemble<br>(threshold)  |   box mAP   |   Configs   |   Download   |
+| :------------: | :------: | :------: | :----: | :------: | :-----------------------: | :---------: | :---------: | :----------: |
+|  Co-DINO       |  R-50    |   36e    |    y   |  5-fold  |          WBF(0.6)         |   0.6807    |  [config]() |   [model]()  |
+|  DETA          |  Swin-L  |   12e    |    y   |  5-fold  |          WBF(0.7)         |   0.7287    |  [config]() |   [model]()  |
+|  Cascade R-CNN |  MViTv2  |   20e    |    y   |  5-fold  |          WBF(0.7)         |   0.6762    |  [config]() |   [model]()  |
+
+## Data
+```
+dataset
+  ├── annotations
+      ├── train.json # train image에 대한 annotation file (coco format)
+      └── test.json # test image에 대한 annotation file (coco format)
+  ├── train # 4883장의 train image
+  └── test # 4871장의 test image
+```
 
 ## Installation Guide
 1. Installation(추후 수정)
@@ -72,22 +81,21 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
 ```
 ## File Tree(추후 수정)
 ```
-  ├─.github
-  ├─ mmdetection
-    ├─config 파일
-    ├─checkpoint 파일
-    ├─test 파일
-    ├─train 파일
-  ├─tranformers
-    ├─config 파일
-    ├─checkpoint 파일
-    ├─test 파일
-    ├─train 파일
-  ├─ensemble_inference.py
-  ├─demo
-    ├─model_demo.py
-  ├─requirements.txt
-  ├─README.md
+├── .github
+├── mmdetection
+    ├── configs
+    ├── checkpoint
+├── tranformers
+    ├── configs
+    ├── checkpoint
+├── detectron2
+    ├── configs
+    ├── checkpoint
+├── demo
+    ├── model_demo.py
+├── ensemble_inference.py
+├── requirements.txt
+└── README.md
 ```
 ## Environment Setting
 <table>

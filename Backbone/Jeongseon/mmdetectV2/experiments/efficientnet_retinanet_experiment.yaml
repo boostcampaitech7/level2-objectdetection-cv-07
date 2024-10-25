@@ -1,7 +1,0 @@
-backbone: EfficientNet_RetinaNet
-batch_size: 4
-learning_rate: 0.04
-weight_decay: 0.0001
-num_epochs: 12
-classes: ["General trash", "Paper", "Paper pack", "Metal", "Glass", 
-               "Plastic", "Styrofoam", "Plastic bag", "Battery", "Clothing"]
