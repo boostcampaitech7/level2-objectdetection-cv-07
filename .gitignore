@@ -24,7 +24,11 @@ __pycache__
 **/wandb/
 **/__pycache__/
 .pyc
-cascade_rcnn/output
+detectron2/cascade_rcnn/output
+detectron2/mvitv2_rcnn_cascade/output
+detectron2/swin_rcnn/output
+detectron2/swin_rcnn/output_eval
+detectron2/vitdet_rcnn_cascade/output
 cascade_rcnn/wandb
 baseline/
 create_split_json.py

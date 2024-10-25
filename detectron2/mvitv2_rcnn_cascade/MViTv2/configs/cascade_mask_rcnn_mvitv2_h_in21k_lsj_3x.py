@@ -35,10 +35,10 @@ dataloader.evaluator.dataset_name='coco_trash_test'
 train.max_iter = 20000
 
 # 체크포인트 저장 주기 설정
-train.checkpointer.period = 5000
-
+train.checkpointer.period = 1000
+train.checkpointer.max_to_keep=5
 # 테스트 주기 설정
-train.eval_period = 500
+train.eval_period = 1000
 
 # 필요에 따라 학습률 스케줄러 조정
 lr_multiplier.scheduler.milestones = [1, 10000, 15000]
@@ -49,5 +49,6 @@ del model.roi_heads['mask_pooler']
 del model.roi_heads['mask_head']
 
 ### batch size
-dataloader.train.total_batch_size=4
+dataloader.train.total_batch_size=8
 
+train.output_dir='./ouput2'
