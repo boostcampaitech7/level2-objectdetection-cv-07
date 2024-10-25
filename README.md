@@ -48,23 +48,6 @@ dataset
   └── test # 4871장의 test image
 ```
 
-2. k-fold split 데이터셋
-```
-split_dataset
-  ├── annotations
-      ├── 5-fold # 5-fold로 split
-          ├── train
-              ├──train_0_5.json
-              ...
-              └──train_4_5.json
-          └── valid
-              ├──valid_0_5.json
-              ...
-              └──valid_4_5.json
-  ├── train # 4883장의 train image
-  └── test # 4871장의 test image
-```
-
 ## Installation Guide
 1. Installation(추후 수정)
 ```
@@ -108,17 +91,6 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
     ├── checkpoint
 ├── demo
     ├── model_demo.py
-├── dataset
-    ├── annotations
-        ├── train.json
-        └── test.json
-    ├── train
-    └── test
-├── split_dataset
-    └── annotations
-        ├── 5-fold
-            ├── train
-            └── valid
 ├── ensemble_inference.py
 ├── requirements.txt
 └── README.md
