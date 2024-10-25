@@ -38,7 +38,6 @@
 |  Cascade R-CNN |  MViTv2  |   30e    |    y   |  5-fold  |          WBF(0.7)         |   0.9999   |  [config]() | 
 
 ## Data
-1. 기본 데이터셋
 ```
 dataset
   ├── annotations
