@@ -89,6 +89,9 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
 ├── tranformers
     ├── configs
     ├── checkpoint
+├── detectron2
+    ├── configs
+    ├── checkpoint
 ├── demo
     ├── model_demo.py
 ├── ensemble_inference.py
