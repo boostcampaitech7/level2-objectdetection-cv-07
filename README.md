@@ -28,14 +28,14 @@
 <img width="70%" alt="최종 public 리더보드 순위" src="https://github.com/user-attachments/assets/78a3accd-ed78-4560-bc97-a5c5421089b1"><br>
 
 ## Final Model
-다음은 최종 모델 구성에 사용된 모델들입니다. 최종적으로 DETA 5-fold 결과와 Co-DINO 5-fold 결과를 기반으로 threshold를 0.7로 설정하여 WBF를 실행한 결과, 최종 성능 **mAP50 0.9999**를 달성했습니다.<br>
+최종 모델은 DETA, Co-DINO, Cascade R-CNN의 5-fold 앙상블로 구성되었습니다. <br> 각 모델의 예측 결과를 바탕으로 threshold = 0.7로 설정한 Weighted Box Fusion (WBF) 기법을 적용하여 앙상블을 수행했습니다. <br> 그 결과, 최종 성능으로 **mAP50 0.7382**를 달성했습니다.<br>
 
 
-|      Model     | Backbone |  Lr schd |   tta  |  k-fold  |  ensemble<br>(threshold)  |   box mAP  |   Configs   |
-| :------------: | :------: | :------: | :----: | :------: | :-----------------------: | :--------: | :---------: |
-|  Co-Dino       |  R-50    |   12e    |    y   |  4-fold  |          WBF(0.6)         |   0.9999   |  [config]() | 
-|  Deta          |  Swin-L  |   36e    |    y   |  5-fold  |          WBF(0.6)         |   0.9999   |  [config]() | 
-|  Cascade R-CNN |  MViTv2  |   30e    |    y   |  5-fold  |          WBF(0.7)         |   0.9999   |  [config]() | 
+|      Model     | Backbone |  Lr schd |   tta  |  k-fold  |  ensemble<br>(threshold)  |   box mAP   |   Configs   |
+| :------------: | :------: | :------: | :----: | :------: | :-----------------------: | :---------: | :---------: |
+|  Co-DINO       |  R-50    |   36e    |    y   |  4-fold  |          WBF(0.6)         |   0.6807    |  [config]() | 
+|  DETA          |  Swin-L  |   12e    |    y   |  5-fold  |          WBF(0.7)         |   0.7287    |  [config]() | 
+|  Cascade R-CNN |  MViTv2  |   20e    |    y   |  5-fold  |          WBF(0.7)         |   0.6762    |  [config]() | 
 
 ## Data
 ```
