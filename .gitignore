@@ -13,7 +13,6 @@ code/
 .env
 **/work_dirs/
 *.pth
-*.csv
 work_dirs/
 **/wandb/
 mask_rcnn_swin_inference.ipynb
