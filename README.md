@@ -31,11 +31,11 @@
 다음은 최종 모델 구성에 사용된 모델들입니다. 최종적으로 DETA 5-fold 결과와 Co-DINO 5-fold 결과를 기반으로 threshold를 0.7로 설정하여 WBF를 실행한 결과, 최종 성능 **mAP50 0.9999**를 달성했습니다.<br>
 
 
-|   Model  | Backbone |  Lr schd |  k-fold  |  ensemble<br>(threshold)  |   box mAP  |  Config  |   Download   |
-| :------: | :------: | :------: | :------: | :-------------------: | :--------: | :------: |   :------:   |
-|  Co-Dino |   R-50   |   12e    |  5-fold  |        WBF(0.7)       |   0.9999   | [config](./dino-4scale_r50_8xb2-12e_coco.py) | [model](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth) \| [log](https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705.log.json) |
-|   Deta   |  Swin-L  |   36e   |  5-fold  |        WBF(0.8)       |   0.9999   | [config](./dino-5scale_swin-l_8xb2-36e_coco.py) | [model](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/dino-5scale_swin-l_8xb2-36e_coco-5486e051.pth) \| [log](https://github.com/RistoranteRist/mmlab-weights/releases/download/dino-swinl/20230307_032359.log) |
-|  Cascade R-CNN |   MViTv2   |   30e   |  5-fold  |  WBF(0.6) |  0.9999  |  [config]()  |  [model]() \| [log]() |
+|      Model     | Backbone |  Lr schd |   tta  |  k-fold  |  ensemble<br>(threshold)  |   box mAP  |   Configs   |
+| :------------: | :------: | :------: | :----: | :------: | :-----------------------: | :--------: | :---------: |
+|  Co-Dino       |  R-50    |   12e    |    y   |  4-fold  |          WBF(0.6)         |   0.9999   |  [config]() | 
+|  Deta          |  Swin-L  |   36e    |    y   |  5-fold  |          WBF(0.6)         |   0.9999   |  [config]() | 
+|  Cascade R-CNN |  MViTv2  |   30e    |    y   |  5-fold  |          WBF(0.7)         |   0.9999   |  [config]() | 
 
 ## Data
 1. 기본 데이터셋
