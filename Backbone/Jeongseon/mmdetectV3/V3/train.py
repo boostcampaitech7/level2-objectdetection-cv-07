@@ -112,18 +112,6 @@ def main():
     cfg.train_dataloader.dataset.metainfo = metainfo  
     cfg.val_dataloader.dataset.metainfo = metainfo
     root = '/data/ephemeral/home/dataset/'
-    # dataset config 수정
-    #cfg.train_dataloader.dataset.classes = classes
-    # cfg.train_dataloader.dataset.data_root = root
-    # cfg.train_dataloader.dataset.ann_file = root + 'train.json'
-    # cfg.train_dataloader.dataset.data_prefix = dict(img='train/') # train json 정보
-    
-    #cfg.data.train.pipeline[2]['img_scale'] = (512,512) # Resize faster-rcnn
-
-    #cfg.val_dataloader.dataset.classes = classes
-    # cfg.val_dataloader.dataset.data_root = root
-    # cfg.val_dataloader.dataset.ann_file = root + 'test.json'
-    # cfg.val_dataloader.dataset.data_prefix = dict(img='test/') # test json 정보
 
     cfg.train_dataloader.dataset.data_root = '/data/ephemeral/home/dataset/'
     cfg.train_dataloader.dataset.ann_file = '/data/ephemeral/home/dataset/split/train_0_5.json'
@@ -137,9 +125,6 @@ def main():
     cfg.test_evaluator.ann_file = '/data/ephemeral/home/dataset/test.json'
 
     cfg.train_dataloader.batch_size = 2
-
-    #cfg.seed = 2022
-    #cfg.gpu_ids = [0]
 
     cfg.model.bbox_head.num_classes = 10
     cfg.work_dir = f'/data/ephemeral/home/Jeongseon/mmdetection/V3/work_dirs/' #모델명추가
