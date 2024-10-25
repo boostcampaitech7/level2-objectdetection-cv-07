@@ -1,14 +1,11 @@
 # train.py
 import argparse
 import os 
-import wandb
 from mmcv import Config
 from mmdet.datasets import build_dataset
 from mmdet.models import build_detector
 from mmdet.apis import train_detector
 from mmdet.utils import get_device
-from mmcv.runner import HOOKS, LoggerHook
-from dotenv import load_dotenv  # dotenv로 환경 변수 로드
 
 # 사용할 수 있는 모델과 그에 따른 config 파일 경로 설정
 AVAILABLE_MODELS = {
@@ -16,7 +13,8 @@ AVAILABLE_MODELS = {
     'mask_rcnn': './configs/mask_rcnn/mask_rcnn_r50_fpn_1x_coco.py',
     'retinanet_r50_fpn_1x_coco': './configs/retinanet/retinanet_r50_fpn_1x_coco.py',
     'retinanet': './configs/retinanet/retinanet_r50_caffe_fpn_mstrain_1x_coco.py',
-    'yolox_s_8x8_300e_coco': './configs/yolox/yolox_s_8x8_300e_coco.py'
+    'yolox_s_8x8_300e_coco': './configs/yolox/yolox_s_8x8_300e_coco.py',
+    'autoassign_r50_fpn_8x2_1x_coco': '/data/ephemeral/home/Sojeong/level2-objectdetection-cv-07/Backbone/Sojeong/autoassign/autoassign_r50_fpn_8x2_1x_coco.py',
 }
 
 def parse_args():
@@ -25,7 +23,7 @@ def parse_args():
     # 모델 선택 인자 추가
     parser.add_argument('--model', type=str, default='faster_rcnn',
                         choices=AVAILABLE_MODELS.keys(),
-                        help='사용할 모델을 선택하세요 (faster_rcnn, mask_rcnn, retinanet)')
+                        help='사용할 모델을 선택하세요')
     
     # 기존 인자들 추가
     parser.add_argument('--root', type=str, default='/data/ephemeral/home/data/dataset/',
@@ -54,12 +52,6 @@ def parse_args():
                         help='Max number of checkpoints to keep')
     parser.add_argument('--checkpoint_interval', type=int, default=1,
                         help='Interval for saving checkpoints') # Save every epoch
-    parser.add_argument('--wandb_project', type=str, default='faster-rcnn-training',
-                        help='WandB project name')
-    parser.add_argument('--wandb_run_name', type=str, default='faster-rcnn-run',
-                        help='WandB run name')
-    parser.add_argument('--wandb_entity', type=str, default=None,
-                        help='WandB entity or team name')
 
     return parser.parse_args()
 
@@ -117,32 +109,6 @@ def build_model(cfg):
     model.init_weights()
     return model
 
-def setup_wandb(cfg, args):
-    wandb_project = args.wandb_project
-    wandb_run_name =args.wandb_run_name
-    wandb_entity = args.wandb_entity
-
-    wandb.init(
-        project=wandb_project,
-        name=wandb_run_name,
-        config=cfg,
-        entity=wandb_entity
-    )
-
-
-@HOOKS.register_module()
-class WandBLoggerHook(LoggerHook):
-    """
-    W&B Logger Hook to log loss and other metrics after each iteration.
-    """
-    def log(self, runner):
-        wandb.log({
-            'loss': runner.outputs['loss'],
-            'learning_rate': runner.current_lr()[0],
-            'epoch': runner.epoch,
-            'iter': runner.iter
-        })
-
 def train_model(model, datasets, cfg):
     train_detector(model, datasets[0], cfg, distributed=False, validate=False)
 
@@ -154,8 +120,6 @@ def main():
     cfg = load_config(args)  # 모델에 맞는 config 파일 로드
     update_config(cfg, args)
     
-    setup_wandb(cfg, args)
-
     datasets = build_train_dataset(cfg)
     model = build_model(cfg)
     train_model(model, datasets, cfg)
