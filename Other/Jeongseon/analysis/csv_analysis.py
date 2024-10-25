@@ -13,7 +13,7 @@ import colorsys
 # 클래스 정의
 CLASSES = ("General trash", "Paper", "Paper pack", "Metal", "Glass", 
            "Plastic", "Styrofoam", "Plastic bag", "Battery", "Clothing")
-BASE_PATH = '/data/ephemeral/home/data/dataset/'
+BASE_PATH = '/data/ephemeral/home/dataset'
 
 def load_csv_file(uploaded_file):
     df = pd.read_csv(uploaded_file, dtype={'PredictionString': str, 'image_id': str})

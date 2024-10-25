@@ -11,7 +11,7 @@ class_annotations = defaultdict(int)
 total_annotations = 0 #총 어노테이션 개수
 
 # CSV 파일 경로
-csv_file = '/data/ephemeral/home/Jeongseon/submission_swin_t.csv'  # CSV 파일의 경로
+csv_file = '/data/ephemeral/home/Jihwan/level2-objectdetection-cv-07/mmdetection/work_dirs/detr_r50/submission_latest.csv'  # CSV 파일의 경로
 
 # CSV 파일 읽기
 def count_annotations_per_class(file_path):
