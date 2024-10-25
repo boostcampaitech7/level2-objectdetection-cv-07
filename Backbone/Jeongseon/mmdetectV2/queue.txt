@@ -1,1 +1,0 @@
-python main.py experiments/swin_experiment.yaml --work-dir ./work_dirs/swin_cascade_mask_rcnn
