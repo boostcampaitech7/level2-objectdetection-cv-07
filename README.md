@@ -76,7 +76,7 @@ python ensemble/ensemble_5fold.py # TTA 앙상블의 앙상블
 # transformers, mmdetection, detectron2 전체 결과 앙상블
 python ensemble/ensemble_inference.py 
 ```
-## File Tree(추후 수정)
+## File Tree
 ```
 ├── .github
 ├── mmdetection
