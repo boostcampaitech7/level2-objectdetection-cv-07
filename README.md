@@ -80,14 +80,14 @@ python ensemble/ensemble_inference.py
 ```
 ├── .github
 ├── mmdetection
-    ├── configs
-    ├── checkpoint
+    ├── TTA
+    ├── model_train
 ├── tranformers
-    ├── configs
-    ├── checkpoint
+    ├── TTA
+    ├── model_train
 ├── detectron2
-    ├── configs
-    ├── checkpoint
+    ├── TTA
+    ├── model_train
 ├── ensemble
 └── README.md
 ```
