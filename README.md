@@ -47,25 +47,34 @@ dataset
   └── test # 4871장의 test image
 ```
 
-## Installation Guide
+## User Guide
 ```
-# Step 1. Create a conda environment and activate it
-conda create --name openmmlab python=3.8 -y
-conda activate openmmlab
+# transformers 모듈 설치
+pip install datasets transformers accelerate timm
+pip install -U albumentations>=1.4.5 torchmetrics pycocotools
 
-# Step 2. Install PyTorch following official instructions, e.g.
-conda install pytorch torchvision -c pytorch
+# transformers를 이용한 모델 학습 및 TTA 추론
+python transformers/model_train/main.py
+python transformers/TTA/TTA.py
 
-# Step 3. Install MMEngine and MMCV using MIM.
-pip install -U openmim
-mim install mmengine
-mim install "mmcv>=2.0.0"
+# mmdetection 실행 권한 설정, 모델 학습, TTA 추론
+chmod +x mmdetection/model_train/tools/train.sh
+chmod +x mmdetection/model_train/tools/inference.sh
+./mmdetection/model_train/tools/train.sh
+./mmdetection/model_train/tools/inference.sh
+ 
+# detectron2 실행 권한 설정, 모델 학습, TTA 추론
+chmod +x detectron2/model_train/train.sh
+./detectron2/model_train/train.sh
+ python detectron2/TTA/inference.py
+python detectron2/TTA/inference_flip.py
 
-# Step 4. Install MMDetection.
-git clone https://github.com/open-mmlab/mmdetection.git
-cd mmdetection
-pip install -v -e .
-pip install requirements.txt
+# TTA 결과 앙상블 (transformers, detectron2 필요)
+python ensemble/ensemble_1fold.py # 폴드 별 TTA 앙상블
+python ensemble/ensemble_5fold.py # TTA 앙상블의 앙상블
+
+# transformers, mmdetection, detectron2 전체 결과 앙상블
+python ensemble/ensemble_inference.py 
 ```
 ## File Tree(추후 수정)
 ```
