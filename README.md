@@ -48,7 +48,6 @@ dataset
 ```
 
 ## Installation Guide
-1. Installation(추후 수정)
 ```
 # Step 1. Create a conda environment and activate it
 conda create --name openmmlab python=3.8 -y
@@ -68,15 +67,6 @@ cd mmdetection
 pip install -v -e .
 pip install requirements.txt
 ```
-<br>
-
-2. Run Demo(추후 수정)
-```
-# Step 1. We need to download config and checkpoint files.
-mim download mmdet --config rtmdet_tiny_8xb32-300e_coco --dest .
-
-# Step 2. Verify the inference demo.
-python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth
 
 ```
 ## File Tree(추후 수정)
@@ -161,12 +151,12 @@ python demo/image_demo.py demo/demo.jpg rtmdet_tiny_8xb32-300e_coco.py --weights
       <td align="center">🍀서정연</td>
     </tr>
     <tr>
-      <td align="center"></td>
-      <td align="center"></td>
-      <td align="center"></td>
-      <td align="center"></td>
-      <td align="center"></td>
-      <td align="center"></td>
+      <td align="center">Transformers 모델 실험, 앙상블</td>
+      <td align="center">MMDetection 모델 실험</td>
+      <td align="center">데이터 분석, 모듈화, MMDetection 모델 실험</td>
+      <td align="center">detectron2 모델 실험, wandb관리, 기법 정리</td>
+      <td align="center">스케줄링, 문서화, MMDetection, ultralytics실험</td>
+      <td align="center">MMDetection 모델 실험, 깃 관리</td>
     </tr>
   </table>
 </div>
