@@ -8,7 +8,7 @@
 
 [📘Wrap-Up Report]() |
 [👀Model](#final-model) |
-[🛠️Installation](#installation-guide) |
+[🛠️Installation](#user-guide) |
 [🤔Issues](https://github.com/boostcampaitech7/level2-objectdetection-cv-07/issues) | <br>
 [🚀MMDetection](https://github.com/open-mmlab/mmdetection) |
 [🤗Transformers](https://huggingface.co/docs/transformers/en/index) |
