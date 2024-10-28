@@ -79,10 +79,7 @@ pip install requirements.txt
 ├── detectron2
     ├── configs
     ├── checkpoint
-├── demo
-    ├── model_demo.py
-├── ensemble_inference.py
-├── requirements.txt
+├── ensemble
 └── README.md
 ```
 
