@@ -67,8 +67,6 @@ cd mmdetection
 pip install -v -e .
 pip install requirements.txt
 ```
-
-```
 ## File Tree(추후 수정)
 ```
 ├── .github
@@ -87,6 +85,7 @@ pip install requirements.txt
 ├── requirements.txt
 └── README.md
 ```
+
 ## Environment Setting
 <table>
   <tr>
