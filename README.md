@@ -8,7 +8,6 @@
 
 [📘Wrap-Up Report]() |
 [👀Model](#final-model) |
-[🛠️User-Guide](#user-guide) |
 [🤔Issues](https://github.com/boostcampaitech7/level2-objectdetection-cv-07/issues) | <br>
 [🚀MMDetection](https://github.com/open-mmlab/mmdetection) |
 [🤗Transformers](https://huggingface.co/docs/transformers/en/index) |
@@ -31,11 +30,11 @@
 최종 모델은 DETA, Co-DINO, Cascade R-CNN의 5-fold 앙상블로 구성되었습니다. <br> 각 모델의 예측 결과를 바탕으로 threshold = 0.7로 설정한 Weighted Box Fusion (WBF) 기법을 적용하여 앙상블을 수행했습니다. <br> 그 결과, 최종 성능으로 **mAP50 0.7382**를 달성했습니다.<br>
 
 
-|      Model     | Backbone |  Lr schd |   tta  |  k-fold  |  ensemble<br>(threshold)  |   box mAP   |   Configs   |   Download   |
-| :------------: | :------: | :------: | :----: | :------: | :-----------------------: | :---------: | :---------: | :----------: |
-|  Co-DINO       |  Swin-L    |   36e    |    y   |  5-fold  |          WBF(0.6)         |   0.6807    |  [config]() |   [model]()  |
-|  DETA          |  Swin-L  |   12e    |    y   |  5-fold  |          WBF(0.7)         |   0.7287    |  [config]() |   [model]()  |
-|  Cascade<br> R-CNN |  MViTv2  |   20e    |    y   |  5-fold  |          WBF(0.7)         |   0.6762    |  [config]() |   [model]()  |
+|      Model     | Backbone |  Lr schd |   tta  |  k-fold  |  ensemble<br>(threshold)  |   box mAP   | 
+| :------------: | :------: | :------: | :----: | :------: | :-----------------------: | :---------: |
+|  Co-DINO       |  Swin-L    |   36e    |    y   |  5-fold  |          WBF(0.6)         |   0.6807    | 
+|  DETA          |  Swin-L  |   12e    |    y   |  5-fold  |          WBF(0.7)         |   0.7287    | 
+|  Cascade<br> R-CNN |  MViTv2  |   20e    |    y   |  5-fold  |          WBF(0.7)         |   0.6762    |
 
 ## Data
 ```
@@ -45,36 +44,6 @@ dataset
       └── test.json # test image에 대한 annotation file (coco format)
   ├── train # 4883장의 train image
   └── test # 4871장의 test image
-```
-
-## User Guide
-```
-# transformers 모듈 설치
-pip install datasets transformers accelerate timm
-pip install -U albumentations>=1.4.5 torchmetrics pycocotools
-
-# transformers를 이용한 모델 학습 및 TTA 추론
-python transformers/model_train/main.py
-python transformers/TTA/TTA.py
-
-# mmdetection 실행 권한 설정, 모델 학습, TTA 추론
-chmod +x mmdetection/model_train/tools/train.sh
-chmod +x mmdetection/model_train/tools/inference.sh
-./mmdetection/model_train/tools/train.sh
-./mmdetection/model_train/tools/inference.sh
- 
-# detectron2 실행 권한 설정, 모델 학습, TTA 추론
-chmod +x detectron2/model_train/train.sh
-./detectron2/model_train/train.sh
- python detectron2/TTA/inference.py
-python detectron2/TTA/inference_flip.py
-
-# TTA 결과 앙상블 (transformers, detectron2 필요)
-python ensemble/ensemble_1fold.py # 폴드 별 TTA 앙상블
-python ensemble/ensemble_5fold.py # TTA 앙상블의 앙상블
-
-# transformers, mmdetection, detectron2 전체 결과 앙상블
-python ensemble/ensemble_inference.py 
 ```
 ## File Tree
 ```
