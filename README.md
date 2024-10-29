@@ -7,6 +7,7 @@
 
 
 [👀Model](#final-model) |
+[:accessibility:User Guide](#user-guide) |
 [🤔Issues](https://github.com/boostcampaitech7/level2-objectdetection-cv-07/issues) | <br>
 [🚀MMDetection](https://github.com/open-mmlab/mmdetection) |
 [🤗Transformers](https://huggingface.co/docs/transformers/en/index) |
@@ -43,6 +44,31 @@ dataset
       └── test.json # test image에 대한 annotation file (coco format)
   ├── train # 4883장의 train image
   └── test # 4871장의 test image
+```
+## User Guide
+```
+# transformers를 이용한 모델 학습 및 TTA 추론
+python transformers/model_train/main.py
+python transformers/TTA/TTA.py
+
+# mmdetection 실행 권한 설정, 모델 학습, TTA 추론
+chmod +x mmdetection/model_train/tools/train.sh
+chmod +x mmdetection/model_train/tools/inference.sh
+./mmdetection/model_train/tools/train.sh
+./mmdetection/model_train/tools/inference.sh
+ 
+# detectron2 실행 권한 설정, 모델 학습, TTA 추론
+chmod +x detectron2/model_train/train.sh
+./detectron2/model_train/train.sh
+python detectron2/TTA/inference.py
+python detectron2/TTA/inference_flip.py
+
+# TTA 결과 앙상블 (transformers, detectron2 필요)
+python ensemble/ensemble_1fold.py # 폴드 별 TTA 앙상블
+python ensemble/ensemble_5fold.py # TTA 앙상블의 앙상블
+
+# transformers, mmdetection, detectron2 전체 결과 앙상블
+python ensemble/ensemble_inference.py
 ```
 ## File Tree
 ```
