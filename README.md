@@ -6,7 +6,6 @@
 <div align="center">
 
 
-[📘Wrap-Up Report]() |
 [👀Model](#final-model) |
 [🤔Issues](https://github.com/boostcampaitech7/level2-objectdetection-cv-07/issues) | <br>
 [🚀MMDetection](https://github.com/open-mmlab/mmdetection) |
