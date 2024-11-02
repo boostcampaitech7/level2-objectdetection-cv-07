@@ -1,0 +1,4 @@
+{
+    "num_train_epochs": 1,
+    "image_size": 400
+}
