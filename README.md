@@ -125,6 +125,9 @@ python ensemble/ensemble_inference.py
 </table>
 <br>
 
+## Demo
+
+
 <p align='center'>© 2024 LuckyVicky Team.</p>
 <p align='center'>Supported by Naver BoostCamp AI Tech.</p>
 
